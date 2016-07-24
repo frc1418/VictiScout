@@ -6,7 +6,7 @@
 }
 body {
     background: #333;
-    padding: 5px;
+    margin: 3px;
 }
 input[type="number"],
 input[type="text"],
@@ -14,6 +14,7 @@ button {
     border: none;
     background: #444;
     padding: 5px;
+    margin: 1px;
     color: white;
     outline: none;
 }

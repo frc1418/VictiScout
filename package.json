@@ -1,27 +1,29 @@
 {
-	"name": "FRCScout",
-	"version": "1.0.0",
-	"description": "Scouting application for FIRST Robotics Competition.",
-	"main": "main.js",
-	"scripts": {
-		"start": "electron ."
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/ErikBoesen/FRCScout"
-	},
-	"keywords": [
-		"FRC",
-        "robotics",
-        "scouting"
-	],
-	"author": "ErikBoesen",
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/ErikBoesen/FRCScout/issues"
-	},
-	"homepage": "https://github.com/ErikBoesen/FRCScout#readme",
-	"devDependencies": {
-		"electron-prebuilt": "^1.2.0"
-	}
+  "name": "Scout",
+  "version": "1.0.0",
+  "description": "Scouting application for FIRST Robotics Competition.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "package": "electron-packager . --all --out ~/Desktop/Scout --overwrite --ignore=\\.gitignore"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ErikBoesen/FRCScout"
+  },
+  "keywords": [
+    "FRC",
+    "robotics",
+    "scouting"
+  ],
+  "author": "ErikBoesen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ErikBoesen/FRCScout/issues"
+  },
+  "homepage": "https://github.com/ErikBoesen/FRCScout#readme",
+  "devDependencies": {
+    "electron-packager": "^7.3.0",
+    "electron-prebuilt": "^1.2.0"
+  }
 }

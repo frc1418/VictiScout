@@ -33,7 +33,7 @@ submit.onclick = function() {
 	console.log(data);
 
 	// Append new data to data.json file
-	fs.appendFile('data.json', JSON.stringify(data), function(err) {
+	fs.appendFile('~/Desktop/data.json', JSON.stringify(data), function(err) {
 		if (err) throw err;
 		console.log('Data appended');
 	});
