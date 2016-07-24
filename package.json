@@ -1,0 +1,27 @@
+{
+	"name": "FRCScout",
+	"version": "1.0.0",
+	"description": "Scouting application for FIRST Robotics Competition.",
+	"main": "main.js",
+	"scripts": {
+		"start": "electron ."
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ErikBoesen/FRCScout"
+	},
+	"keywords": [
+		"FRC",
+        "robotics",
+        "scouting"
+	],
+	"author": "ErikBoesen",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/ErikBoesen/FRCScout/issues"
+	},
+	"homepage": "https://github.com/ErikBoesen/FRCScout#readme",
+	"devDependencies": {
+		"electron-prebuilt": "^1.2.0"
+	}
+}

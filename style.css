@@ -1,0 +1,29 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+}
+body {
+    background: #333;
+    padding: 5px;
+}
+input[type="number"],
+input[type="text"],
+button {
+    border: none;
+    background: #444;
+    padding: 5px;
+    color: white;
+    outline: none;
+}
+button {
+    color: #eee;
+    cursor: pointer;
+}
+button:hover {
+    color: #ccc;
+}
+button:active {
+    color: #aaa;
+}
