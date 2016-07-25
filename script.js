@@ -32,11 +32,8 @@ submit.onclick = function() {
     // Log gathered data to console, useful for debug
 	console.log(data);
 
-	// Append new data to data.json file
-	fs.appendFile('~/Desktop/data.json', JSON.stringify(data), function(err) {
-		if (err) throw err;
-		console.log('Data appended');
-	});
+	// Append new JSON-parsed data to data.json file
+	fs.appendFile(process.env.HOME + '/Desktop/data.json', JSON.stringify(data));
 };
 
 // Clear all fields without submitting any data.

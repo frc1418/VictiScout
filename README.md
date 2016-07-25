@@ -21,4 +21,6 @@ While in `FRCScout` directory, run
 
     npm run-script package
 
+If you'd like to only package for one OS, append `-mac`, `-win`, or `-linux` to the end of `package` in that command. Otherwise, packages will be created for all operating systems.
+
 See [here](https://github.com/electron-userland/electron-packager#readme) for an explanation of how to modify your packaging settings.
