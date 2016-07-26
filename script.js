@@ -25,7 +25,7 @@ submit.onclick = function() {
 		data[input] = (inputs[input].type === 'number') ? parseInt(inputs[input].value) : inputs[input].value;
 	}
 
-    // Reset <input>s to prepare for new inputs after submission
+    // Reset <input>s to prepare for new contents after submission
     resetInputs();
 
 	// Add timestamp to data.
