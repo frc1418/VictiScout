@@ -3,11 +3,13 @@ const fs = require('fs');
 
 // Define buttons.
 var submit = document.getElementById('submit'),
-	reset = document.getElementById('reset');
+	clear = document.getElementById('clear'),
+    increase = document.getElementsByClassName('increase'),
+    decrease = document.getElementsByClassName('decrease');
 
-// Generate an array of all <input>s in document.
+// Generate an array of all <input>s (plus <select>s) in document.
 // These will be used to generate an object.
-var tags = document.getElementsByTagName('input');
+var tags = document.querySelectorAll('input, select');
 // Create empty object.
 var inputs = {};
 // Make each element be the value to a key named after its ID.
@@ -19,11 +21,11 @@ submit.onclick = function() {
 	var data = {};
 	// Go through each input in the data object and fill in the data from it
 	for (var input in inputs) {
-		// Input the values from each <input> into the data object
+		// Input the values from each input into the data object
 		// Number values will be cast as integers.
 		data[input] = (inputs[input].type === 'number') ? parseInt(inputs[input].value) : inputs[input].value;
 		// Clear <input>s to prepare for new inputs after submission
-		inputs[input].value = '';
+		clearInputs();
 	}
 
 	// Add timestamp to data.
@@ -32,12 +34,16 @@ submit.onclick = function() {
     // Log gathered data to console, useful for debug
 	console.log(data);
 
-	// Append new JSON-parsed data to data.json file
-	fs.appendFile(process.env.HOME + '/Desktop/data.json', JSON.stringify(data));
+	// Append new JSON-parsed data to data.json file on desktop.
+    // (For Windows, to get the user home dir, you need to get process.env.USERPROFILE, for everything else process.env.HOME.)
+	fs.appendFile(process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'] + '/Desktop/data.json', JSON.stringify(data));
 };
 
+clear.onclick = clearInputs();
+
 // Clear all fields without submitting any data.
-reset.onclick = function() {
-	for (var input in inputs) inputs[input].value = '';
-	console.log('Reset all inputs.');
+function clearInputs() {
+    for (var input in inputs) inputs[input].value = inputs[input].parentNode.className === 'defense' ? '0' : '';
+	console.log('Cleared all inputs.');
 };
+

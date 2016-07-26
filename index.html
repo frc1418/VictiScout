@@ -8,11 +8,152 @@
 </head>
 
 <body>
-    <input type="number" id="team" placeholder="Team #">
-    <input type="number" id="score" placeholder="Score">
-    <input type="number" id="match" placeholder="Match #">
-    <button id="submit">Submit</button>
-    <button id="reset">Reset</button>
+    <div class="row">
+        <input type="number" id="team" placeholder="Team #">
+        <input type="number" id="match" placeholder="Match #">
+        <input type="text" id="notes" placeholder="Notes">
+        <button id="submit">Submit</button>
+        <button id="clear">Clear</button>
+    </div>
+    <div class="row">
+        <div class="defense">
+            <h2>Portcullis</h2>
+            <img src="img/portcullis.svg">
+            <button class="decrease">-</button>
+            <input type="number" id="portcullis" value="0">
+            <button class="increase">+</button>
+        </div>
+        <div class="defense">
+            <h2>Cheval de Frise</h2>
+            <img src="img/cheval.svg">
+            <button class="decrease">-</button>
+            <input type="number" id="cheval" value="0">
+            <button class="increase">+</button>
+        </div>
+        <div class="defense">
+            <h2>Moat</h2>
+            <img src="img/moat.svg">
+            <button class="decrease">-</button>
+            <input type="number" id="moat" value="0">
+            <button class="increase">+</button>
+        </div>
+        <div class="defense">
+            <h2>Ramparts</h2>
+            <img src="img/ramparts.svg">
+            <button class="decrease">-</button>
+            <input type="number" id="ramparts" value="0">
+            <button class="increase">+</button>
+        </div>
+        <div class="defense">
+            <h2>Drawbridge</h2>
+            <img src="img/drawbridge.svg">
+            <button class="decrease">-</button>
+            <input type="number" id="drawbridge" value="0">
+            <button class="increase">+</button>
+        </div>
+        <div class="defense">
+            <h2>Sally Port</h2>
+            <img src="img/sallyport.svg">
+            <button class="decrease">-</button>
+            <input type="number" id="sallyport" value="0">
+            <button class="increase">+</button>
+        </div>
+        <div class="defense">
+            <h2>Rock Wall</h2>
+            <img src="img/rockwall.svg">
+            <button class="decrease">-</button>
+            <input type="number" id="rockwall" value="0">
+            <button class="increase">+</button>
+        </div>
+        <div class="defense">
+            <h2>Rough Terrain</h2>
+            <img src="img/roughterrain.svg">
+            <button class="decrease">-</button>
+            <input type="number" id="roughterrain" value="0">
+            <button class="increase">+</button>
+        </div>
+        <div class="defense">
+            <h2>Low Bar</h2>
+            <img src="img/lowbar.svg">
+            <button class="decrease">-</button>
+            <input type="number" id="lowbar" value="0">
+            <button class="increase">+</button>
+        </div>
+    </div>
+    <div class="row">
+        <div>
+            <h2>Low Goals</h2>
+            <button class="decrease">-</button>
+            <input type="number" id="lowgoal" value="0">
+            <button class="increase">+</button>
+        </div>
+        <div>
+            <h2>High Goal Misses</h2>
+            <button class="decrease">-</button>
+            <input type="number" id="highgoal-misses" value="0">
+            <button class="increase">+</button>
+        </div>
+        <div>
+            <h2>High Goal Scores</h2>
+            <button class="decrease">-</button>
+            <input type="number" id="highgoal" value="0">
+            <button class="increase">+</button>
+        </div>
+        <div>
+            <h2>Challenged Tower?</h2>
+            <input type="checkbox" id="challenged">
+        </div>
+        <div>
+            <h2>Climbed tower?</h2>
+            <select id="climb">
+                <option>No</option>
+                <option>Partially</option>
+                <option>Yes</option>
+            </select>
+        </div>
+        <div>
+            <h2>Defense?</h2>
+            <input type="checkbox" id="defense">
+        </div>
+    </div>
+    <div class="row">
+        <div>
+            <h1>Auto</h1>
+        </div>
+        <div>
+            <h2>Crossed a defense?</h2>
+            <select id="auto-defense">
+                <option>No</option>
+                <option>Portcullis</option>
+                <option>Cheval</option>
+                <option>Moat</option>
+                <option>Ramparts</option>
+                <option>Drawbridge</option>
+                <option>Sally Port</option>
+                <option>Rock Wall</option>
+                <option>Rough Terrain</option>
+                <option>Low Bar</option>
+            </select>
+        </div>
+        <div>
+            <h2>Low Goals</h2>
+            <button class="decrease">-</button>
+            <input type="number" id="auto-lowgoal" value="0">
+            <button class="increase">+</button>
+        </div>
+        <div>
+            <h2>High Goal Misses</h2>
+            <button class="decrease">-</button>
+            <input type="number" id="auto-highgoal-misses" value="0">
+            <button class="increase">+</button>
+        </div>
+        <div>
+            <h2>High Goal Scores</h2>
+            <button class="decrease">-</button>
+            <input type="number" id="auto-highgoal" value="0">
+            <button class="increase">+</button>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

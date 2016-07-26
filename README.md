@@ -4,8 +4,8 @@ Application for FRC scouting. Written using [Electron](http://electron.atom.io/)
 Get the newest compiled version [here](releases)!
 
 ## Development dependencies
-* [`node.js`](https://nodejs.org)
-* [`npm`](https://npmjs.com)
+* [Node.js](https://nodejs.org)
+* [npm](https://npmjs.com)
 
 ## Development Installation
 1. `cd` into `FRCScout` directory
@@ -24,3 +24,6 @@ While in `FRCScout` directory, run
 If you'd like to only package for one OS, append `-mac`, `-win`, or `-linux` to the end of `package` in that command. Otherwise, packages will be created for all operating systems.
 
 See [here](https://github.com/electron-userland/electron-packager#readme) for an explanation of how to modify your packaging settings.
+
+## license
+This software is licensed under the MIT license. More information in [`LICENSE`](LICENSE)

@@ -2,7 +2,8 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-size: 14px;
+    font: 14px sans-serif;
+    color: white;
 }
 body {
     background: #333;
@@ -15,7 +16,6 @@ button {
     background: #444;
     padding: 5px;
     margin: 1px;
-    color: white;
     outline: none;
 }
 button {
@@ -27,4 +27,25 @@ button:hover {
 }
 button:active {
     color: #aaa;
+}
+.row > div {
+    display: inline-block;
+    text-align: center;
+    margin: 5px;
+}
+.defense img {
+    display: block;
+    fill: white;
+    height: 120px;
+    margin: 10px;
+}
+.row input {
+    width: 40px;
+}
+.row:first-of-type input {
+    width: auto;
+}
+.increase,
+.decrease {
+    width: 25px;
 }
