@@ -45,5 +45,16 @@ clear.onclick = clearInputs();
 function clearInputs() {
     for (var input in inputs) inputs[input].value = inputs[input].parentNode.className === 'defense' ? '0' : '';
 	console.log('Cleared all inputs.');
+}
+
+increase.onclick = function() {
+    for (i = 0; i < this.parentNode.childNodes.length; i++) {
+        if (this.parentNode.childNodes[i].tagName === 'input') this.parentNode.childNodes[i].value += 1;
+    }
 };
 
+decrease.onclick = function() {
+    for (i = 0; i < this.parentNode.childNodes.length; i++) {
+        if (this.parentNode.childNodes[i].tagName === 'input') this.parentNode.childNodes[i].value -= 1;
+    }
+};
