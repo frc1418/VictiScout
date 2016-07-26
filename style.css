@@ -28,6 +28,10 @@ button:hover {
 button:active {
     color: #aaa;
 }
+.row {
+    overflow: scroll;
+    white-space: nowrap;
+}
 .row > div {
     display: inline-block;
     text-align: center;
@@ -48,4 +52,8 @@ button:active {
 .increase,
 .decrease {
     width: 25px;
+}
+
+td {
+    border: solid 1px white;
 }

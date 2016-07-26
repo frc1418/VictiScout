@@ -4,8 +4,10 @@ const fs = require('fs');
 // Define buttons.
 var submit = document.getElementById('submit'),
 	clear = document.getElementById('clear'),
-    increase = document.getElementsByClassName('increase'),
-    decrease = document.getElementsByClassName('decrease');
+	table = document.getElementById('table');
+/*,
+increase = document.getElementsByClassName('increase'),
+decrease = document.getElementsByClassName('decrease');*/
 
 // Generate an array of all <input>s (plus <select>s) in document.
 // These will be used to generate an object.
@@ -14,6 +16,7 @@ var tags = document.querySelectorAll('input, select');
 var inputs = {};
 // Make each element be the value to a key named after its ID.
 for (i = 0; i < tags.length; i++) inputs[tags[i].id] = tags[i];
+
 
 // Submit data (also clears all fields).
 submit.onclick = function() {
@@ -31,30 +34,58 @@ submit.onclick = function() {
 	// Add timestamp to data.
 	data['timestamp'] = new Date().getTime();
 
-    // Log gathered data to console, useful for debug
+	// Log gathered data to console, useful for debug
 	console.log(data);
 
 	// Append new JSON-parsed data to data.json file on desktop.
-    // (For Windows, to get the user home dir, you need to get process.env.USERPROFILE, for everything else process.env.HOME.)
+	// (For Windows, to get the user home dir, you need to get process.env.USERPROFILE, for everything else process.env.HOME.)
 	fs.appendFile(process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'] + '/Desktop/data.json', JSON.stringify(data));
+
+	// updateTable();
 };
+/*
+function updateTable() {
+	table.innerHTML = '';
+    var data;
+    fs.readFile(process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'] + '/Desktop/data.json', 'utf8', function(err, contents) {
+		var data = [JSON.parse(contents)];
+	});
+    console.log(data);
+	for (i = 0; i < data; i++) {
+		var tr = document.createElement('tr');
+		for (var k in data[i]) {
+			var td = document.createElement('td');
+			td.innerHTML = data[i][k];
+			tr.appendChild(td);
+		}
+		table.appendChild(tr);
+	}
+}*/
 
 clear.onclick = clearInputs();
 
 // Clear all fields without submitting any data.
 function clearInputs() {
-    for (var input in inputs) inputs[input].value = inputs[input].parentNode.className === 'defense' ? '0' : '';
+	for (var input in inputs) inputs[input].value = (inputs[input].parentNode.className === 'defense') ? '0' : '';
 	console.log('Cleared all inputs.');
 }
 
-increase.onclick = function() {
-    for (i = 0; i < this.parentNode.childNodes.length; i++) {
-        if (this.parentNode.childNodes[i].tagName === 'input') this.parentNode.childNodes[i].value += 1;
-    }
-};
+/*
+for (i = 0; i < increase.length; i++) {
+    increase[i].onclick = add();
+    decrease[i].onclick = subtract();
+}
 
-decrease.onclick = function() {
-    for (i = 0; i < this.parentNode.childNodes.length; i++) {
-        if (this.parentNode.childNodes[i].tagName === 'input') this.parentNode.childNodes[i].value -= 1;
+function add() {
+    console.log(increase[i]);
+    for (k = 0; k < this.parentNode.childNodes.length; k++) {
+        if (this.parentNode.childNodes[k].tagName === 'INPUT') this.parentNode.childNodes[i].value += 1;
     }
-};
+}
+
+function subtract() {
+    for (i = 0; i < this.parentNode.childNodes.length; i++) {
+        if (this.parentNode.childNodes[i].tagName === 'INPUT') this.parentNode.childNodes[i].value -= 1;
+    }
+}
+*/
