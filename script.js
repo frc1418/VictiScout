@@ -1,12 +1,9 @@
 // Require filesystem API (used to save data to file later on)
 const fs = require('fs');
 
-// Define buttons.
+// Define prominent buttons.
 var submit = document.getElementById('submit'),
-	clear = document.getElementById('clear');
-/*,
-increase = document.getElementsByClassName('increase'),
-decrease = document.getElementsByClassName('decrease');*/
+	reset = document.getElementById('reset');
 
 // Generate an array of all <input>s (plus <select>s) in document.
 // These will be used to generate an object.
@@ -17,7 +14,7 @@ var inputs = {};
 for (i = 0; i < tags.length; i++) inputs[tags[i].id] = tags[i];
 
 
-// Submit data (also clears all fields).
+// Submit data (also resets all fields).
 submit.onclick = function() {
 	// Make empty data object
 	var data = {};
@@ -26,9 +23,10 @@ submit.onclick = function() {
 		// Input the values from each input into the data object
 		// Number values will be cast as integers.
 		data[input] = (inputs[input].type === 'number') ? parseInt(inputs[input].value) : inputs[input].value;
-		// Clear <input>s to prepare for new inputs after submission
-		clearInputs();
 	}
+
+    // Reset <input>s to prepare for new inputs after submission
+    resetInputs();
 
 	// Add timestamp to data.
 	data['timestamp'] = new Date().getTime();
@@ -41,30 +39,29 @@ submit.onclick = function() {
 	fs.appendFile(process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'] + '/Desktop/data.json', JSON.stringify(data));
 };
 
-clear.onclick = clearInputs();
+reset.onclick = resetInputs();
 
-// Clear all fields without submitting any data.
-function clearInputs() {
-	for (var input in inputs) inputs[input].value = (inputs[input].parentNode.className === 'defense') ? '0' : '';
-	console.log('Cleared all inputs.');
+// Reset all fields without submitting any data.
+function resetInputs() {
+	// For each input, reset to default value.
+	for (var input in inputs) {
+		if (inputs[input].type === 'number' && inputs[input].className !== 'large') {
+			inputs[input].value = 0;
+		} else if (inputs[input].className === 'large') {
+			inputs[input].value = '';
+		} else if (inputs[input].type === 'checkbox') {
+			inputs[input].checked = false;
+		} else if (inputs[input].tagName === 'SELECT') {
+            inputs[input].value = 'No';
+        }
+	}
+	console.log('Reset all inputs.');
 }
 
-/*
-for (i = 0; i < increase.length; i++) {
-    increase[i].onclick = add();
-    decrease[i].onclick = subtract();
-}
-
-function add() {
-    console.log(increase[i]);
-    for (k = 0; k < this.parentNode.childNodes.length; k++) {
-        if (this.parentNode.childNodes[k].tagName === 'INPUT') this.parentNode.childNodes[i].value += 1;
-    }
-}
-
-function subtract() {
-    for (i = 0; i < this.parentNode.childNodes.length; i++) {
-        if (this.parentNode.childNodes[i].tagName === 'INPUT') this.parentNode.childNodes[i].value -= 1;
-    }
-}
-*/
+// When user clicks on the screen, check if they clicked on an increase/decrease button
+onclick = function(e) {
+	// If click was on a decrease button > increase the value of the adjacent input
+	if (e.target.className === 'decrease') e.target.nextElementSibling.value = parseInt(e.target.nextElementSibling.value) - 1;
+	// If click was on an increase button > decrease the value of the adjacent input
+	if (e.target.className === 'increase') e.target.previousElementSibling.value = parseInt(e.target.previousElementSibling.value) + 1;
+};

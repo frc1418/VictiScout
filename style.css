@@ -46,7 +46,7 @@ button:active {
 .row input {
     width: 40px;
 }
-.row:first-of-type input {
+input.large {
     width: auto;
 }
 .increase,

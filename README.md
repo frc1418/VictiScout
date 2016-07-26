@@ -25,5 +25,8 @@ If you'd like to only package for one OS, append `-mac`, `-win`, or `-linux` to 
 
 See [here](https://github.com/electron-userland/electron-packager#readme) for an explanation of how to modify your packaging settings.
 
-## license
+## Author
+This software was written by [Erik Boesen](https://github.com/ErikBoesen), originally for [Team 1418](https://github.com/frc1418).
+
+## License
 This software is licensed under the MIT license. More information in [`LICENSE`](LICENSE)
