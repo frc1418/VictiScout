@@ -3,8 +3,7 @@ const fs = require('fs');
 
 // Define buttons.
 var submit = document.getElementById('submit'),
-	clear = document.getElementById('clear'),
-	table = document.getElementById('table');
+	clear = document.getElementById('clear');
 /*,
 increase = document.getElementsByClassName('increase'),
 decrease = document.getElementsByClassName('decrease');*/
@@ -35,32 +34,12 @@ submit.onclick = function() {
 	data['timestamp'] = new Date().getTime();
 
 	// Log gathered data to console, useful for debug
-	console.log(data);
+	// console.log(data);
 
 	// Append new JSON-parsed data to data.json file on desktop.
 	// (For Windows, to get the user home dir, you need to get process.env.USERPROFILE, for everything else process.env.HOME.)
 	fs.appendFile(process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'] + '/Desktop/data.json', JSON.stringify(data));
-
-	// updateTable();
 };
-/*
-function updateTable() {
-	table.innerHTML = '';
-    var data;
-    fs.readFile(process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'] + '/Desktop/data.json', 'utf8', function(err, contents) {
-		var data = [JSON.parse(contents)];
-	});
-    console.log(data);
-	for (i = 0; i < data; i++) {
-		var tr = document.createElement('tr');
-		for (var k in data[i]) {
-			var td = document.createElement('td');
-			td.innerHTML = data[i][k];
-			tr.appendChild(td);
-		}
-		table.appendChild(tr);
-	}
-}*/
 
 clear.onclick = clearInputs();
 
