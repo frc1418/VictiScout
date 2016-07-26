@@ -36,7 +36,7 @@ submit.onclick = function() {
 
 	// Append new JSON-parsed data to data.json file on desktop.
 	// (For Windows, to get the user home dir, you need to get process.env.USERPROFILE, for everything else process.env.HOME.)
-	fs.appendFile(process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'] + '/Desktop/data.json', JSON.stringify(data));
+	fs.appendFile(process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'] + '/Desktop/data.json', JSON.stringify(data) + '\n');
 };
 
 reset.onclick = resetInputs();

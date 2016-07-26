@@ -1,6 +1,6 @@
 {
-  "name": "Scout",
-  "version": "1.0.0",
+  "name": "FRCScout",
+  "version": "v0.0.0beta",
   "description": "Scouting application for FIRST Robotics Competition.",
   "main": "main.js",
   "scripts": {
