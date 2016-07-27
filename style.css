@@ -34,8 +34,9 @@ hr {
 }
 .row {
     white-space: nowrap;
+    padding: 10px 0;
 }
-.row > div {
+.row > * {
     display: inline-block;
     text-align: center;
     margin: 5px;
@@ -45,8 +46,17 @@ hr {
     fill: white;
     height: 120px;
 }
+.row:first-of-type * {
+    display: inline-block;
+}
 .row input {
     width: 40px;
+}
+.row:nth-of-type(4) {
+    background: #555;
+}
+h1 {
+    font-weight: bold;
 }
 input.large {
     width: auto;

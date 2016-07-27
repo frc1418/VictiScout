@@ -4,11 +4,11 @@ const fs = require('fs');
 // Define prominent buttons.
 var submit = document.getElementById('submit'),
 	reset = document.getElementById('reset'),
-    path = document.getElementById('path'),
-    pathWarning = document.getElementById('path-warning');
+	path = document.getElementById('path'),
+	pathWarning = document.getElementById('path-warning');
 
 function pathInit() {
-    path.value = (process.platform == 'win32') ? process.env.USERPROFILE + '\\Desktop\\data.json' : process.env.HOME + '/Desktop/data.json';
+	path.value = (process.platform == 'win32') ? process.env.USERPROFILE + '\\Desktop' : process.env.HOME + '/Desktop';
 }
 
 pathInit();
@@ -41,23 +41,32 @@ submit.onclick = function() {
 	// console.log(data);
 
 	// Append new JSON-parsed data to data.json file in designated location (usually Desktop).
-	fs.appendFile(path.value, JSON.stringify(data) + '\n', function(err) {
-        if (err) {
-            pathInit();
-            pathWarning.innerHTML = 'NOT A VALID PATH!!!!';
-            path.focus();
-            throw err;
-        } else {
-            pathWarning.innerHTML = '';
-            // Reset <input>s to prepare for new contents after submission
-            resetInputs();
-        }
-    });
+	fs.appendFile(path.value + '/data.json', JSON.stringify(data) + '\n', function(err) {
+		if (err) {
+			pathWarning.innerHTML = 'INVALID PATH';
+			path.focus();
+			throw err;
+		} else {
+			pathWarning.innerHTML = '';
+			// Reset <input>s to prepare for new contents after submission
+			resetInputs();
+		}
+	});
 };
 
-path.onblur = function() {
-    pathWarning.innerHTML = 'Trying to submit w/ new path...';
-    submit.click();
+path.onchange = function() {
+    var lChar = path.value[path.value.length];
+    /*if (lChar === '/' || lChar === '\\') {
+        path.value += (process.platform == 'win32') ? '\\' : '/';
+    }*/
+	fs.access(path.value, function(err) {
+		if (err) {
+            pathWarning.innerHTML = 'INVALID PATH';
+            path.focus();
+		} else {
+            pathWarning.innerHTML = '';
+        }
+	});
 };
 
 // When reset button is clicked, trigger reset
@@ -74,16 +83,16 @@ function resetInputs() {
 		} else if (inputs[input].type === 'checkbox') {
 			inputs[input].checked = false;
 		} else if (inputs[input].tagName === 'SELECT') {
-            inputs[input].value = 'No';
-        }
+			inputs[input].value = 'No';
+		}
 	}
 	console.log('Reset all inputs.');
 }
 
 // When user clicks on the screen, check if they clicked on an increase/decrease button
 onclick = function(e) {
-	// If click was on a decrease button > increase the value of the adjacent input
+	// If click was on a decrease button > decrease the value of the adjacent input (but only if it's over 0)
 	if (e.target.className === 'decrease' && e.target.nextElementSibling.value > 0) e.target.nextElementSibling.value = parseInt(e.target.nextElementSibling.value) - 1;
-	// If click was on an increase button > decrease the value of the adjacent input
+	// If click was on an increase button > increase the value of the adjacent input
 	if (e.target.className === 'increase') e.target.previousElementSibling.value = parseInt(e.target.previousElementSibling.value) + 1;
 };

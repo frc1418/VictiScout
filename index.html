@@ -12,6 +12,9 @@
         <input type="number" id="team" placeholder="Team #" class="large">
         <input type="number" id="match" placeholder="Match #" class="large">
         <input type="text" id="notes" placeholder="Notes" class="large">
+        <h2>Save location:</h2>
+        <input id="path" class="special large" type="text">
+        <p id="path-warning"></p>
         <button id="submit">Submit</button>
         <button id="reset">Reset</button>
     </div>
@@ -112,16 +115,22 @@
             </select>
         </div>
         <div>
-            <h2>Defense?</h2>
+            <h2>Played defense?</h2>
             <input type="checkbox" id="defense">
         </div>
     </div>
     <div class="row">
         <div>
-            <h1>Auto</h1>
+            <h1>AUTONOMOUS</h1>
         </div>
         <div>
-            <h2>Crossed a defense?</h2>
+            <h2>AUTO Defenses crossed</h2>
+            <button class="decrease">-</button>
+            <input type="number" id="auto-highgoal" value="0" min="2">
+            <button class="increase">+</button>
+        </div>
+        <div>
+            <h2>Which defense?</h2>
             <select id="auto-defense">
                 <option>No</option>
                 <option>Portcullis</option>
@@ -136,32 +145,22 @@
             </select>
         </div>
         <div>
-            <h2>Low Goals</h2>
+            <h2>AUTO Low Goals</h2>
             <button class="decrease">-</button>
             <input type="number" id="auto-lowgoal" value="0" min="0">
             <button class="increase">+</button>
         </div>
         <div>
-            <h2>High Goal Misses</h2>
+            <h2>AUTO High Goal Misses</h2>
             <button class="decrease">-</button>
             <input type="number" id="auto-highgoal-misses" value="0" min="0">
             <button class="increase">+</button>
         </div>
         <div>
-            <h2>High Goal Scores</h2>
+            <h2>AUTO High Goals</h2>
             <button class="decrease">-</button>
             <input type="number" id="auto-highgoal" value="0" min="0">
             <button class="increase">+</button>
-        </div>
-    </div>
-    <hr>
-    <div class="row">
-        <div>
-            <h2>Save location</h2>
-            <input id="path" class="special large" type="text">
-            <p id="path-warning">
-            <p><em>Must end with name of file, not parent dir!!</em></p>
-            <p><em>SAVE THIS FILE, it's all the collected data.</em></p>
         </div>
     </div>
 
