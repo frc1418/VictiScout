@@ -8,6 +8,7 @@
 body {
     background: #333;
     margin: 3px;
+    overflow: scroll;
 }
 input[type="number"],
 input[type="text"],
@@ -28,8 +29,10 @@ button:hover {
 button:active {
     color: #aaa;
 }
+hr {
+    border: solid 1px grey;
+}
 .row {
-    overflow: scroll;
     white-space: nowrap;
 }
 .row > div {
@@ -41,7 +44,6 @@ button:active {
     display: block;
     fill: white;
     height: 120px;
-    margin: 10px;
 }
 .row input {
     width: 40px;
@@ -52,4 +54,11 @@ input.large {
 .increase,
 .decrease {
     width: 25px;
+}
+select,
+option {
+    color: #333;
+}
+#path-warning {
+    color: red;
 }
