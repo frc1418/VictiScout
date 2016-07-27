@@ -7,11 +7,8 @@ var submit = document.getElementById('submit'),
 	path = document.getElementById('path'),
 	pathWarning = document.getElementById('path-warning');
 
-function pathInit() {
-	path.value = (process.platform == 'win32') ? process.env.USERPROFILE + '\\Desktop' : process.env.HOME + '/Desktop';
-}
-
-pathInit();
+// Get path to Desktop based on OS.
+path.value = (process.platform == 'win32') ? process.env.USERPROFILE + '\\Desktop' : process.env.HOME + '/Desktop';
 
 // Generate an array of all <input>s (plus <select>s) in document.
 // These will be used to generate an object.
@@ -42,30 +39,32 @@ submit.onclick = function() {
 
 	// Append new JSON-parsed data to data.json file in designated location (usually Desktop).
 	fs.appendFile(path.value + '/data.json', JSON.stringify(data) + '\n', function(err) {
+		// If data cannot be placed in file in this location
 		if (err) {
-			pathWarning.innerHTML = 'INVALID PATH';
+			// Show the INVALID DIRECTORY warning
+			pathWarning.style.display = 'inline-block';
+            // Focus cursor into directory
 			path.focus();
-			throw err;
-		} else {
-			pathWarning.innerHTML = '';
+		} else { // If data export goes ok
+			// Hide INVALID DIRECTORY warning
+			pathWarning.style.display = 'none';
 			// Reset <input>s to prepare for new contents after submission
 			resetInputs();
 		}
 	});
 };
 
+// When the value of the path input changes, check the path's validity just like above.
+// This is the exact same thing as above, except without resetting values.
+// TODO: Combine these.
 path.onchange = function() {
-    var lChar = path.value[path.value.length];
-    /*if (lChar === '/' || lChar === '\\') {
-        path.value += (process.platform == 'win32') ? '\\' : '/';
-    }*/
 	fs.access(path.value, function(err) {
 		if (err) {
-            pathWarning.innerHTML = 'INVALID PATH';
-            path.focus();
+			pathWarning.style.display = 'inline-block';
+			path.focus();
 		} else {
-            pathWarning.innerHTML = '';
-        }
+            pathWarning.style.display = 'none';
+		}
 	});
 };
 

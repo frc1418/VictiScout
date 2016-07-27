@@ -29,15 +29,14 @@ button:hover {
 button:active {
     color: #aaa;
 }
-hr {
-    border: solid 1px grey;
-}
 .row {
     white-space: nowrap;
-    padding: 10px 0;
+    padding: 5px 0;
 }
 .row > * {
     display: inline-block;
+}
+.row > div {
     text-align: center;
     margin: 5px;
 }
@@ -45,6 +44,10 @@ hr {
     display: block;
     fill: white;
     height: 120px;
+    margin-bottom: 10px;
+}
+.row:first-of-type {
+    padding: 0;
 }
 .row:first-of-type * {
     display: inline-block;
@@ -54,9 +57,15 @@ hr {
 }
 .row:nth-of-type(4) {
     background: #555;
+    padding: 10px 0;
 }
 h1 {
     font-weight: bold;
+    font-size: 30px;
+    margin: 0 10px;
+}
+h2 {
+    margin-bottom: 5px;
 }
 input.large {
     width: auto;
@@ -69,6 +78,10 @@ select,
 option {
     color: #333;
 }
+#path {
+    width: 200px;
+}
 #path-warning {
     color: red;
+    display: none;
 }
