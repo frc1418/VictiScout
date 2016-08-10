@@ -1,0 +1,14 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background: #333;
+}
+td {
+    padding: 2px 4px;
+    color: white;
+    border-left: solid 1px white;
+    margin: 0;
+}

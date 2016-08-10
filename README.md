@@ -3,6 +3,8 @@ Application for FRC scouting. Written using [Electron](http://electron.atom.io/)
 
 Get the newest compiled version [here](releases)!
 
+![Screenshot](screenshot.png)
+
 ## Development dependencies
 * [Node.js](https://nodejs.org)
 * [npm](https://npmjs.com)

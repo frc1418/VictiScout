@@ -1,9 +1,12 @@
 // Require filesystem API (used to save data to file later on)
 const fs = require('fs');
+// ipc is used to open and communicate with the data viewer and other additional windows.
+var ipc = require('electron').ipcRenderer;
 
 // Define prominent buttons.
 var submit = document.getElementById('submit'),
 	reset = document.getElementById('reset'),
+    view = document.getElementById('view'),
 	path = document.getElementById('path'),
 	pathWarning = document.getElementById('path-warning');
 
@@ -26,9 +29,19 @@ submit.onclick = function() {
 	var data = {};
 	// Go through each input in the data object and fill in the data from it
 	for (var input in inputs) {
-		// Input the values from each input into the data object
-		// Number values will be cast as integers.
-		data[input] = (inputs[input].type === 'number') ? parseInt(inputs[input].value) : inputs[input].value;
+		// Input the values from each input into the data object.
+        // Need to get different data depending on the type of the input.
+        switch (inputs[input].type) {
+            case 'checkbox':
+                data[input] = inputs[input].checked;
+                break;
+            case 'number':
+                data[input] = parseInt(inputs[input].value);
+                break;
+            default:
+                data[input] = inputs[input].value;
+                break;
+        }
 	}
 
 	// Add timestamp to data.
@@ -87,6 +100,11 @@ function resetInputs() {
 	}
 	console.log('Reset all inputs.');
 }
+
+view.onclick = function() {
+    localStorage.path = path.value;
+    ipc.send('renderData');
+};
 
 // When user clicks on the screen, check if they clicked on an increase/decrease button
 onclick = function(e) {
