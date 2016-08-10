@@ -6,9 +6,28 @@
 body {
     background: #333;
 }
-td {
+table {
+    border-collapse: collapse;
+}
+th, td {
     padding: 2px 4px;
     color: white;
-    border-left: solid 1px white;
-    margin: 0;
+    border: solid 1px grey;
+    box-sizing: content-box;
+}
+td:first-child {
+    border-left: none;
+}
+tr:first-child td {
+    border-top: none;
+}
+th {
+    vertical-align: bottom;
+    border: none;
+    background: #444;
+}
+td {
+    white-space: nowrap;
+    overflow: scroll;
+    max-width: 100px;
 }

@@ -33,12 +33,15 @@ submit.onclick = function() {
         // Need to get different data depending on the type of the input.
         switch (inputs[input].type) {
             case 'checkbox':
+                // Set this data point to a boolean of whether or not the checkbox is checked
                 data[input] = inputs[input].checked;
                 break;
             case 'number':
+                // Make this data point be the parsed integer value of that input
                 data[input] = parseInt(inputs[input].value);
                 break;
             default:
+                // Just use the raw string data
                 data[input] = inputs[input].value;
                 break;
         }
@@ -88,21 +91,25 @@ reset.onclick = resetInputs();
 function resetInputs() {
 	// For each input, reset to default value.
 	for (var input in inputs) {
-		if (inputs[input].type === 'number' && inputs[input].className !== 'large') {
+        // Reset to different values depending on what type of input it is
+		if (inputs[input].type === 'number' && inputs[input].className !== 'large') { // If it's a small number box
 			inputs[input].value = 0;
-		} else if (inputs[input].className === 'large') {
+		} else if (inputs[input].className === 'large') { // If it's a big textbox (like team number)
 			inputs[input].value = '';
-		} else if (inputs[input].type === 'checkbox') {
+		} else if (inputs[input].type === 'checkbox') { // Checkbox
 			inputs[input].checked = false;
-		} else if (inputs[input].tagName === 'SELECT') {
+		} else if (inputs[input].tagName === 'SELECT') { // Selector
 			inputs[input].value = 'No';
 		}
 	}
 	console.log('Reset all inputs.');
 }
 
+// When 'View Data' button is clicked
 view.onclick = function() {
+    // Store the path to the data docuent
     localStorage.path = path.value;
+    // Tell main.js to open rendered data window
     ipc.send('renderData');
 };
 
