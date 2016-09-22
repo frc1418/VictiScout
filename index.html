@@ -1,171 +1,27 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <title>Scout</title>
+    <title>FRC Scout</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type='image/x-icon' href="favicon.ico">
+    <link rel="icon" type="image/png" href="favicon.png">
 </head>
 
 <body>
-    <div class="row">
-        <input type="number" id="team" placeholder="Team #" class="large">
-        <input type="number" id="match" placeholder="Match #" class="large">
-        <input type="text" id="notes" placeholder="Notes" class="large">
-        <h2>Save location:</h2>
-        <input id="path" class="special large" type="text">
-        <p id="path-warning">INVALID DIRECTORY</p>
-        <button id="submit">Submit</button>
-        <button id="reset">Reset</button>
-        <button id="view">View Data</button>
-    </div>
-    <div class="row">
-        <h1>TELEOP</h1>
-        <div>
-            <h2>Low Goals</h2>
-            <button class="decrease">-</button>
-            <input type="number" id="lowgoal" value="0" min="0">
-            <button class="increase">+</button>
-        </div>
-        <div>
-            <h2>High Goal Misses</h2>
-            <button class="decrease">-</button>
-            <input type="number" id="highgoal-misses" value="0" min="0">
-            <button class="increase">+</button>
-        </div>
-        <div>
-            <h2>High Goal Scores</h2>
-            <button class="decrease">-</button>
-            <input type="number" id="highgoal" value="0" min="0">
-            <button class="increase">+</button>
-        </div>
-        <div>
-            <h2>Challenged Tower?</h2>
-            <input type="checkbox" id="challenged">
-        </div>
-        <div>
-            <h2>Climbed tower?</h2>
-            <select id="climb">
-                <option>No</option>
-                <option>Partially</option>
-                <option>Yes</option>
-            </select>
-        </div>
-        <div>
-            <h2>Played defense?</h2>
-            <input type="checkbox" id="defense">
-        </div>
-    </div>
-    <div class="row">
-        <div class="defense">
-            <h2>Portcullis</h2>
-            <img src="img/portcullis.svg">
-            <button class="decrease">-</button>
-            <input type="number" id="portcullis" value="0" min="0">
-            <button class="increase">+</button>
-        </div>
-        <div class="defense">
-            <h2>Cheval de Frise</h2>
-            <img src="img/cheval.svg">
-            <button class="decrease">-</button>
-            <input type="number" id="cheval" value="0" min="0">
-            <button class="increase">+</button>
-        </div>
-        <div class="defense">
-            <h2>Moat</h2>
-            <img src="img/moat.svg">
-            <button class="decrease">-</button>
-            <input type="number" id="moat" value="0" min="0">
-            <button class="increase">+</button>
-        </div>
-        <div class="defense">
-            <h2>Ramparts</h2>
-            <img src="img/ramparts.svg">
-            <button class="decrease">-</button>
-            <input type="number" id="ramparts" value="0" min="0">
-            <button class="increase">+</button>
-        </div>
-        <div class="defense">
-            <h2>Drawbridge</h2>
-            <img src="img/drawbridge.svg">
-            <button class="decrease">-</button>
-            <input type="number" id="drawbridge" value="0" min="0">
-            <button class="increase">+</button>
-        </div>
-        <div class="defense">
-            <h2>Sally Port</h2>
-            <img src="img/sallyport.svg">
-            <button class="decrease">-</button>
-            <input type="number" id="sallyport" value="0" min="0">
-            <button class="increase">+</button>
-        </div>
-        <div class="defense">
-            <h2>Rock Wall</h2>
-            <img src="img/rockwall.svg">
-            <button class="decrease">-</button>
-            <input type="number" id="rockwall" value="0" min="0">
-            <button class="increase">+</button>
-        </div>
-        <div class="defense">
-            <h2>Rough Terrain</h2>
-            <img src="img/roughterrain.svg">
-            <button class="decrease">-</button>
-            <input type="number" id="roughterrain" value="0" min="0">
-            <button class="increase">+</button>
-        </div>
-        <div class="defense">
-            <h2>Low Bar</h2>
-            <img src="img/lowbar.svg">
-            <button class="decrease">-</button>
-            <input type="number" id="lowbar" value="0" min="0">
-            <button class="increase">+</button>
-        </div>
-    </div>
-    <div class="row">
-        <div>
-            <h1>AUTO</h1>
-        </div>
-        <div>
-            <h2>AUTO Defense crosses</h2>
-            <button class="decrease">-</button>
-            <input type="number" id="auto-defense-count" value="0" min="2">
-            <button class="increase">+</button>
-        </div>
-        <div>
-            <h2>Which defense?</h2>
-            <select id="auto-defense">
-                <option>No</option>
-                <option>Portcullis</option>
-                <option>Cheval</option>
-                <option>Moat</option>
-                <option>Ramparts</option>
-                <option>Drawbridge</option>
-                <option>Sally Port</option>
-                <option>Rock Wall</option>
-                <option>Rough Terrain</option>
-                <option>Low Bar</option>
-            </select>
-        </div>
-        <div>
-            <h2>AUTO Low Goals</h2>
-            <button class="decrease">-</button>
-            <input type="number" id="auto-lowgoal" value="0" min="0">
-            <button class="increase">+</button>
-        </div>
-        <div>
-            <h2>AUTO High Goal Misses</h2>
-            <button class="decrease">-</button>
-            <input type="number" id="auto-highgoal-misses" value="0" min="0">
-            <button class="increase">+</button>
-        </div>
-        <div>
-            <h2>AUTO High Goals</h2>
-            <button class="decrease">-</button>
-            <input type="number" id="auto-highgoal" value="0" min="0">
-            <button class="increase">+</button>
-        </div>
-    </div>
-
+    <img src="logo.svg">
+    <h1>FRC Scout</h1>
+    <h2>A powerful scouting application for OS X, Windows, and Linux.</h2>
+    <a id="button" href="https://github.com/FRCScout/FRCScout/releases">Download</a>
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="svg-filters">
+        <defs>
+            <filter id="filter">
+                <feTurbulence type="fractalNoise" baseFrequency="0.00001 0.00001" numOctaves="1" result="warp"></feTurbulence>
+                <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="30" in="SourceGraphic" in2="warp" />
+            </filter>
+        </defs>
+    </svg>
+    <script src="TweenMax.min.js"></script>
     <script src="script.js"></script>
 </body>
 
