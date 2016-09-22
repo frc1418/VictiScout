@@ -1,7 +1,7 @@
 {
-  "name": "FRCScout",
-  "version": "v0.0.0beta",
-  "description": "Scouting application for FIRST Robotics Competition.",
+  "name": "VictiScout",
+  "version": "v1.0.0beta",
+  "description": "Scouting application for FIRST Robotics Competition, designed originally for Team 1418.",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
@@ -12,19 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ErikBoesen/FRCScout"
+    "url": "git+https://github.com/frc1418/VictiScout"
   },
-  "keywords": [
-    "FRC",
-    "robotics",
-    "scouting"
-  ],
-  "author": "ErikBoesen",
+  "author": "frc1418",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ErikBoesen/FRCScout/issues"
+    "url": "https://github.com/frc1418/VictiScout/issues"
   },
-  "homepage": "https://github.com/ErikBoesen/FRCScout#readme",
+  "homepage": "https://github.com/frc1418/VictiScout#readme",
   "devDependencies": {
     "electron-packager": "^7.3.0",
     "electron-prebuilt": "^1.2.0"

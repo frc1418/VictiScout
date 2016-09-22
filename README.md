@@ -1,4 +1,4 @@
-# FRC Scout
+# VictiScout
 Application for FRC scouting. Written using [Electron](http://electron.atom.io/) for easy customization.
 
 Get the newest compiled version [here](releases)!
@@ -10,16 +10,16 @@ Get the newest compiled version [here](releases)!
 * [npm](https://npmjs.com)
 
 ## Development Installation
-1. `cd` into `FRCScout` directory
+1. `cd` into `VictiScout` directory
 2. Run `npm install` to install node dependencies.
 
 ## Usage in Development
-While in `FRCScout` directory, run
+While in `VictiScout` directory, run
 
     npm start
 
 ## Packaging
-While in `FRCScout` directory, run
+While in `VictiScout` directory, run
 
     npm run-script package
 
