@@ -31,4 +31,4 @@ See [here](https://github.com/electron-userland/electron-packager#readme) for an
 This software was written by [Erik Boesen](https://github.com/ErikBoesen), originally for [Team 1418](https://github.com/frc1418).
 
 ## License
-This software is licensed under the MIT license. More information in [`LICENSE`](LICENSE)
+This software is licensed under the MIT license. More information in [`LICENSE`](LICENSE).
