@@ -9,6 +9,7 @@ var target = document.getElementById('target'),
     submit = document.getElementById('submit'),
 	reset = document.getElementById('reset'),
 	view = document.getElementById('view'),
+    pathLabel = document.getElementById('path-label'),
 	path = document.getElementById('path'),
 	pathWarning = document.getElementById('path-warning');
 
@@ -74,16 +75,28 @@ submit.onclick = function() {
 		});
 	} else {
         console.log(data);
-        // TODO: Modifiable IPs.
-		unirest.post('http://192.168.1.191:8080/api/data')
-            // TODO: data is converted to string and then back to raw JSON when it reaches the server. Find a way to simplify this process.
-			.send({'data': JSON.stringify(data)})
+        // TODO: Actually use the IP put into the target input.
+		unirest.post('http://0.0.0.0:8080/api/data')
+            // TODO: It feels a bit odd to store JSON data as a string in the database. Find a way to store raw JSON.
+			//.send({'data': JSON.stringify(data)})
+            .send({'data': JSON.stringify({highgoals: 3, notes: 'Did good'})})
 			.end(function(response) {
 				console.log(response.body);
 			});
         // Reset <input>s to prepare for new contents after submission
         resetInputs();
 	}
+};
+
+target.onchange = function() {
+    if (target.value === 'Save data locally') {
+        pathLabel.innerHTML = 'Save location:';
+        // TODO: Following line is a duplicate of the one at the top of the doc, fix
+        path.value = (process.platform == 'win32') ? process.env.USERPROFILE + '\\Desktop' : process.env.HOME + '/Desktop';
+    } else {
+        pathLabel.innerHTML = 'Server IP:';
+        path.value = '192.168.1.1';
+    }
 };
 
 // When the value of the path input changes, check the path's validity just like above.

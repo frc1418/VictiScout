@@ -5,6 +5,8 @@ const unirest = require('unirest');
 var thead = document.getElementsByTagName('thead')[0],
 	tbody = document.getElementsByTagName('tbody')[0];
 
+console.log(localStorage.target);
+
 if (localStorage.target === 'Save data locally') {
 	// Fetch (string type) contents of data.json.
 	var raw = fs.readFileSync(localStorage.path + '/data.json') + '';
@@ -14,13 +16,10 @@ if (localStorage.target === 'Save data locally') {
 
     render();
 } else {
-	unirest.get('http://192.168.1.191:8080/api/data')
+	unirest.get('http://0.0.0.0:8080/api/data')
 		.end(function(response) {
-        
-			var raw = JSON.parse(response.body);
-            for (var i in raw) {
-                raw[i] = raw[i].data;
-            }
+            console.log(response.body);
+			var raw = JSON.parse(response.body[0]); //JSON.parse(response.body).data);
             render();
 		});
 }
@@ -48,7 +47,7 @@ function render() {
     // For each object in the data array,
     for (i = 0; i < data.length; i++) {
         // Make a new table row
-        var tr = document.createElement('tr');
+        tr = document.createElement('tr');
         // Go through this data object
         for (var j in data[i]) {
             // Make a table cell for each
