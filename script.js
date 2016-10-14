@@ -75,11 +75,9 @@ submit.onclick = function() {
 		});
 	} else {
         console.log(data);
-        // TODO: Actually use the IP put into the target input.
-		unirest.post('http://0.0.0.0:8080/api/data')
-            // TODO: It feels a bit odd to store JSON data as a string in the database. Find a way to store raw JSON.
-			//.send({'data': JSON.stringify(data)})
-            .send({'data': JSON.stringify({highgoals: 3, notes: 'Did good'})})
+        // Upload data to server via a POST request.
+		unirest.post('http://' + pathLabel.value + ':8080/api/data')
+            .send(data)
 			.end(function(response) {
 				console.log(response.body);
 			});

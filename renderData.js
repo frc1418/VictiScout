@@ -9,21 +9,21 @@ console.log(localStorage.target);
 
 if (localStorage.target === 'Save data locally') {
 	// Fetch (string type) contents of data.json.
-	var raw = fs.readFileSync(localStorage.path + '/data.json') + '';
+	var values = fs.readFileSync(localStorage.path + '/data.json') + '';
 
 	// Split up the single long string into an array of strings. One string = one object = one submission of data.
-	var data = raw.split('\n');
+	values = values.split('\n');
 
-    render();
+    render(values);
 } else {
-	unirest.get('http://0.0.0.0:8080/api/data')
-		.end(function(response) {
-            console.log(response.body);
-			var raw = JSON.parse(response.body[0]); //JSON.parse(response.body).data);
-            render();
-		});
+	unirest.get('http://' + localStorage.path + ':8080/api/data').end(function(response) {
+		var values = response.body;
+        values = values.split('\n');
+
+        render(values);
+	});
 }
-function render() {
+function render(data) {
     // Go through data array and turn string data into a manipulable JSON object
     for (i = 0; i < data.length - 1; i++) {
         data[i] = JSON.parse(data[i]);
