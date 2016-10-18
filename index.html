@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <title>Scout</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -12,7 +12,11 @@
         <input type="number" id="team" placeholder="Team #" class="large">
         <input type="number" id="match" placeholder="Match #" class="large">
         <input type="text" id="notes" placeholder="Notes" class="large">
-        <h2>Save location:</h2>
+        <select class="special" id="target">
+            <option>Save data locally</option>
+            <option>Submit data to server</option>
+        </select>
+        <h2 id="path-label">Save location:</h2>
         <input id="path" class="special large" type="text">
         <p id="path-warning">INVALID DIRECTORY</p>
         <button id="submit">Submit</button>

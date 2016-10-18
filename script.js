@@ -1,12 +1,15 @@
 // Require filesystem API (used to save data to file later on)
 const fs = require('fs');
 // ipc is used to open and communicate with the data viewer and other additional windows.
-var ipc = require('electron').ipcRenderer;
+const ipc = require('electron').ipcRenderer;
+const unirest = require('unirest');
 
 // Define prominent buttons.
-var submit = document.getElementById('submit'),
+var target = document.getElementById('target'),
+    submit = document.getElementById('submit'),
 	reset = document.getElementById('reset'),
-    view = document.getElementById('view'),
+	view = document.getElementById('view'),
+    pathLabel = document.getElementById('path-label'),
 	path = document.getElementById('path'),
 	pathWarning = document.getElementById('path-warning');
 
@@ -16,7 +19,7 @@ path.value = (process.platform == 'win32') ? process.env.USERPROFILE + '\\Deskto
 // Generate an array of all <input>s (plus <select>s) in document.
 // These will be used to generate an object.
 // Inputs named .special are exempt. These are used for things like path selection.
-var tags = document.querySelectorAll('input:not(.special), select');
+var tags = document.querySelectorAll('input:not(.special), select:not(.special)');
 // Create empty object.
 var inputs = {};
 // Make each element be the value to a key named after its ID.
@@ -30,21 +33,21 @@ submit.onclick = function() {
 	// Go through each input in the data object and fill in the data from it
 	for (var input in inputs) {
 		// Input the values from each input into the data object.
-        // Need to get different data depending on the type of the input.
-        switch (inputs[input].type) {
-            case 'checkbox':
-                // Set this data point to a boolean of whether or not the checkbox is checked
-                data[input] = inputs[input].checked;
-                break;
-            case 'number':
-                // Make this data point be the parsed integer value of that input
-                data[input] = parseInt(inputs[input].value);
-                break;
-            default:
-                // Just use the raw string data
-                data[input] = inputs[input].value;
-                break;
-        }
+		// Need to get different data depending on the type of the input.
+		switch (inputs[input].type) {
+			case 'checkbox':
+				// Set this data point to a boolean of whether or not the checkbox is checked
+				data[input] = inputs[input].checked;
+				break;
+			case 'number':
+				// Make this data point be the parsed integer value of that input
+				data[input] = parseInt(inputs[input].value);
+				break;
+			default:
+				// Just use the raw string data
+				data[input] = inputs[input].value;
+				break;
+		}
 	}
 
 	// Add timestamp to data.
@@ -53,33 +56,58 @@ submit.onclick = function() {
 	// Log gathered data to console, useful for debug
 	// console.log(data);
 
-	// Append new JSON-parsed data to data.json file in designated location (usually Desktop).
-	fs.appendFile(path.value + '/data.json', JSON.stringify(data) + '\n', function(err) {
-		// If data cannot be placed in file in this location
-		if (err) {
-			// Show the INVALID DIRECTORY warning
-			pathWarning.style.display = 'inline-block';
-            // Focus cursor into directory
-			path.focus();
-		} else { // If data export goes ok
-			// Hide INVALID DIRECTORY warning
-			pathWarning.style.display = 'none';
-			// Reset <input>s to prepare for new contents after submission
-			resetInputs();
-		}
-	});
+	// TODO: Define this at the top
+	if (target.value === 'Save data locally') {
+		// Append new JSON-parsed data to data.json file in designated location (usually Desktop).
+		fs.appendFile(path.value + '/data.json', JSON.stringify(data) + '\n', function(err) {
+			// If data cannot be placed in file in this location
+			if (err) {
+				// Show the INVALID DIRECTORY warning
+				pathWarning.style.display = 'inline-block';
+				// Focus cursor into directory
+				path.focus();
+			} else { // If data export goes ok
+				// Hide INVALID DIRECTORY warning
+				pathWarning.style.display = 'none';
+				// Reset <input>s to prepare for new contents after submission
+				resetInputs();
+			}
+		});
+	} else {
+        console.log(data);
+        // Upload data to server via a POST request.
+		unirest.post('http://' + pathLabel.value + ':8080/api/data')
+            .send(data)
+			.end(function(response) {
+				console.log(response.body);
+			});
+        // Reset <input>s to prepare for new contents after submission
+        resetInputs();
+	}
+};
+
+target.onchange = function() {
+    if (target.value === 'Save data locally') {
+        pathLabel.innerHTML = 'Save location:';
+        // TODO: Following line is a duplicate of the one at the top of the doc, fix
+        path.value = (process.platform == 'win32') ? process.env.USERPROFILE + '\\Desktop' : process.env.HOME + '/Desktop';
+    } else {
+        pathLabel.innerHTML = 'Server IP:';
+        path.value = '192.168.1.1';
+    }
 };
 
 // When the value of the path input changes, check the path's validity just like above.
 // This is the exact same thing as above, except without resetting values.
 // TODO: Combine these.
 path.onchange = function() {
+    if (target.value === 'Save data locally')
 	fs.access(path.value, function(err) {
 		if (err) {
 			pathWarning.style.display = 'inline-block';
 			path.focus();
 		} else {
-            pathWarning.style.display = 'none';
+			pathWarning.style.display = 'none';
 		}
 	});
 };
@@ -91,7 +119,7 @@ reset.onclick = resetInputs();
 function resetInputs() {
 	// For each input, reset to default value.
 	for (var input in inputs) {
-        // Reset to different values depending on what type of input it is
+		// Reset to different values depending on what type of input it is
 		if (inputs[input].type === 'number' && inputs[input].className !== 'large') { // If it's a small number box
 			inputs[input].value = 0;
 		} else if (inputs[input].className === 'large') { // If it's a big textbox (like team number)
@@ -107,10 +135,11 @@ function resetInputs() {
 
 // When 'View Data' button is clicked
 view.onclick = function() {
-    // Store the path to the data docuent
-    localStorage.path = path.value;
-    // Tell main.js to open rendered data window
-    ipc.send('renderData');
+	// Store the path to the data docuent
+	localStorage.path = path.value;
+    localStorage.target = target.value;
+	// Tell main.js to open rendered data window
+	ipc.send('renderData');
 };
 
 // When user clicks on the screen, check if they clicked on an increase/decrease button
