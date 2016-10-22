@@ -5,7 +5,8 @@ const ipc = require('electron').ipcRenderer;
 const unirest = require('unirest');
 
 // Define prominent buttons.
-var target = document.getElementById('target'),
+var match = document.getElementById('match'),
+    target = document.getElementById('target'),
     submit = document.getElementById('submit'),
 	reset = document.getElementById('reset'),
 	view = document.getElementById('view'),
@@ -117,6 +118,8 @@ reset.onclick = resetInputs();
 
 // Reset all fields without submitting any data.
 function resetInputs() {
+    // Save the current match. It'll later be increased by one and reset.
+    currentMatch = parseInt(match.value);
 	// For each input, reset to default value.
 	for (var input in inputs) {
 		// Reset to different values depending on what type of input it is
@@ -130,6 +133,9 @@ function resetInputs() {
 			inputs[input].value = 'No';
 		}
 	}
+    // Reset match field to be one greater than it was previously.
+    // TODO: Only do this when "submit" button is clicked?
+    match.value = currentMatch + 1;
 	console.log('Reset all inputs.');
 }
 
