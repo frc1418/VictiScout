@@ -40,7 +40,7 @@ button:active {
     text-align: center;
     margin: 5px;
 }
-.defense img {
+.tasks img {
     display: block;
     fill: white;
     height: 120px;
@@ -55,7 +55,8 @@ button:active {
 .row input {
     width: 40px;
 }
-.row:nth-of-type(4) {
+.row:nth-of-type(5),
+.row:nth-of-type(6) {
     background: #555;
     padding: 10px 0;
 }

@@ -8,6 +8,7 @@ const unirest = require('unirest');
 var match = document.getElementById('match'),
     target = document.getElementById('target'),
     submit = document.getElementById('submit'),
+    steam = document.getElementById('steam'),
 	reset = document.getElementById('reset'),
 	view = document.getElementById('view'),
     pathLabel = document.getElementById('path-label'),
@@ -147,6 +148,57 @@ view.onclick = function() {
 	// Tell main.js to open rendered data window
 	ipc.send('renderData');
 };
+// Calculate the amount of steam produced this round
+steam.onclick = function() {
+  // Create a variable containg the number of ato low boiler balls
+  var autoLowBoiler = parseInt(document.getElementById('auto-low-boiler').value);
+  // Create a variable containing the number of auto high boiler balls
+  var autoHighBoiler = parseInt(document.getElementById('auto-high-boiler').value);
+  // Create a variable containing the number of teleop high boiler balls
+  var highBoiler = parseInt(document.getElementById('high-boiler').value);
+  // Create a variable for teleop low goals
+  var lowBoiler = parseInt(document.getElementById('low-boiler').value);
+  // Create a variable for amount of steam and set it to zero for starting
+  var SteamNum = 0;
+  // Calculate steam produced by the low boiler during auto and the high boiler during teleop
+  // 3 Balls = 1 Steam
+  // Combine autoLowBoiler and highBoiler
+  var threeToOne = parseInt(autoLowBoiler + highBoiler);
+  if (threeToOne <= 2) {
+      // Do nothing
+  } else if (threeToOne === 3) {
+    SteamNum++;
+  } else if (threeToOne > 3) {
+      // If the threeToOne has more than 3 balls go in during auto, remove three balls and add a point to the Steam
+      // Repeat until there are < 3 balls
+    while (threeToOne >= 3) {
+      threeToOne -= 3;
+      SteamNum++;
+    }
+  }
+  // Calculate steam produced in high boiler during auto
+  // 1 Ball = 1 Steam
+  if (autoHighBoiler > 0) {
+      while (autoHighBoiler >= 1) {
+          SteamNum++;
+          autoHighBoiler -= 1;
+      }
+  }
+  // Calculate steam produced in teleop High Goal
+  // 9 Balls = 1 SteamNum
+  if (lowBoiler <= 8) {
+      // Do nothing
+  } else if (lowBoiler === 9) {
+    SteamNum++;
+} else if (lowBoiler > 9) {
+    while (lowBoiler >= 9) {
+      lowBoiler -= 3;
+      SteamNum++;
+    }
+  }
+  // Put amount of steam back into the 'SteamCounter' slot on VictiScout
+  document.getElementById('SteamCounter').value = SteamNum;
+}
 
 // When user clicks on the screen, check if they clicked on an increase/decrease button
 onclick = function(e) {

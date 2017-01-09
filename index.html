@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Scout</title>
+    <title>VictiScout</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -16,156 +16,96 @@
             <option>Save data locally</option>
             <option>Submit data to server</option>
         </select>
+    </div>
+    <div class="row">
         <h2 id="path-label">Save location:</h2>
         <input id="path" class="special large" type="text">
         <p id="path-warning">INVALID DIRECTORY</p>
         <button id="submit">Submit</button>
         <button id="reset">Reset</button>
         <button id="view">View Data</button>
+        <button id="steam">Steam</button>
     </div>
     <div class="row">
         <h1>TELEOP</h1>
         <div>
-            <h2>Low Goals</h2>
+            <h2>Low Boiler</h2>
             <button class="decrease">-</button>
-            <input type="number" id="lowgoal" value="0" min="0">
+            <input type="number" id="low-boiler" value="0" min="0">
             <button class="increase">+</button>
         </div>
         <div>
-            <h2>High Goal Misses</h2>
+            <h2>High Boiler Scores</h2>
             <button class="decrease">-</button>
-            <input type="number" id="highgoal-misses" value="0" min="0">
+            <input type="number" id="high-boiler" value="0" min="0">
             <button class="increase">+</button>
         </div>
         <div>
-            <h2>High Goal Scores</h2>
+            <h2>High Boiler Misses</h2>
             <button class="decrease">-</button>
-            <input type="number" id="highgoal" value="0" min="0">
+            <input type="number" id="high-boiler-misses" value="0" min="0">
             <button class="increase">+</button>
         </div>
         <div>
-            <h2>Challenged Tower?</h2>
-            <input type="checkbox" id="challenged">
-        </div>
-        <div>
-            <h2>Climbed tower?</h2>
-            <select id="climb">
-                <option>No</option>
-                <option>Partially</option>
-                <option>Yes</option>
-            </select>
-        </div>
-        <div>
-            <h2>Played defense?</h2>
-            <input type="checkbox" id="defense">
+            <h2>Steam</h2>
+            <input type="number" id="SteamCounter" value="0" min="0">
         </div>
     </div>
     <div class="row">
-        <div class="defense">
+        <!--Gears, Rope Climb, High Boiler Accuracy-->
+        <!-- Rope Climb and High Boiler Accuracy in Auto and Tele need to be added -->
+        <div class="tasks">
+            <h2>Gears Delivered</h2>
+            <img src="img/gear.svg">
+            <button class="decrease">-</button>
+            <input type="number" id="gear" value="0" min="0">
+            <button class="increase">+</button>
+        </div>
+
+        <!--<div class="defense">
             <h2>Portcullis</h2>
             <img src="img/portcullis.svg">
             <button class="decrease">-</button>
             <input type="number" id="portcullis" value="0" min="0">
-            <button class="increase">+</button>
-        </div>
-        <div class="defense">
-            <h2>Cheval de Frise</h2>
-            <img src="img/cheval.svg">
-            <button class="decrease">-</button>
-            <input type="number" id="cheval" value="0" min="0">
-            <button class="increase">+</button>
-        </div>
-        <div class="defense">
-            <h2>Moat</h2>
-            <img src="img/moat.svg">
-            <button class="decrease">-</button>
-            <input type="number" id="moat" value="0" min="0">
-            <button class="increase">+</button>
-        </div>
-        <div class="defense">
-            <h2>Ramparts</h2>
-            <img src="img/ramparts.svg">
-            <button class="decrease">-</button>
-            <input type="number" id="ramparts" value="0" min="0">
-            <button class="increase">+</button>
-        </div>
-        <div class="defense">
-            <h2>Drawbridge</h2>
-            <img src="img/drawbridge.svg">
-            <button class="decrease">-</button>
-            <input type="number" id="drawbridge" value="0" min="0">
-            <button class="increase">+</button>
-        </div>
-        <div class="defense">
-            <h2>Sally Port</h2>
-            <img src="img/sallyport.svg">
-            <button class="decrease">-</button>
-            <input type="number" id="sallyport" value="0" min="0">
-            <button class="increase">+</button>
-        </div>
-        <div class="defense">
-            <h2>Rock Wall</h2>
-            <img src="img/rockwall.svg">
-            <button class="decrease">-</button>
-            <input type="number" id="rockwall" value="0" min="0">
-            <button class="increase">+</button>
-        </div>
-        <div class="defense">
-            <h2>Rough Terrain</h2>
-            <img src="img/roughterrain.svg">
-            <button class="decrease">-</button>
-            <input type="number" id="roughterrain" value="0" min="0">
-            <button class="increase">+</button>
-        </div>
-        <div class="defense">
-            <h2>Low Bar</h2>
-            <img src="img/lowbar.svg">
-            <button class="decrease">-</button>
-            <input type="number" id="lowbar" value="0" min="0">
-            <button class="increase">+</button>
-        </div>
+            <button class="increase">+</button>-->
     </div>
     <div class="row">
         <div>
             <h1>AUTO</h1>
         </div>
         <div>
-            <h2>AUTO Defense crosses</h2>
+            <h2>AUTO Gear Delivery</h2>
             <button class="decrease">-</button>
-            <input type="number" id="auto-defense-count" value="0" min="2">
+            <input type="number" id="auto-gear-count" value="0" min="0">
             <button class="increase">+</button>
         </div>
         <div>
-            <h2>Which defense?</h2>
-            <select id="auto-defense">
+            <h2>Which Gear Slot?</h2>
+            <select id="auto-gear-slot">
                 <option>No</option>
-                <option>Portcullis</option>
-                <option>Cheval</option>
-                <option>Moat</option>
-                <option>Ramparts</option>
-                <option>Drawbridge</option>
-                <option>Sally Port</option>
-                <option>Rock Wall</option>
-                <option>Rough Terrain</option>
-                <option>Low Bar</option>
+                <option>Front</option>
+                <option>Right</option>
+                <option>Left</option>
             </select>
         </div>
+    </div>
+    <div class="row">
         <div>
-            <h2>AUTO Low Goals</h2>
+            <h2>AUTO Low Boiler</h2>
             <button class="decrease">-</button>
-            <input type="number" id="auto-lowgoal" value="0" min="0">
+            <input type="number" id="auto-low-boiler" value="0" min="0">
             <button class="increase">+</button>
         </div>
         <div>
-            <h2>AUTO High Goal Misses</h2>
+            <h2>AUTO High Boiler</h2>
             <button class="decrease">-</button>
-            <input type="number" id="auto-highgoal-misses" value="0" min="0">
+            <input type="number" id="auto-high-boiler" value="0" min="0">
             <button class="increase">+</button>
         </div>
         <div>
-            <h2>AUTO High Goals</h2>
+            <h2>AUTO High Boiler Misses</h2>
             <button class="decrease">-</button>
-            <input type="number" id="auto-highgoal" value="0" min="0">
+            <input type="number" id="auto-high-boiler-misses" value="0" min="0">
             <button class="increase">+</button>
         </div>
     </div>
