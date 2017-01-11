@@ -34,7 +34,8 @@ function render(data) {
     var tr = document.createElement('tr');
     // Go through the first data object
     for (var j in data[0]) {
-        // Make a new table cell
+        // Make a new table head
+				j = j.replace(/-/g, ' ');
         var th = document.createElement('th');
         // ...with the content of the name of the data point
         th.innerHTML = j;

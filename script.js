@@ -197,7 +197,7 @@ steam.onclick = function() {
     }
   }
   // Put amount of steam back into the 'SteamCounter' slot on VictiScout
-  document.getElementById('SteamCounter').value = SteamNum;
+  document.getElementById('steam-counter').value = SteamNum;
 }
 
 // When user clicks on the screen, check if they clicked on an increase/decrease button
