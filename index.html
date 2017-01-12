@@ -24,7 +24,6 @@
         <button id="submit">Submit</button>
         <button id="reset">Reset</button>
         <button id="view">View Data</button>
-        <button id="steam">Steam</button>
     </div>
     <div class="row">
         <h1>TELEOP</h1>
@@ -48,7 +47,7 @@
         </div>
         <div>
             <h2>Steam</h2>
-            <input type="number" id="steam-counter" value="0" min="0">
+
         </div>
     </div>
     <div class="row">
@@ -66,6 +65,14 @@
             <img src="img/gear.svg">
             <p>Attempted? <input type="checkbox" id="rope-attempted"></p>
             <p>Achieved? <input type="checkbox" id="rope-achieved"></p>
+        </div>
+        <div class="tasks">
+            <h2>High Boiler Accuracy<h2>
+            <input type="text" id="auto-accuracy" value="0%" class="percent">
+            <button id="calculate-accuracy">Calculate</button>
+            <h2>Steam Output</h2>
+            <input type="text" id="steam-counter" value="0" class="steam">
+            <button id="steam">Calculate</button>
         </div>
         <!--<div class="defense">
             <h2>Portcullis</h2>

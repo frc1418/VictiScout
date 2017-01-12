@@ -13,6 +13,7 @@ var match = document.getElementById('match'),
 	view = document.getElementById('view'),
     pathLabel = document.getElementById('path-label'),
 	path = document.getElementById('path'),
+  accuracy = document.getElementById('calculate-accuracy'),
 	pathWarning = document.getElementById('path-warning');
 
 // Get path to Desktop based on OS.
@@ -149,6 +150,14 @@ view.onclick = function() {
 	ipc.send('renderData');
 };
 // Calculate the amount of steam produced this round
+accuracy.onclick = function() {
+    var autoMisses = parseInt(document.getElementById('auto-high-boiler-misses').value);
+    var accuracy = parseInt(document.getElementById('auto-high-boiler').value);
+    var autoCombined = autoMisses + accuracy;
+    var autoAccuracy = accuracy/autoCombined;
+    autoAccuracy = autoAccuracy * 100 + "%";
+    document.getElementById('auto-accuracy').value = autoAccuracy;
+}
 steam.onclick = function() {
   // Create a variable containg the number of ato low boiler balls
   var autoLowBoiler = parseInt(document.getElementById('auto-low-boiler').value);
@@ -197,6 +206,8 @@ steam.onclick = function() {
     }
   }
   // Put amount of steam back into the 'SteamCounter' slot on VictiScout
+  // After adding kPa
+  SteamNum = SteamNum + " kPa";
   document.getElementById('steam-counter').value = SteamNum;
 }
 

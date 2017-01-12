@@ -18,10 +18,12 @@ button {
     padding: 5px;
     margin: 1px;
     outline: none;
+    width: 40px;
 }
 button {
     color: #eee;
     cursor: pointer;
+    width: auto;
 }
 button:hover {
     color: #ccc;
@@ -68,8 +70,14 @@ h1 {
 h2 {
     margin-bottom: 5px;
 }
+input {
+  width: 50px;
+}
 input.large {
     width: auto;
+}
+input.steam {
+  width: 75px;
 }
 .increase,
 .decrease {

@@ -41,7 +41,10 @@ app.on('ready', createWindow);
 app.on('window-all-closed', function() {
 	// On OS X it is common for applications and their menu bar
 	// to stay active until the user quits explicitly with Cmd + Q
-	if (process.platform !== 'darwin') app.quit();
+	// but with VictiScout WE DON'T ACCEPT THE NORMS
+	// Uncomment the next line to change it to the norm
+	// if (process.platform !== 'darwin') 
+	app.quit();
 });
 
 app.on('activate', function() {
