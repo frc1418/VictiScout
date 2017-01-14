@@ -18,10 +18,12 @@ button {
     padding: 5px;
     margin: 1px;
     outline: none;
+    width: 40px;
 }
 button {
     color: #eee;
     cursor: pointer;
+    width: auto;
 }
 button:hover {
     color: #ccc;
@@ -40,11 +42,14 @@ button:active {
     text-align: center;
     margin: 5px;
 }
-.defense img {
+.tasks img {
     display: block;
     fill: white;
     height: 120px;
     margin-bottom: 10px;
+}
+#ropeImage {
+  height: 125px;
 }
 .row:first-of-type {
     padding: 0;
@@ -53,9 +58,10 @@ button:active {
     display: inline-block;
 }
 .row input {
-    width: 40px;
+    width: 50px;
 }
-.row:nth-of-type(4) {
+.row:nth-of-type(6),
+.row:nth-of-type(7) {
     background: #555;
     padding: 10px 0;
 }
@@ -67,8 +73,14 @@ h1 {
 h2 {
     margin-bottom: 5px;
 }
+input {
+  width: 50px;
+}
 input.large {
     width: auto;
+}
+input.steam {
+  width: 75px;
 }
 .increase,
 .decrease {
