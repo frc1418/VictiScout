@@ -1,0 +1,28 @@
+<svg width="125.5" height="110" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="402" width="602" y="-1" x="-1"/>
+  <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+   <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <!--<rect rx="6" id="svg_1" height="95" width="110.5" y="7" x="7" stroke-width="11" stroke="#ffffff" fill="none"/>-->
+  <rect rx="0" id="svg_1" height="10" width="40" y="7" x="42.5" stroke-width="4" stroke="#ffffff" fill="#ffffff"/>
+  <rect rx="0" id="svg_3" height="4" width="30" y="17" x="47.5" stroke-width="4" stroke="#ffffff" fill="none"/>
+  <g>
+    <line x1="57.25" y1="7" x2="67.25" y2="17" stroke-width="2" stroke="#ffffff"/>
+    <line x1="57.25" y1="17" x2="67.25" y2="27" stroke-width="2" stroke="#ffffff"/>
+    <line x1="57.25" y1="27" x2="67.25" y2="37" stroke-width="2" stroke="#ffffff"/>
+    <line x1="57.25" y1="37" x2="67.25" y2="47" stroke-width="2" stroke="#ffffff"/>
+    <line x1="57.25" y1="47" x2="67.25" y2="57" stroke-width="2" stroke="#ffffff"/>
+    <line x1="57.25" y1="57" x2="67.25" y2="67" stroke-width="2" stroke="#ffffff"/>
+    <line x1="57.25" y1="67" x2="67.25" y2="77" stroke-width="2" stroke="#ffffff"/>
+    <line x1="57.25" y1="77" x2="67.25" y2="87" stroke-width="2" stroke="#ffffff"/>
+    <line x1="57.25" y1="87" x2="67.25" y2="97" stroke-width="2" stroke="#ffffff"/>
+  </g>
+  <rect rx="6" id="svg_2" height="90" width="10" y="7" x="57.25" stroke-width="5" stroke="#ffffff" fill="none"/>
+ </g>
+</svg>
