@@ -29,6 +29,46 @@
         <button id="view">View Data</button>
     </div>
     <div class="row">
+        <div>
+            <h1>AUTO</h1>
+        </div>
+        <div>
+            <h2>AUTO Gear Delivery</h2>
+            <button class="decrease">-</button>
+            <input type="number" id="auto-gear-count" value="0" min="0">
+            <button class="increase">+</button>
+        </div>
+        <div>
+            <h2>Which Gear Slot?</h2>
+            <select id="auto-gear-slot">
+                <option>None</option>
+                <option>Front</option>
+                <option>Right</option>
+                <option>Left</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div>
+            <h2>AUTO Low Boiler</h2>
+            <button class="decrease">-</button>
+            <input type="number" id="auto-low-boiler" value="0" min="0">
+            <button class="increase">+</button>
+        </div>
+        <div>
+            <h2>AUTO High Boiler</h2>
+            <button class="decrease">-</button>
+            <input type="number" id="auto-high-boiler" value="0" min="0">
+            <button class="increase">+</button>
+        </div>
+        <div>
+            <h2>AUTO High Boiler Misses</h2>
+            <button class="decrease">-</button>
+            <input type="number" id="auto-high-boiler-misses" value="0" min="0">
+            <button class="increase">+</button>
+        </div>
+    </div>
+    <div class="row">
         <h1>TELEOP</h1>
         <div>
             <h2>Low Boiler</h2>
@@ -89,46 +129,7 @@
             <input type="number" id="ranking-points">
         </div>
     </div>
-    <div class="row">
-        <div>
-            <h1>AUTO</h1>
-        </div>
-        <div>
-            <h2>AUTO Gear Delivery</h2>
-            <button class="decrease">-</button>
-            <input type="number" id="auto-gear-count" value="0" min="0">
-            <button class="increase">+</button>
-        </div>
-        <div>
-            <h2>Which Gear Slot?</h2>
-            <select id="auto-gear-slot">
-                <option>None</option>
-                <option>Front</option>
-                <option>Right</option>
-                <option>Left</option>
-            </select>
-        </div>
-    </div>
-    <div class="row">
-        <div>
-            <h2>AUTO Low Boiler</h2>
-            <button class="decrease">-</button>
-            <input type="number" id="auto-low-boiler" value="0" min="0">
-            <button class="increase">+</button>
-        </div>
-        <div>
-            <h2>AUTO High Boiler</h2>
-            <button class="decrease">-</button>
-            <input type="number" id="auto-high-boiler" value="0" min="0">
-            <button class="increase">+</button>
-        </div>
-        <div>
-            <h2>AUTO High Boiler Misses</h2>
-            <button class="decrease">-</button>
-            <input type="number" id="auto-high-boiler-misses" value="0" min="0">
-            <button class="increase">+</button>
-        </div>
-    </div>
+
 
     <script src="script.js"></script>
 </body>

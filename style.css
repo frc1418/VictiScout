@@ -60,8 +60,8 @@ button:active {
 .row input {
     width: 50px;
 }
-.row:nth-of-type(6),
-.row:nth-of-type(7) {
+.row:nth-of-type(4),
+.row:nth-of-type(5) {
     background: #555;
     padding: 10px 0;
 }
