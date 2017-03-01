@@ -164,11 +164,11 @@ elements.autoAccuracy.onclick = function() {
 }
 // Function for determining accuracy in teleop
 elements.teleopAccuracy.onclick = function() {
-    var teleopMisses = document.getElementById('high-boiler-misses').value;
-    var accuracy = document.getElementById('high-boiler').value;
-    var teleopCombined = teleopMisses + accuracy;
+    var teleopMisses = +document.getElementById('high-boiler-misses').value;
+    var teleopScores = +document.getElementById('high-boiler').value;
+    var teleopCombined = teleopMisses + teleopScores;
     if (teleopCombined != 0) {
-      var teleopAccuracy = accuracy/teleopCombined;
+      var teleopAccuracy = teleopScores/teleopCombined;
     } else {
       var teleopAccuracy = 0;
     }
