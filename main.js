@@ -13,8 +13,8 @@ let mainWindow;
 function createWindow() {
 	// Create the browser window.
 	mainWindow = new BrowserWindow({
-		width: 675,
-		height: 600
+		width: 600,
+		height: 575
 	});
 
 	// and load the index.html of the app.
@@ -41,9 +41,7 @@ app.on('ready', createWindow);
 app.on('window-all-closed', function() {
 	// On OS X it is common for applications and their menu bar
 	// to stay active until the user quits explicitly with Cmd + Q
-	// but with VictiScout WE DON'T ACCEPT THE NORMS
-	// Uncomment the next line to change it to the norm
-	// if (process.platform !== 'darwin') 
+	//if (process.platform !== 'darwin')
 	app.quit();
 });
 
@@ -58,7 +56,7 @@ app.on('activate', function() {
 ipcMain.on('renderData', function(event, arg) {
 	//setting dialog
 	dataWindow = new BrowserWindow({
-		width: 1000,
+		width: 1200,
 		height: 500
 	});
 	// Load options page

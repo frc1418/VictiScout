@@ -10,12 +10,16 @@
 <body>
     <div class="row">
         <input type="number" id="team" placeholder="Team #" class="large">
-        <input type="number" id="match" placeholder="Match #" class="special large">
+        <input type="number" id="match" placeholder="Match #" class="large">
+        <p>Playoffs<input type="checkbox" id="playoffs"></p>
         <input type="text" id="notes" placeholder="Notes" class="large">
-        <select class="special" id="target">
-            <option>Save data locally</option>
-            <option>Submit data to server</option>
-        </select>
+    </div>
+    <div class="row">
+      <select class="special" id="target">
+          <option>Save data locally</option>
+          <option>Submit data to server</option>
+      </select>
+
     </div>
     <div class="row">
         <h2 id="path-label">Save location:</h2>
@@ -61,25 +65,30 @@
             <button class="increase">+</button>
         </div>
         <div class="tasks">
-            <h2>Rope Climb<h2>
-            <img src="img/gear.svg">
-            <p>Attempted? <input type="checkbox" id="rope-attempted"></p>
-            <p>Achieved? <input type="checkbox" id="rope-achieved"></p>
+            <h2>Rope Climb</h2>
+            <img src="img/ropeclimb.svg" id="ropeImage" onclick="ropeImage.onclick();">
+            <!-- TODO: Re-add attempted? -->
+            <p>Achieved? <input type="checkbox" id="rope-achieved" onclick="ropeChanged();"></p>
         </div>
         <div class="tasks">
-            <h2>High Boiler Accuracy<h2>
+            <h2>High Boiler Accuracy (Auto)</h2>
             <input type="text" id="auto-accuracy" value="0%" class="percent">
             <button id="calculate-accuracy">Calculate</button>
+            <h2>High Boiler Accuracy (Teleop)</h2>
+            <input type="text" id="teleop-accuracy" value="0%" class="percent">
+            <button id="teleop-calculate-accuracy">Calculate</button>
             <h2>Steam Output</h2>
             <input type="text" id="steam-counter" value="0" class="steam">
             <button id="steam">Calculate</button>
         </div>
-        <!--<div class="defense">
-            <h2>Portcullis</h2>
-            <img src="img/portcullis.svg">
-            <button class="decrease">-</button>
-            <input type="number" id="portcullis" value="0" min="0">
-            <button class="increase">+</button>-->
+        <div class="tasks">
+            <h2>Total Points:</h2>
+            <button id="calculate-total">Calculate</button>
+            <h3>Match Points</h3>
+            <input type="number" id="total-points">
+            <h3>Ranking Points</h3>
+            <input type="number" id="ranking-points">
+        </div>
     </div>
     <div class="row">
         <div>
@@ -94,7 +103,7 @@
         <div>
             <h2>Which Gear Slot?</h2>
             <select id="auto-gear-slot">
-                <option>No</option>
+                <option>None</option>
                 <option>Front</option>
                 <option>Right</option>
                 <option>Left</option>
@@ -120,6 +129,9 @@
             <input type="number" id="auto-high-boiler-misses" value="0" min="0">
             <button class="increase">+</button>
         </div>
+    </div>
+    <div class="row">
+        <p>Human Players Competent?  <input type="checkbox" id="competency"></p>
     </div>
 
     <script src="script.js"></script>

@@ -25,7 +25,6 @@ th {
     vertical-align: bottom;
     border: none;
     background: #444;
-    text-transform:capitalize;
 }
 td {
     white-space: nowrap;
