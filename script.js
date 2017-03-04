@@ -151,8 +151,8 @@ elements.view.onclick = function() {
 // Begin the score processing stuff
 // Function for determining accuracy in autonomous
 elements.autoAccuracy.onclick = function() {
-    var autoMisses = document.getElementById('auto-high-boiler-misses').value;
-    var accuracy = document.getElementById('auto-high-boiler').value;
+    var autoMisses = +document.getElementById('auto-high-boiler-misses').value;
+    var accuracy = +document.getElementById('auto-high-boiler').value;
     var autoCombined = autoMisses + accuracy;
     if (autoCombined != 0) {
       var autoAccuracy = accuracy/autoCombined;
@@ -215,8 +215,8 @@ elements.total.onclick = function() {
     // Call steam function
     var steamPoints = elements.steam.onclick();
     // Get gear values for auto and teleop
-    var teleGears = document.getElementById('gear').value;
-    var autoGears = document.getElementById('auto-gear-count').value;
+    var teleGears = +document.getElementById('gear').value;
+    var autoGears = +document.getElementById('auto-gear-count').value;
     // The score depends on the game stage: in the playoffs, no ranking points are scored;
     // In the qualifiers, only ranking points are scored (the match points still matter
     // as wins/ties win ranking points)
