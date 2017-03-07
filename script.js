@@ -118,7 +118,7 @@ pg.view.onclick = function() {
 // When user clicks on the screen, check if they clicked on an increase/decrease button
 onclick = function(e) {
     // If click was on a decrease button > decrease the value of the adjacent input (but only if it's over 0)
-    if (e.target.className === 'decrease' && e.target.nextpgibling.value > 0) e.target.nextpgibling.value = parseInt(e.target.nextpgibling.value) - 1;
+    if (e.target.className === 'decrease' && e.target.nextElementSibling.value > 0) e.target.nextElementSibling.value = parseInt(e.target.nextElementSibling.value) - 1;
     // If click was on an increase button > increase the value of the adjacent input
-    if (e.target.className === 'increase') e.target.previouspgibling.value = parseInt(e.target.previouspgibling.value) + 1;
+    if (e.target.className === 'increase') e.target.previousElementSibling.value = parseInt(e.target.previousElementSibling.value) + 1;
 };
