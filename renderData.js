@@ -1,5 +1,4 @@
 const fs = require('fs');
-const unirest = require('unirest');
 
 // Define <thead> and <tbody> vars to be filled later on.
 var thead = document.getElementsByTagName('thead')[0],
@@ -7,22 +6,14 @@ var thead = document.getElementsByTagName('thead')[0],
 
 console.log(localStorage.target);
 
-if (localStorage.target === 'Save data locally') {
-	// Fetch (string type) contents of data.json.
-	var values = fs.readFileSync(localStorage.path + '/data.json') + '';
+// Fetch (string type) contents of data.json.
+var values = fs.readFileSync(localStorage.path + '/data.json') + '';
 
-	// Split up the single long string into an array of strings. One string = one object = one submission of data.
-	values = values.split('\n');
+// Split up the single long string into an array of strings. One string = one object = one submission of data.
+values = values.split('\n');
 
-    render(values);
-} else {
-	unirest.get('http://' + localStorage.path + ':8080/api/data').end(function(response) {
-		var values = response.body;
-        values = values.split('\n');
+render(values);
 
-        render(values);
-	});
-}
 function render(data) {
     // Go through data array and turn string data into a manipulable JSON object
     for (i = 0; i < data.length - 1; i++) {

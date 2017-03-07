@@ -11,22 +11,50 @@
     <div class="row">
         <input type="number" id="team" placeholder="Team #" class="large">
         <input type="number" id="match" placeholder="Match #" class="large">
-        <p>Playoffs<input type="checkbox" id="playoffs"></p>
-        <input type="text" id="notes" placeholder="Notes" class="large">
-    </div>
-    <div class="row">
-      <select class="special" id="target">
-          <option>Save data locally</option>
-          <option>Submit data to server</option>
-      </select>
-    </div>
-    <div class="row">
         <h2 id="path-label">Save location:</h2>
         <input id="path" class="special large" type="text">
         <p id="path-warning">INVALID DIRECTORY</p>
         <button id="submit">Submit</button>
         <button id="reset">Reset</button>
         <button id="view">View Data</button>
+    </div>
+    <div class="row">
+        <h1>AUTO</h1>
+        <div>
+            <h2>AUTO Gear Delivery</h2>
+            <button class="decrease">-</button>
+            <input type="number" id="auto-gear-count" value="0" min="0">
+            <button class="increase">+</button>
+        </div>
+        <!-- TODO: Maybe re-add this; it's been totally useless and seldom used so far. -->
+        <!--<div>
+            <h2>Which Gear Slot?</h2>
+            <select id="auto-gear-slot">
+                <option>None</option>
+                <option>Front</option>
+                <option>Right</option>
+                <option>Left</option>
+            </select>
+        </div>-->
+        <div>
+            <h2>AUTO Low Boiler</h2>
+            <button class="decrease">-</button>
+            <input type="number" id="auto-low-boiler" value="0" min="0">
+            <button class="increase">+</button>
+        </div>
+        <div>
+            <h2>AUTO High Boiler</h2>
+            <button class="decrease">-</button>
+            <input type="number" id="auto-high-boiler" value="0" min="0">
+            <button class="increase">+</button>
+        </div>
+        <!-- We don't care about misses for now. -->
+        <!--<div>
+            <h2>AUTO High Boiler Misses</h2>
+            <button class="decrease">-</button>
+            <input type="number" id="auto-high-boiler-misses" value="0" min="0">
+            <button class="increase">+</button>
+        </div>-->
     </div>
     <div class="row">
         <h1>TELEOP</h1>
@@ -42,92 +70,29 @@
             <input type="number" id="high-boiler" value="0" min="0">
             <button class="increase">+</button>
         </div>
-        <div>
+        <!--<div>
             <h2>High Boiler Misses</h2>
             <button class="decrease">-</button>
             <input type="number" id="high-boiler-misses" value="0" min="0">
             <button class="increase">+</button>
-        </div>
-        <div>
-            <h2>Steam</h2>
-
-        </div>
-    </div>
-    <div class="row">
-        <!--Gears, Rope Climb, High Boiler Accuracy-->
-        <!-- Rope Climb and High Boiler Accuracy in Auto and Tele need to be added -->
+        </div>-->
         <div class="tasks">
             <h2>Gears Delivered</h2>
-            <img src="img/gear.svg">
             <button class="decrease">-</button>
             <input type="number" id="gear" value="0" min="0">
             <button class="increase">+</button>
         </div>
         <div class="tasks">
-            <h2>Rope Climb</h2>
-            <img src="img/ropeclimb.svg" id="ropeImage" onclick="ropeImage.onclick();">
-            <!-- TODO: Re-add attempted? -->
-            <p>Achieved? <input type="checkbox" id="rope-achieved" onclick="ropeChanged();"></p>
-        </div>
-        <div class="tasks">
-            <h2>High Boiler Accuracy (Auto)</h2>
-            <input type="text" id="auto-accuracy" value="0%" class="percent">
-            <button id="calculate-accuracy">Calculate</button>
-            <h2>High Boiler Accuracy (Teleop)</h2>
-            <input type="text" id="teleop-accuracy" value="0%" class="percent">
-            <button id="teleop-calculate-accuracy">Calculate</button>
-            <h2>Steam Output</h2>
-            <input type="text" id="steam-counter" value="0" class="steam">
-            <button id="steam">Calculate</button>
-        </div>
-        <div class="tasks">
-            <h2>Total Points:</h2>
-            <button id="calculate-total">Calculate</button>
-            <h3>Match Points</h3>
-            <input type="number" id="total-points">
-            <h3>Ranking Points</h3>
-            <input type="number" id="ranking-points">
-        </div>
-    </div>
-    <div class="row">
-        <div>
-            <h1>AUTO</h1>
-        </div>
-        <div>
-            <h2>AUTO Gear Delivery</h2>
-            <button class="decrease">-</button>
-            <input type="number" id="auto-gear-count" value="0" min="0">
-            <button class="increase">+</button>
-        </div>
-        <div>
-            <h2>Which Gear Slot?</h2>
-            <select id="auto-gear-slot">
-                <option>None</option>
-                <option>Front</option>
-                <option>Right</option>
-                <option>Left</option>
+            <h2>Climbed?</h2>
+            <select id="climbed">
+                <option>No</option>
+                <option>Attempted</option>
+                <option>Yes</option>
             </select>
         </div>
     </div>
     <div class="row">
-        <div>
-            <h2>AUTO Low Boiler</h2>
-            <button class="decrease">-</button>
-            <input type="number" id="auto-low-boiler" value="0" min="0">
-            <button class="increase">+</button>
-        </div>
-        <div>
-            <h2>AUTO High Boiler</h2>
-            <button class="decrease">-</button>
-            <input type="number" id="auto-high-boiler" value="0" min="0">
-            <button class="increase">+</button>
-        </div>
-        <div>
-            <h2>AUTO High Boiler Misses</h2>
-            <button class="decrease">-</button>
-            <input type="number" id="auto-high-boiler-misses" value="0" min="0">
-            <button class="increase">+</button>
-        </div>
+        <textarea id="notes" placeholder="Write notes here..."></textarea>
     </div>
 
     <script src="script.js"></script>
