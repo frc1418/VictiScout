@@ -11,7 +11,7 @@
     <div class="row">
         <input type="number" id="team" placeholder="Team #" class="large">
         <input type="number" id="match" placeholder="Match #" class="large">
-        <h2 id="path-label">Save location:</h2>
+        <h2 id="path-label">Save to:</h2>
         <input id="path" class="special large" type="text">
         <p id="path-warning">INVALID DIRECTORY</p>
         <button id="submit">Submit</button>
@@ -23,19 +23,9 @@
         <div>
             <h2>AUTO Gear Delivery</h2>
             <button class="decrease">-</button>
-            <input type="number" id="auto-gear-count" value="0" min="0">
+            <input type="number" id="auto-gear" value="0" min="0">
             <button class="increase">+</button>
         </div>
-        <!-- TODO: Maybe re-add this; it's been totally useless and seldom used so far. -->
-        <!--<div>
-            <h2>Which Gear Slot?</h2>
-            <select id="auto-gear-slot">
-                <option>None</option>
-                <option>Front</option>
-                <option>Right</option>
-                <option>Left</option>
-            </select>
-        </div>-->
         <div>
             <h2>AUTO Low Boiler</h2>
             <button class="decrease">-</button>
@@ -48,13 +38,6 @@
             <input type="number" id="auto-high-boiler" value="0" min="0">
             <button class="increase">+</button>
         </div>
-        <!-- We don't care about misses for now. -->
-        <!--<div>
-            <h2>AUTO High Boiler Misses</h2>
-            <button class="decrease">-</button>
-            <input type="number" id="auto-high-boiler-misses" value="0" min="0">
-            <button class="increase">+</button>
-        </div>-->
     </div>
     <div class="row">
         <h1>TELEOP</h1>
@@ -70,12 +53,6 @@
             <input type="number" id="high-boiler" value="0" min="0">
             <button class="increase">+</button>
         </div>
-        <!--<div>
-            <h2>High Boiler Misses</h2>
-            <button class="decrease">-</button>
-            <input type="number" id="high-boiler-misses" value="0" min="0">
-            <button class="increase">+</button>
-        </div>-->
         <div class="tasks">
             <h2>Gears Delivered</h2>
             <button class="decrease">-</button>

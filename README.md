@@ -1,7 +1,10 @@
+[<img src="logo.png" align="right" width="200">](https://github.com/frc1418/VictiScout)
 # VictiScout
 Application for FRC scouting. Written using [Electron](http://electron.atom.io/) for easy customization.
 
 Get the newest compiled version [here](https://github.com/frc1418/VictiScout/releases)!
+
+Download `vs`, a convenient CLI app for processing VictiScout data, [here](https://github.com/frc1418/vs).
 
 ![Screenshot](screenshot.png)
 
