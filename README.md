@@ -1,3 +1,4 @@
+[<img src="logo.svg" align="right" width="70">](https://github.com/frc1418/VictiScout)
 # VictiScout
 Application for FRC scouting. Written using [Electron](http://electron.atom.io/) for easy customization.
 

@@ -4,22 +4,10 @@ const fs = require('fs');
 var thead = document.getElementsByTagName('thead')[0],
 	tbody = document.getElementsByTagName('tbody')[0];
 
-console.log(localStorage.target);
-
 // Fetch (string type) contents of data.json.
-var values = fs.readFileSync(localStorage.path + '/data.json') + '';
-
-// Split up the single long string into an array of strings. One string = one object = one submission of data.
-values = values.split('\n');
-
-render(values);
+render(JSON.parse(fs.readFileSync(localStorage.path)));
 
 function render(data) {
-    // Go through data array and turn string data into a manipulable JSON object
-    for (i = 0; i < data.length - 1; i++) {
-        data[i] = JSON.parse(data[i]);
-    }
-
     // Make column headers.
     // Create <tr> element to put everything in.
     var tr = document.createElement('tr');

@@ -5,12 +5,13 @@
 }
 body {
     background: #333;
+    font: 14px sans-serif;
 }
 table {
     border-collapse: collapse;
 }
 th, td {
-    padding: 2px 4px;
+    padding: 5px 7px;
     color: white;
     border: solid 1px grey;
     box-sizing: content-box;
