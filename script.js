@@ -66,8 +66,8 @@ pg.submit.onclick = function() {
 function write(match) {
     // TODO: Getting size could function as a means of checking its existence in theory,
     // but for now an error occurs when you get stats of a nonexistent file.
-    var data = (fs.existsSync() && fs.statSync(pg.path.value).size > 0) ? JSON.parse(fs.readFileSync(pg.path.value)) : [];
-    data.push(match)
+    var data = (fs.existsSync(pg.path.value) && fs.statSync(pg.path.value).size > 0) ? JSON.parse(fs.readFileSync(pg.path.value)) : [];
+    data.push(match);
     fs.writeFileSync(pg.path.value, JSON.stringify(data));
 }
 
