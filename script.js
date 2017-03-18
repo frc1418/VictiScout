@@ -61,6 +61,7 @@ pg.submit.onclick = function() {
         // TODO: More professional warning!
         window.alert('Please enter a team number!');
     }
+    pg.match.value = currentMatch + 1;
 };
 
 function write(match) {
@@ -86,7 +87,6 @@ function resetInputs() {
     }
     // Reset match field to be one greater than it was previously.
     // TODO: Only do this when 'submit' button is clicked?
-    pg.match.value = currentMatch + 1;
     console.log('Reset inputs.');
 }
 
