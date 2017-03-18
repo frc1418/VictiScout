@@ -16,6 +16,8 @@ function render(data) {
         // Make a new table cell
         var th = document.createElement('th');
         // ...with the content of the name of the data point
+	j = j.replace(/-/g, " ")
+	j = capitalize(j)
         th.innerHTML = j;
         // Put it into the row
         tr.appendChild(th);
@@ -39,4 +41,12 @@ function render(data) {
         // Put this row into the document
         tbody.appendChild(tr);
     }
+}
+function capitalize(str) {
+    var pieces = str.split(" ");
+    for (i = 0; i < pieces.length; i++) {
+        var j = pieces[i].charAt(0).toUpperCase();
+        pieces[i] = j + pieces[i].substr(1);
+    }
+    return pieces.join(" ");
 }
