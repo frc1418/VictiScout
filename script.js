@@ -2,6 +2,7 @@
 const fs = require('fs');
 // ipc is used to open and communicate with the data viewer and other additional windows.
 const ipc = require('electron').ipcRenderer;
+const user = require('os').userInfo();
 // Define some elements.
 var pg = {
     team: document.getElementById('team'),
@@ -9,13 +10,16 @@ var pg = {
     submit: document.getElementById('submit'),
     reset: document.getElementById('reset'),
     view: document.getElementById('view'),
-    pathLabel: document.getElementById('path-label'),
-    path: document.getElementById('path'),
-    pathWarning: document.getElementById('path-warning')
 }
 
-// Get path to Desktop (different on Windows).
-pg.path.value = process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'] + '/Desktop/data.json';
+var path;
+function setPath() {
+    // Get date for file naming.
+    var d = new Date();
+    path = process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'] + '/Desktop/scoutdata_' + user.username + '_' + ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'][d.getMonth()] + '_' + d.getDate() + '_' + d.getFullYear() + '.json';
+}
+setPath();
+
 
 // Generate an array of all <input>s (plus <select>s) in document.
 // These will be used to generate an object.
@@ -67,9 +71,9 @@ pg.submit.onclick = function() {
 function write(match) {
     // TODO: Getting size could function as a means of checking its existence in theory,
     // but for now an error occurs when you get stats of a nonexistent file.
-    var data = (fs.existsSync(pg.path.value) && fs.statSync(pg.path.value).size > 0) ? JSON.parse(fs.readFileSync(pg.path.value)) : [];
+    var data = (fs.existsSync(path) && fs.statSync(path).size > 0) ? JSON.parse(fs.readFileSync(path)) : [];
     data.push(match);
-    fs.writeFileSync(pg.path.value, JSON.stringify(data));
+    fs.writeFileSync(path, JSON.stringify(data));
 }
 
 // Reset all fields.
@@ -99,7 +103,7 @@ pg.reset.onclick = function() {
 // When 'View Data' button is clicked
 pg.view.onclick = function() {
     // Store the path to the data document
-    localStorage.path = pg.path.value;
+    localStorage.path = path;
     // Tell main.js to open rendered data window
     ipc.send('renderData');
 };
