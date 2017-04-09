@@ -34,8 +34,9 @@ for (i = 0; i < tags.length; i++) inputs[tags[i].id] = tags[i];
 // Submit match data.
 pg.submit.onclick = function() {
     if (
-        // If the user has entered a team number
-        pg.team.value
+        // If the user has entered a team number and match number
+        pg.team.value &&
+        pg.match.value
     ) {
         // Make empty match object
         var match = {};
@@ -62,8 +63,7 @@ pg.submit.onclick = function() {
         write(match);
         resetInputs();
     } else {
-        // TODO: More professional warning!
-        window.alert('Please enter a team number!');
+        window.alert('You must enter a team number and match!');
     }
     pg.match.value = currentMatch + 1;
 };
@@ -73,7 +73,11 @@ function write(match) {
     // but for now an error occurs when you get stats of a nonexistent file.
     var data = (fs.existsSync(path) && fs.statSync(path).size > 0) ? JSON.parse(fs.readFileSync(path)) : [];
     data.push(match);
-    fs.writeFileSync(path, JSON.stringify(data));
+    // Write data to file.
+    // Very occasionally, this will return JSON that uses WYSIWYG-style quotes (“”), rather
+    // than JSON-standard, side-ambiguous, utf-8 quotes (""). This breaks JSON parsing later on.
+    // Since it's as yet unclear why that issue occurs, just replace via regex for now.
+    fs.writeFileSync(path, JSON.stringify(data).replace(/[“”]/, '"'));
 }
 
 // Reset all fields.
