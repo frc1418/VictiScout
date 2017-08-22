@@ -10,7 +10,7 @@ body {
     margin: 3px;
     margin-top: 8px;
     margin-bottom: 0;
-    overflow: scroll;
+    overflow: auto;
 }
 input[type="number"],
 input[type="text"],

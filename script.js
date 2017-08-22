@@ -16,12 +16,13 @@ var path;
 function setPath() {
     // Get date for file naming.
     var d = new Date();
-    path = process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'] + '/Desktop/scoutdata_' + user.username + '_' + ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'][d.getMonth()] + '_' + d.getDate() + '_' + d.getFullYear() + '.json';
+    var home = process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'];
+    path = home + (fs.existsSync(home + '/Desktop') ? '/Desktop' : '') + '/scoutdata_' + user.username + '_' + ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'][d.getMonth()] + '_' + d.getDate() + '_' + d.getFullYear() + '.json';
 }
 setPath();
 
 
-// Generate an array of all <input>s (plus <select>s) in document.
+// Generate an array of all data inputs in document.
 // These will be used to generate an object.
 // Inputs named .special are exempt. These are used for things like path selection.
 var tags = document.querySelectorAll('input:not(.special), select:not(.special), textarea');
@@ -69,8 +70,6 @@ pg.submit.onclick = function() {
 };
 
 function write(match) {
-    // TODO: Getting size could function as a means of checking its existence in theory,
-    // but for now an error occurs when you get stats of a nonexistent file.
     var data = (fs.existsSync(path) && fs.statSync(path).size > 0) ? JSON.parse(fs.readFileSync(path)) : [];
     data.push(match);
     // Write data to file.
@@ -93,16 +92,13 @@ function resetInputs() {
         else if (inputs[input].tagName === 'SELECT') inputs[input].value = 'No'; // Selector
         else inputs[input].value = '';
     }
-    // Reset match field to be one greater than it was previously.
-    // TODO: Only do this when 'submit' button is clicked?
     console.log('Reset inputs.');
 }
 
 // When reset button is clicked, trigger reset
-// TODO: call this function directly
 pg.reset.onclick = function() {
     if (window.confirm('Really reset inputs?')) resetInputs();
-}
+};
 
 // When 'View Data' button is clicked
 pg.view.onclick = function() {
