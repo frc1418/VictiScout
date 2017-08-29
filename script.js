@@ -12,25 +12,19 @@ var pg = {
     view: document.getElementById('view'),
 }
 
-var path;
-function setPath() {
-    // Get date for file naming.
-    var d = new Date();
-    var home = process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'];
-    path = home + (fs.existsSync(home + '/Desktop') ? '/Desktop' : '') + '/scoutdata_' + user.username + '_' + ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'][d.getMonth()] + '_' + d.getDate() + '_' + d.getFullYear() + '.json';
-}
-setPath();
-
+// Get date for file naming.
+var d = new Date();
+var home = process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'];
+var path = home + (fs.existsSync(home + '/Desktop') ? '/Desktop' : '') + '/scoutdata_' + user.username + '_' + ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'][d.getMonth()] + '_' + d.getDate() + '_' + d.getFullYear() + '.json';
 
 // Generate an array of all data inputs in document.
 // These will be used to generate an object.
-// Inputs named .special are exempt. These are used for things like path selection.
+// Inputs named .special are exempt. These can be used for things like path selection.
 var tags = document.querySelectorAll('input:not(.special), select:not(.special), textarea');
 // Create empty object.
 var inputs = {};
 // Make each element be the value to a key named after its ID.
-for (i = 0; i < tags.length; i++) inputs[tags[i].id] = tags[i];
-
+for (t in tags) inputs[tags[t].id] = tags[t];
 
 // Submit match data.
 pg.submit.onclick = function() {
@@ -42,7 +36,7 @@ pg.submit.onclick = function() {
         // Make empty match object
         var match = {};
         // Go through each input in the data object and fill in the data from it
-        for (var input in inputs) {
+        for (input in inputs) {
             // Input the values from each input into the data object.
             // Need to get different data depending on the type of the input.
             switch (inputs[input].type) {
@@ -85,7 +79,7 @@ function resetInputs() {
     // TODO: This triggers a warning if the input is empty.
     currentMatch = parseInt(pg.match.value);
     // For each input, reset to default value.
-    for (var input in inputs) {
+    for (input in inputs) {
         // Reset to different values depending on what type of input it is
         if (inputs[input].type === 'number' && inputs[input].className !== 'large') inputs[input].value = 0; // If it's a small number box
         else if (inputs[input].type === 'checkbox') inputs[input].checked = false; // Checkbox
