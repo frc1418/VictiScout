@@ -7,9 +7,7 @@
 }
 body {
     background: #333;
-    margin: 3px;
-    margin-top: 8px;
-    margin-bottom: 0;
+    margin: 8px 3px 0;
     overflow: auto;
 }
 input[type="number"],
@@ -35,7 +33,6 @@ button:active {
     color: #aaa;
 }
 .row {
-    white-space: nowrap;
     padding: 5px 0;
 }
 .row > * {
@@ -67,13 +64,10 @@ h2 {
     margin-bottom: 5px;
 }
 input {
-  width: 50px;
+    width: 50px;
 }
 input.large {
     width: auto;
-}
-input.steam {
-  width: 75px;
 }
 .increase,
 .decrease {
