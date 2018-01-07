@@ -18,43 +18,58 @@
     <div class="row">
         <h1>AUTO</h1>
         <div>
-            <h2>AUTO Gear Delivery</h2>
+            <h2>Start Position</h2>
+            <select id="start-position">
+                <option>Side</option>
+                <option>Middle</option>
+            </select>
+        </div>
+        <div>
+            <h2>AUTO Crossed Line</h2>
+            <input type="checkbox" id="auto-line" value="0" min="0">
+        </div>
+        <div>
+            <h2>AUTO Scale Block</h2>
             <button class="decrease">-</button>
-            <input type="number" id="auto-gear" value="0" min="0">
+            <input type="number" id="auto-scale" value="0" min="0">
             <button class="increase">+</button>
         </div>
         <div>
-            <h2>AUTO Low Boiler kPa</h2>
+            <h2>AUTO Switch Blocks</h2>
             <button class="decrease">-</button>
-            <input type="number" id="auto-low-boiler" value="0" min="0">
-            <button class="increase">+</button>
-        </div>
-        <div>
-            <h2>AUTO High Boiler kPa</h2>
-            <button class="decrease">-</button>
-            <input type="number" id="auto-high-boiler" value="0" min="0">
+            <input type="number" id="auto-switch" value="0" min="0">
             <button class="increase">+</button>
         </div>
     </div>
     <div class="row">
         <h1>TELEOP</h1>
         <div>
-            <h2>Low Boiler kPa</h2>
+            <h2>Scale Blocks</h2>
             <button class="decrease">-</button>
-            <input type="number" id="low-boiler" value="0" min="0">
+            <input type="number" id="scale" value="0" min="0">
             <button class="increase">+</button>
         </div>
         <div>
-            <h2>High Boiler kPa</h2>
+            <h2>Allied Switch Blocks</h2>
             <button class="decrease">-</button>
-            <input type="number" id="high-boiler" value="0" min="0">
+            <input type="number" id="allied-switch" value="0" min="0">
             <button class="increase">+</button>
         </div>
         <div>
-            <h2>Gears Delivered</h2>
+            <h2>Opponent Switch Blocks</h2>
             <button class="decrease">-</button>
-            <input type="number" id="gear" value="0" min="0">
+            <input type="number" id="opponent-switch" value="0" min="0">
             <button class="increase">+</button>
+        </div>
+        <div>
+            <h2>Vault Blocks</h2>
+            <button class="decrease">-</button>
+            <input type="number" id="vault" value="0" min="0">
+            <button class="increase">+</button>
+        </div>
+        <div>
+            <h2>Parked?</h2>
+            <input type="checkbox" id="parked" value="0" min="0">
         </div>
         <div>
             <h2>Climbed?</h2>
@@ -62,14 +77,6 @@
                 <option>No</option>
                 <option>Attempted</option>
                 <option>Yes</option>
-            </select>
-        </div>
-        <div>
-            <h2>Gear pickup type?</h2>
-            <select id="pickup">
-                <option>None</option>
-                <option>Passive/drop</option>
-                <option>Floor</option>
             </select>
         </div>
     </div>
