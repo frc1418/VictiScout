@@ -25,6 +25,19 @@ var tags = document.querySelectorAll('input:not(.special), select:not(.special),
 var inputs = {};
 // Make each element be the value to a key named after its ID.
 for (t in tags) inputs[tags[t].id] = tags[t];
+// Add the + and - buttons to a number specific input box
+for (input in inputs) {
+    if (inputs[input].type === 'number' && inputs[input].className !== 'large') {
+        var increase = document.createElement('button');
+        increase.textContent = '+';
+        increase.className = 'increase';
+        var decrease = document.createElement('button');
+        decrease.textContent = '-';
+        decrease.className = 'decrease';
+        inputs[input].insertAdjacentElement('beforebegin', decrease);
+        inputs[input].insertAdjacentElement('afterend', increase);
+    }
+}
 
 // Submit match data.
 pg.submit.onclick = function() {
