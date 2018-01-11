@@ -33,10 +33,7 @@ Choose the suffix appropriate for your target OS.
 See [here](https://github.com/electron-userland/electron-packager#readme) for an explanation of how to modify your packaging settings.
 
 ## Authors
-This software was originally written by [Erik Boesen](https://github.com/ErikBoesen), for [Team 1418](https://github.com/frc1418). It's since been expanded on by the following authors:
-* [Adrian Hall](https://github.com/aderhall)
-* [Tate Ward](https://github.com/MoonMoon2)
-* [Tim Winters](https://github.com/Twinters007)
+This software was created by [Erik Boesen](https://github.com/ErikBoesen) for [Team 1418](https://github.com/frc1418). See [Contributors](https://github.com/frc1418/VictiScout/graphs/contributors) for further information.
 
 ## License
 This software is licensed under the MIT license. More information in [`LICENSE`](LICENSE).
