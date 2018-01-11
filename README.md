@@ -36,4 +36,4 @@ See [here](https://github.com/electron-userland/electron-packager#readme) for an
 This software was created by [Erik Boesen](https://github.com/ErikBoesen) for [Team 1418](https://github.com/frc1418). See [Contributors](https://github.com/frc1418/VictiScout/graphs/contributors) for further information.
 
 ## License
-This software is licensed under the MIT license. More information in [`LICENSE`](LICENSE).
+VictiScout is available under the [MIT License](LICENSE).
