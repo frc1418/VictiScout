@@ -6,7 +6,7 @@
   "scripts": {
     "start": "electron .",
     "package": "electron-packager . --all --out dist/",
-    "package-mac": "electron-packager . --platform=darwin --icon=logo.icns --arch=all",
+    "package-mac": "electron-packager . --platform=darwin --icon=logo.icns --arch=all --out dist/",
     "package-linux": "electron-packager . --platform=linux --icon=logo.png --arch=all --out dist/",
     "package-win": "electron-packager . --platform=win32 --icon=logo.ico --arch=all --out dist/"
   },
