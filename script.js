@@ -129,10 +129,11 @@ onclick = function(e) {
         // Hide field menu and set field select element's text content.
         pg.field.style.display = "none";
         var name = e.target.parentElement.textContent;
-        document.getElementById('field-select').innerHTML = "Selected " + name + " Robot";
+        pg.fieldSelect.innerHTML = "Selected " + name + " Robot";
+        pg.fieldSelect.style.color = (e.target.parentElement.parentElement.id == 'blue' ? '#0E68FA' : '#D32F2F');
     }
     // If click was on the field select button open field menu
-    if (e.target.className === 'field-select') {
+    if (e.target.id === 'field-select') {
         // Hides and shows parts of the field selection
         var display = window.getComputedStyle(pg.field, null).getPropertyValue('display');
         pg.field.style.display = (display != 'none' ? 'none' : 'block');
