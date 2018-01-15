@@ -10,6 +10,9 @@ var pg = {
     submit: document.getElementById('submit'),
     reset: document.getElementById('reset'),
     view: document.getElementById('view'),
+    field: document.getElementById('field'),
+    fieldSelect: document.getElementById('field-select'),
+    buttons: document.getElementById('field-buttons')
 }
 
 // Get date for file naming.
@@ -122,3 +125,21 @@ onclick = function(e) {
     // If click was on an increase button > increase the value of the adjacent input
     if (e.target.className === 'increase') e.target.previousElementSibling.value = parseInt(e.target.previousElementSibling.value) + 1;
 };
+
+//Hides and shows parts of the field selection
+function showField() {
+    var display = window.getComputedStyle(pg.field, null).getPropertyValue('display');
+    pg.field.style.display = (display != 'none' ? 'none' : 'block');
+    if (pg.field.style.display == 'block') {
+        var radios = document.getElementsByClassName('field-selector');
+        for (elem in radios) {
+            radios[elem].addEventListener('click', function(event){
+                hideField(event.srcElement.parentElement.textContent);
+            });
+        }
+    }
+}
+function hideField(name, number) {
+   pg.field.style.display = "none";
+   document.getElementById('field-select').innerHTML = "Selected " + name + " Robot";
+}
