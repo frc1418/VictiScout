@@ -124,22 +124,17 @@ onclick = function(e) {
     if (e.target.className === 'decrease' && e.target.nextElementSibling.value > 0) e.target.nextElementSibling.value = parseInt(e.target.nextElementSibling.value) - 1;
     // If click was on an increase button > increase the value of the adjacent input
     if (e.target.className === 'increase') e.target.previousElementSibling.value = parseInt(e.target.previousElementSibling.value) + 1;
-};
-
-//Hides and shows parts of the field selection
-function showField() {
-    var display = window.getComputedStyle(pg.field, null).getPropertyValue('display');
-    pg.field.style.display = (display != 'none' ? 'none' : 'block');
-    if (pg.field.style.display == 'block') {
-        var radios = document.getElementsByClassName('field-selector');
-        for (elem in radios) {
-            radios[elem].addEventListener('click', function(event){
-                hideField(event.srcElement.parentElement.textContent);
-            });
-        }
+    // If click was on a field-selector close the field select menu
+    if (e.target.className === 'field-selector') {
+        // Hide field menu and set field select element's text content.
+        pg.field.style.display = "none";
+        var name = e.target.parentElement.textContent;
+        document.getElementById('field-select').innerHTML = "Selected " + name + " Robot";
     }
-}
-function hideField(name, number) {
-   pg.field.style.display = "none";
-   document.getElementById('field-select').innerHTML = "Selected " + name + " Robot";
-}
+    // If click was on the field select button open field menu
+    if (e.target.className === 'field-select') {
+        // Hides and shows parts of the field selection
+        var display = window.getComputedStyle(pg.field, null).getPropertyValue('display');
+        pg.field.style.display = (display != 'none' ? 'none' : 'block');
+    }
+};

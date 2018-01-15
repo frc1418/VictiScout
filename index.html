@@ -9,27 +9,7 @@
 
 <body>
     <div id="field">
-        <svg width="500px" height="250px">
-            <!--<rect width="80" height="20" x="10" y="30"/>
-            <text x="15" y="45" font-family="Times New Roman" font-size="20">Red-up</text>
-
-            <rect width="80" height="20" x="10" y="120"/>
-            <text x="15" y="135" font-family="Times New Roman" font-size="20">Red-middle</text>
-
-            <rect width="80" height="20" x="10" y="210"/>
-            <text x="15" y="225" font-family="Times New Roman" font-size="20">Red-down</text>
-
-
-            <rect width="80" height="20" x="400" y="30"/>
-            <text x="405" y="45" font-family="Times New Roman" font-size="20">Blue-up</text>
-
-            <rect width="80" height="20" x="400" y="120"/>
-            <text x="405" y="135" font-family="Times New Roman" font-size="20">Red-middle</text>
-
-            <rect width="80" height="20" x="400" y="210"/>
-            <text x="405" y="225" font-family="Times New Roman" font-size="20">Red-down</text>-->
-
-
+        <svg width="500" height="250">
             <rect width="80" height="25" x="200" y="40"/>
             <rect width="5" height="35" x="237.5" y="65"/>
             <rect width="80" height="50" x="200" y="100"/>
@@ -39,14 +19,14 @@
 
         <div id="field-buttons">
             <div class="button-group">
-                <label><input type="radio" id="red-up" class="field-selector" name="position" value="r-up">Far Red</label><br>
-                <label><input type="radio" id="red-middle" class="field-selector" name="position" value="r-mid">Middle Red</label><br>
-                <label><input type="radio" id="red-down" class="field-selector" name="position" value="r-down">Close Red</label>
+                <label><input type="radio" id="red-up" class="field-selector" name="position" value="red-top">Far Red</label><br>
+                <label><input type="radio" id="red-middle" class="field-selector" name="position" value="red-mid">Middle Red</label><br>
+                <label><input type="radio" id="red-down" class="field-selector" name="position" value="red-bottom">Close Red</label>
             </div>
             <div class="button-group">
-                <label>Far Blue<input type="radio" id="blue-up" class="field-selector" name="position" value="b-up"></label><br>
-                <label>Middle Blue<input type="radio" id="blue-mid" class="field-selector" name="position" value="b-mid"></label><br>
-                <label>Close Blue<input type="radio" id="blue-down" class="field-selector" name="position" value="b-down"></label>
+                <label>Far Blue<input type="radio" id="blue-up" class="field-selector" name="position" value="blue-top"></label><br>
+                <label>Middle Blue<input type="radio" id="blue-mid" class="field-selector" name="position" value="blue-mid"></label><br>
+                <label>Close Blue<input type="radio" id="blue-down" class="field-selector" name="position" value="blue-bottom"></label>
             </div>
         </div>
 
@@ -57,9 +37,7 @@
         <button id="submit">Submit</button>
         <button id="reset">Reset</button>
         <button id="view">View Data</button>
-        <button id="field-select" onclick="showField()">Select Field Position</button>
-
-
+        <button id="field-select">Select Field Position</button>
     </div>
     <div class="row">
         <h1>AUTO</h1>
