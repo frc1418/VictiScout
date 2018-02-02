@@ -1,14 +1,13 @@
 {
   "name": "VictiScout",
-  "version": "v2.0.0",
+  "version": "2.0.0",
   "description": "Scouting application for FIRST Robotics Competition, designed originally for Team 1418.",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "package": "electron-packager . --all --out ~/Desktop/Scout --overwrite --ignore=\\.gitignore",
-    "package-mac": "electron-packager . --platform=darwin --arch=all --out ~/Desktop/Scout --overwrite --ignore=\\.gitignore",
-    "package-win": "electron-packager . --platform=win32 --arch=all --out ~/Desktop/Scout --overwrite --ignore=\\.gitignore",
-    "package-linux": "electron-packager . --platform=linux --arch=all --out ~/Desktop/Scout --overwrite --ignore=\\.gitignore"
+    "package-mac": "electron-packager . --platform=darwin --icon=logo.icns --arch=all --out dist/",
+    "package-linux": "electron-packager . --platform=linux --icon=logo.png --arch=all --out dist/",
+    "package-win": "electron-packager . --platform=win32 --icon=logo.ico --arch=all --out dist/"
   },
   "repository": {
     "type": "git",
