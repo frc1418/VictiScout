@@ -1,4 +1,4 @@
-[<img src="logo.png" align="right" width="200">](https://github.com/frc1418/VictiScout)
+[<img src="images/logo/logo.png" align="right" width="200">](https://github.com/frc1418/VictiScout)
 # VictiScout
 Applicação por scouting de FRC. Escrito usando [Electron](http://electron.atom.io) por personalizaçã.
 
@@ -6,7 +6,7 @@ Pega a versão mais nova [aqui](https://github.com/frc1418/VictiScout/releases)!
 
 Baixa `vs`, uma applição conveniente de CLI por processar os dados de VictiScout [aqui](https://github.com/frc1418/vs).
 
-![Screenshot](screenshot.png)
+![Screenshot](images/screenshot.png)
 
 ## Dependencias de desinvolvemento
 * [Node.js](https://nodejs.org)

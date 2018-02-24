@@ -1,4 +1,4 @@
-[<img src="logo.png" align="right" width="200">](https://github.com/frc1418/VictiScout)
+[<img src="images/logo/logo.png" align="right" width="200">](https://github.com/frc1418/VictiScout)
 # VictiScout
 Aplikaĵo por la skoltanto de FRC. Skribita uzanta [Electron](http://electron.atom.io/) por facila agordo.
 
