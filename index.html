@@ -8,12 +8,36 @@
 </head>
 
 <body>
+    <div id="field">
+        <svg width="500" height="250">
+            <rect width="80" height="25" x="200" y="40"/>
+            <rect width="5" height="35" x="237.5" y="65"/>
+            <rect width="80" height="50" x="200" y="100"/>
+            <rect width="5" height="35" x="237.5" y="150"/>
+            <rect width="80" height="25" x="200" y="185"/>
+        </svg>
+
+        <div id="field-buttons">
+            <div class="button-group" id="red">
+                <label><input type="radio" id="red-up" class="field-selector" name="position" value="red-top">Far Red</label><br>
+                <label><input type="radio" id="red-middle" class="field-selector" name="position" value="red-mid">Middle Red</label><br>
+                <label><input type="radio" id="red-down" class="field-selector" name="position" value="red-bottom">Close Red</label>
+            </div>
+            <div class="button-group" id="blue">
+                <label>Far Blue<input type="radio" id="blue-up" class="field-selector" name="position" value="blue-top"></label><br>
+                <label>Middle Blue<input type="radio" id="blue-mid" class="field-selector" name="position" value="blue-mid"></label><br>
+                <label>Close Blue<input type="radio" id="blue-down" class="field-selector" name="position" value="blue-bottom"></label>
+            </div>
+        </div>
+
+    </div>
     <div class="row">
         <input type="number" id="team" placeholder="Team #" class="large">
         <input type="number" id="match" placeholder="Match #" class="large">
         <button id="submit">Submit</button>
         <button id="reset">Reset</button>
         <button id="view">View Data</button>
+        <button id="field-select">Select Field Position</button>
     </div>
     <div class="row">
         <h1>AUTO</h1>
@@ -71,7 +95,6 @@
     <div class="row">
         <textarea id="notes" placeholder="Write notes here..."></textarea>
     </div>
-
     <script src="script.js"></script>
 </body>
 

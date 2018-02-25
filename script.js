@@ -10,6 +10,9 @@ var pg = {
     submit: document.getElementById('submit'),
     reset: document.getElementById('reset'),
     view: document.getElementById('view'),
+    field: document.getElementById('field'),
+    fieldSelect: document.getElementById('field-select'),
+    buttons: document.getElementById('field-buttons')
 }
 
 // Get date for file naming.
@@ -121,4 +124,18 @@ onclick = function(e) {
     if (e.target.className === 'decrease' && e.target.nextElementSibling.value > 0) e.target.nextElementSibling.value = parseInt(e.target.nextElementSibling.value) - 1;
     // If click was on an increase button > increase the value of the adjacent input
     if (e.target.className === 'increase') e.target.previousElementSibling.value = parseInt(e.target.previousElementSibling.value) + 1;
+    // If click was on a field-selector close the field select menu
+    if (e.target.className === 'field-selector') {
+        // Hide field menu and set field select element's text content.
+        pg.field.style.display = "none";
+        var name = e.target.parentElement.textContent;
+        pg.fieldSelect.innerHTML = "Selected " + name + " Robot";
+        pg.fieldSelect.style.color = (e.target.parentElement.parentElement.id == 'blue' ? '#0E68FA' : '#D32F2F');
+    }
+    // If click was on the field select button open field menu
+    if (e.target.id === 'field-select') {
+        // Hides and shows parts of the field selection
+        var display = window.getComputedStyle(pg.field, null).getPropertyValue('display');
+        pg.field.style.display = (display != 'none' ? 'none' : 'block');
+    }
 };
