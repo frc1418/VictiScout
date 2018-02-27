@@ -32,3 +32,23 @@ td {
     overflow: auto;
     max-width: 100px;
 }
+#no-data {
+    border-radius: 50%;
+    background-color: #555;
+    position: absolute;
+    display: none;
+    padding: 100px;
+    border: solid 1px #FFFFFF;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#no-data p {
+    padding-top: 25px;
+    width: 150px;
+    text-align: center;
+    height: 150px;
+}
+p span {
+    font-weight: bold;
+}
