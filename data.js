@@ -4,8 +4,21 @@ const fs = require('fs');
 var thead = document.getElementsByTagName('thead')[0],
     tbody = document.getElementsByTagName('tbody')[0];
 
-// Fetch (string type) contents of data.json.
-render(JSON.parse(fs.readFileSync(localStorage.path)));
+var noData = document.getElementById('no-data');
+
+var json = '';
+
+if (fs.existsSync(localStorage.path)) {
+    // Fetch (string type) contents of data.json.
+    json = fs.readFileSync(localStorage.path);
+}
+
+if (json.length < 1) {
+    // Display "no data" warning if no data is found
+    noData.style.display = 'block';
+} else {
+    render(JSON.parse(json));
+}
 
 function render(data) {
     // Make column headers.
