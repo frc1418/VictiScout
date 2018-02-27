@@ -13,7 +13,7 @@ let mainWindow;
 function createWindow() {
 	// Create the browser window.
 	mainWindow = new BrowserWindow({
-		width: 900,
+		width: 1020,
 		height: 475,
 		icon: __dirname + '/logo.png'
 	});
