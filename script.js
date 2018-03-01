@@ -99,6 +99,7 @@ function resetInputs() {
         else if (inputs[input].tagName === 'SELECT') inputs[input].value = 'No'; // Selector
         else inputs[input].value = '';
     }
+    pg.team.focus();
     console.log('Reset inputs.');
 }
 
