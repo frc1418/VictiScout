@@ -46,6 +46,8 @@ pg.submit.onclick = function() {
         pg.team.value &&
         pg.match.value
     ) {
+        // Store current match, which will later be incremented by 1
+        var currentMatch = parseInt(pg.match.value);
         // Make empty match object
         var match = {};
         // Go through each input in the data object and fill in the data from it
@@ -70,10 +72,10 @@ pg.submit.onclick = function() {
 
         write(match);
         resetInputs();
+        pg.match.value = currentMatch + 1;
     } else {
         window.alert('You must enter a team number and match!');
     }
-    pg.match.value = currentMatch + 1;
 };
 
 function write(match) {
@@ -88,9 +90,6 @@ function write(match) {
 
 // Reset all fields.
 function resetInputs() {
-    // Save the current match. It'll later be increased by one and reset.
-    // TODO: This triggers a warning if the input is empty.
-    currentMatch = parseInt(pg.match.value);
     // For each input, reset to default value.
     for (input in inputs) {
         // Reset to different values depending on what type of input it is
@@ -118,8 +117,8 @@ pg.view.onclick = function() {
 
 // When user clicks on the screen, check if they clicked on an increase/decrease button
 onclick = function(e) {
-    // If click was on a decrease button > decrease the value of the adjacent input (but only if it's over 0)
+    // If click was on a decrease button, decrease the value of the adjacent input (but only if it's over 0)
     if (e.target.className === 'decrease' && e.target.nextElementSibling.value > 0) e.target.nextElementSibling.value = parseInt(e.target.nextElementSibling.value) - 1;
-    // If click was on an increase button > increase the value of the adjacent input
+    // If click was on an increase button, increase the value of the adjacent input
     if (e.target.className === 'increase') e.target.previousElementSibling.value = parseInt(e.target.previousElementSibling.value) + 1;
 };
