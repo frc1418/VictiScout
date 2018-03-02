@@ -54,13 +54,12 @@ app.on('activate', function() {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
 ipcMain.on('renderData', function(event, arg) {
-	//setting dialog
-	dataWindow = new BrowserWindow({
+	var dataWindow = new BrowserWindow({
 		width: 1000,
 		height: 500
 	});
 	// Load options page
-	dataWindow.loadURL(`file://${ __dirname}/data.html`);
+	dataWindow.loadURL(`file://${__dirname}/data.html`);
 
 	dataWindow.on('closed', function() {
 		// Dereference the window object, usually you would store windows
