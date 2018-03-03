@@ -51,7 +51,7 @@ button:active {
 .row input {
     width: 50px;
 }
-.row:nth-of-type(2) {
+.row:nth-of-type(2n) {
     margin-top: 10px;
     background: #555;
 }
