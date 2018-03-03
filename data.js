@@ -1,24 +1,17 @@
 const fs = require('fs');
 
-// Define <thead> and <tbody> vars to be filled later on.
+// Define <thead>, <tbody>, and warning vars to be filled later on.
 var thead = document.getElementsByTagName('thead')[0],
-    tbody = document.getElementsByTagName('tbody')[0];
+    tbody = document.getElementsByTagName('tbody')[0],
+    warning = document.getElementById('warning');
 
-var noData = document.getElementById('no-data');
-
-var json = '';
-
-if (fs.existsSync(localStorage.path)) {
-    // Fetch (string type) contents of data.json.
-    json = fs.readFileSync(localStorage.path);
-}
-
-if (json.length < 1) {
-    // Display "no data" warning if no data is found
-    noData.style.display = 'block';
+if (fs.existsSync(localStorage.path) && fs.statSync(localStorage.path).size > 0) {
+    render(JSON.parse(fs.readFileSync(localStorage.path)));
 } else {
-    render(JSON.parse(json));
+    // Display "no data" warning if no data is found
+    warning.style.display = 'block';
 }
+
 
 function render(data) {
     // Make column headers.

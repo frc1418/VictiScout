@@ -32,28 +32,25 @@ td {
     overflow: auto;
     max-width: 100px;
 }
-#no-data {
-    border-radius: 50%;
-    background-color: #555;
-    position: absolute;
+#warning {
     display: none;
-    padding: 100px;
-    border: solid 1px #FFFFFF;
+    box-sizing: content-box;
+    width: 110px;
+    height: 110px;
+    padding: 125px;
+    border-radius: 50%;
+    color: #d12727;
+    font-size: 17px;
+    background-color: #555;
+    border: solid 1px #000000;
     top: 50%;
     left: 50%;
+    position: absolute;
+    text-align: center;
     transform: translate(-50%, -50%);
     animation: enlarge 1s;
 }
-#no-data p {
-    padding-top: 25px;
-    width: 150px;
-    text-align: center;
-    height: 150px;
-}
-p span {
-    font-weight: bold;
-}
 @keyframes enlarge {
-    from {padding: 5px;}
-    to {padding: 100px;}
+    from { padding: 5px; }
+    to { padding: 125px; }
 }
