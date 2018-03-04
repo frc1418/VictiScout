@@ -24,7 +24,7 @@ var tags = document.querySelectorAll('input:not(.special), select:not(.special),
 // Create empty object.
 var inputs = {};
 // Make each element be the value to a key named after its ID.
-for (t in tags) inputs[tags[t].id] = tags[t];
+for (tag of tags.values()) inputs[tag.id] = tag;
 // Add the + and - buttons to a number specific input box
 for (input in inputs) {
     if (inputs[input].type === 'number' && inputs[input].className !== 'large') {
@@ -81,8 +81,11 @@ pg.submit.onclick = function() {
 function write(match) {
     var data = (fs.existsSync(path) && fs.statSync(path).size > 0) ? JSON.parse(fs.readFileSync(path)) : [];
     for (var i = 0; i < data.length; i++) {
-        var replace = (data[i].match === match.match && data[i].team === match.team) ? confirm('Do you want to replace the previous data for this match?') : '';
-        if (replace) data.splice(i--, 1);
+        if (data[i].match === match.match && data[i].team === match.team) {
+            if (confirm('Do you want to replace the previous data for this match?')) {
+                data.splice(i--, 1);
+            }
+        }
     }
     data.push(match);
     // Write data to file.
