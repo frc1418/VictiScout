@@ -10,6 +10,7 @@ var pg = {
     submit: document.getElementById('submit'),
     reset: document.getElementById('reset'),
     view: document.getElementById('view'),
+    position: document.getElementById('start-position'),
 }
 
 // Get date for file naming.
@@ -70,9 +71,13 @@ pg.submit.onclick = function() {
             }
         }
 
+        // Save the current match and position. The match will later be increased by one.
+        currentMatch = parseInt(pg.match.value);
+        currentPosition = pg.position.value;
         write(match);
         resetInputs();
         pg.match.value = currentMatch + 1;
+        pg.position.value = currentPosition;
     } else {
         window.alert('You must enter a team number and match!');
     }
