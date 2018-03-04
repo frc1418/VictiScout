@@ -80,6 +80,10 @@ pg.submit.onclick = function() {
 
 function write(match) {
     var data = (fs.existsSync(path) && fs.statSync(path).size > 0) ? JSON.parse(fs.readFileSync(path)) : [];
+    for (var i = 0; i < data.length; i++) {
+        var replace = (data[i].match === match.match && data[i].team === match.team) ? confirm('Do you want to replace the previous data for this match?') : '';
+        if (replace) data.splice(i--, 1);
+    }
     data.push(match);
     // Write data to file.
     // Very occasionally, this will return JSON that uses WYSIWYG-style quotes (“”), rather
