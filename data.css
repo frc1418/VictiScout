@@ -39,10 +39,10 @@ td {
     height: 110px;
     padding: 125px;
     border-radius: 50%;
-    color: #d12727;
+    color: white;
     font-size: 17px;
     background-color: #555;
-    border: solid 1px #000000;
+    border: solid 1px white;
     top: 50%;
     left: 50%;
     position: absolute;
