@@ -11,6 +11,8 @@ var pg = {
     reset: document.getElementById('reset'),
     view: document.getElementById('view'),
     position: document.getElementById('start-position'),
+    climbed: document.getElementById('climbed'),
+    parked: document.getElementById('parked'),
 }
 
 // Get date for file naming.
@@ -112,6 +114,12 @@ function resetInputs() {
     pg.team.focus();
     console.log('Reset inputs.');
 }
+
+pg.climbed.onchange = function() {
+    if (pg.climbed.options[pg.climbed.selectedIndex].text === 'Yes') {
+        pg.parked.checked = true;
+    }
+};
 
 // When reset button is clicked, trigger reset
 pg.reset.onclick = function() {
