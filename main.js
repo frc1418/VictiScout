@@ -21,9 +21,6 @@ function createWindow() {
 	// and load the index.html of the app.
 	mainWindow.loadURL(`file://${__dirname}/index.html`);
 
-    // Uncomment to open dev tools (Inspect Element) automatically
-	// mainWindow.webContents.openDevTools();
-
 	// Emitted when the window is closed.
 	mainWindow.on('closed', function() {
 		// Dereference window object
