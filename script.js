@@ -13,6 +13,9 @@ var pg = {
     position: document.getElementById('start-position'),
     climbed: document.getElementById('climbed'),
     parked: document.getElementById('parked'),
+    red: document.getElementById('red'),
+    blue: document.getElementById('blue'),
+    color: document.getElementById('team-color')
 }
 
 // Get date for file naming.
@@ -23,7 +26,7 @@ var path = home + (fs.existsSync(home + '/Desktop') ? '/Desktop' : '') + '/scout
 // Generate an array of all data inputs in document.
 // These will be used to generate an object.
 // Inputs named .special are exempt. These can be used for things like path selection.
-var tags = document.querySelectorAll('input:not(.special), select:not(.special), textarea');
+var tags = document.querySelectorAll('input:not(.special), select:not(.special), textarea, div.keep');
 // Create empty object.
 var inputs = {};
 // Make each element be the value to a key named after its ID.
@@ -47,7 +50,9 @@ pg.submit.onclick = function() {
     if (
         // If the user has entered a team number and match number
         pg.team.value &&
-        pg.match.value
+        pg.match.value &&
+        pg.color.value &&
+        pg.position.value
     ) {
         // Store current match, which will later be incremented by 1
         var currentMatch = parseInt(pg.match.value);
@@ -78,7 +83,7 @@ pg.submit.onclick = function() {
         resetInputs();
         pg.match.value = currentMatch + 1;
     } else {
-        window.alert('You must enter a team number and match!');
+        window.alert('You must enter a team number, color, position, and match!');
     }
 };
 
@@ -113,6 +118,28 @@ function resetInputs() {
     }
     pg.team.focus();
     console.log('Reset inputs.');
+}
+
+pg.red.onclick = function() {
+  if (this.style.background === "") {
+    this.style.background = "rgb(209, 39, 39)";
+    pg.blue.style.background = "";
+    pg.color.value = "Red";
+  } else {
+    this.style.background = "";
+    pg.color.value = "";
+  }
+}
+
+pg.blue.onclick = function() {
+  if (this.style.background === "") {
+    this.style.background = "#1d7ac8";
+    pg.red.style.background = "";
+    pg.color.value = "Blue";
+  } else {
+    this.style.background = "";
+    pg.color.value = "";
+  }
 }
 
 pg.climbed.onchange = function() {

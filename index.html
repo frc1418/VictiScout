@@ -11,21 +11,22 @@
     <div class="row">
         <input type="number" id="team" placeholder="Team #" class="large">
         <input type="number" id="match" placeholder="Match #" class="large keep">
+        <div class="selector keep" id="team-color">
+        <button id="red" class="color-selector"></button>
+        <button id="blue" class="color-selector"></button>
+        </div>
+        <select id="start-position" class="keep">
+            <option></option>
+            <option>Left</option>
+            <option>Center</option>
+            <option>Right</option>
+        </select>
         <button id="submit">Submit</button>
         <button id="reset">Reset</button>
         <button id="view">View Data</button>
     </div>
     <div class="row">
         <h1>AUTO</h1>
-        <div>
-            <h2>Start Position</h2>
-            <select id="start-position" class="keep">
-                <option></option>
-                <option>Left</option>
-                <option>Center</option>
-                <option>Right</option>
-            </select>
-        </div>
         <div>
             <h2>AUTO Crossed Line</h2>
             <input type="checkbox" id="auto-line">
