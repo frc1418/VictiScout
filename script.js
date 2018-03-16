@@ -121,24 +121,24 @@ function resetInputs() {
 }
 
 pg.red.onclick = function() {
-  if (this.style.background === "") {
-    this.style.background = "rgb(209, 39, 39)";
-    pg.blue.style.background = "";
-    pg.color.value = "Red";
+  if (this.style.background === '') {
+    this.style.background = 'rgb(209, 39, 39)';
+    pg.blue.style.background = '';
+    pg.color.value = 'Red';
   } else {
-    this.style.background = "";
-    pg.color.value = "";
+    this.style.background = '';
+    pg.color.value = '';
   }
 }
 
 pg.blue.onclick = function() {
-  if (this.style.background === "") {
-    this.style.background = "#1d7ac8";
-    pg.red.style.background = "";
-    pg.color.value = "Blue";
+  if (this.style.background === '') {
+    this.style.background = '#1d7ac8';
+    pg.red.style.background = '';
+    pg.color.value = 'Blue';
   } else {
-    this.style.background = "";
-    pg.color.value = "";
+    this.style.background = '';
+    pg.color.value = '';
   }
 }
 
