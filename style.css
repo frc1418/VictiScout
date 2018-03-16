@@ -87,3 +87,18 @@ option {
     width: 100%;
     height: 250px;
 }
+#start-position {
+    border: none;
+    background: #555;
+    outline: none;
+    color: white;
+}
+.color-selector {
+    background: #555;
+    border-radius: 100%;
+    height: 13px;
+    width: 13px;
+    bottom: 4px;
+    position: relative;
+    transition: ease 0.3s;
+}
