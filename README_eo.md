@@ -1,5 +1,5 @@
-[<img src="images/header.png" align="center" height="160">](https://github.com/frc1418/VictiScout)
-# VictiScout
+[<img src="images/header.png" align="center" alt="VictiScout">](https://github.com/frc1418/VictiScout)
+
 Aplikaĵo por la skoltanto de FRC. Skribita uzanta [Electron](http://electron.atom.io/) por facila agordo.
 
 Prenu la plej nova version [ĉi tie](https://github.com/frc1418/VictiScout/releases)!

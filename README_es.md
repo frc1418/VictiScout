@@ -1,5 +1,5 @@
-[<img src="images/header.png" align="center" height="160">](https://github.com/frc1418/VictiScout)
-# VictiScout
+[<img src="images/header.png" align="center" alt="VictiScout">](https://github.com/frc1418/VictiScout)
+
 Aplicación por exploración en la Competencia de Robótica FIRST. Escrito con [Electron](http://electron.atom.io/) por customización facil.
 
 ¡Descargue la versión mas nueva [aquí](https://github.com/frc1418/VictiScout/releases)!

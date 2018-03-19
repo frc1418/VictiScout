@@ -1,5 +1,5 @@
-[<img src="images/header.png" align="center" height="160">](https://github.com/frc1418/VictiScout)
-# VictiScout
+[<img src="images/header.png" align="center" alt="VictiScout">](https://github.com/frc1418/VictiScout)
+
 Application pour le scouting de FRC. Écrit avec [Electron](http://electron.atom.io/) pour la personnalisation facile.
 
 Prenez la version plus nouvelle [ici](https://github.com/frc1418/VictiScout/releases)!
