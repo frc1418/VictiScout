@@ -1,13 +1,18 @@
+const remote = require('electron').remote;
 const fs = require('fs');
 
-// Define <thead>, <tbody>, and warning vars to be filled later on.
+// Define <thead>, <tbody>, warning, and match deletion vars to be filled later on.
 var thead = document.getElementsByTagName('thead')[0],
     tbody = document.getElementsByTagName('tbody')[0],
     warning = document.getElementById('warning'),
+
     processingSection = document.getElementById('processing'),
     fileInputButton = document.getElementById('input-file'),
     fileInputList = document.getElementById('input-list'),
     outputButton = document.getElementById('csv-button'),
+    deletion = document.getElementById('delete'),
+    button = document.getElementById('delete-button'),
+    matchnum = document.getElementById('match'),
     outputFileName = document.getElementById('output-file');
 
 var fileBuffer = [];
@@ -17,7 +22,11 @@ if (fs.existsSync(localStorage.path) && fs.statSync(localStorage.path).size > 0)
 } else {
     // Display "no data" warning if no data is found
     warning.style.display = 'block';
+
     combineFilesSection.parentElement.style.display = 'none';
+
+    deletion.style.display = 'none';
+
 }
 
 
@@ -155,4 +164,27 @@ function combineFiles() {
             resolve(data);
         });
     });
+
+button.onclick = function() {
+    var mat = JSON.parse(fs.readFileSync(localStorage.path)),
+    indices = [];
+    for (index in mat) {
+      if (mat[index].match == matchnum.value) {
+        indices.push(index)
+      }
+    }
+    if (indices.length === 0) {
+      window.alert('The match you entered cannot be found.');
+    } else {
+    for (index of indices) {
+      mat.splice(index, 1);
+    }
+    if (mat.length - indices.length === -1) {
+      fs.writeFileSync(localStorage.path, '');
+      remote.getCurrentWindow().reload();
+    } else {
+      fs.writeFileSync(localStorage.path, JSON.stringify(mat).replace(/[""]/, '"'));
+      remote.getCurrentWindow().reload();
+    }
+  }
 }
