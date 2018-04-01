@@ -48,7 +48,13 @@ td {
     from { padding: 5px; }
     to { padding: 125px; }
 }
+<<<<<<< HEAD
 .file-label, button {
+=======
+
+.file-label, input[type="text"],
+button {
+>>>>>>> Add delete match button
     border: none;
     background: #444;
     padding: 5px;
@@ -76,6 +82,50 @@ td {
 }
 #processing #input-list {
     list-style-type: none;
+  }
+
+#delete {
+    display: inline-block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 20px;
+}
+#delete * {
+    display: inline-block;
+}
+#delete-button {
+    position: relative;
+    background: #d12727;
+    height: 50px;
+    width: 150px;
+    text-align: center;
+    font-size: 16px;
+    font-family: 'Roboto';
+    font-weight: lighter;
+    box-shadow: 3px 3px 12px rgba(12, 12, 12, 0.5);
+    transition: ease 0.5s;
+    bottom: 14px;
+    user-select: none;
+}
+#delete-button:hover {
+    box-shadow: 5px 5px 12px rgba(12, 12, 12, 0.5);
+}
+#delete-button p {
+    color: white;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+#match {
+    border: none;
+    background: #444;
+    padding: 5px;
+    margin: 1px;
+    outline: none;
+    font-size: 14px;
+    color: white;
+
 }
 #input-list li > div:hover {
     text-decoration: line-through;
