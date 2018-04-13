@@ -1,0 +1,110 @@
+body {
+    background: #333;
+    font: 14px sans-serif;
+    overflow: auto;
+    color: white;
+}
+main {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+main > * {
+    /* border: 1px solid red; */
+}
+input[type="text"],
+button {
+    border: none;
+    background: #444;
+    padding: 5px;
+    outline: none;
+    color: inherit;
+}
+input[type="file"] {
+    display: none;
+}
+button {
+    color: #eee;
+    cursor: pointer;
+    width: auto;
+}
+button:hover {
+    color: #ccc;
+}
+button:active {
+    color: #aaa;
+}
+main ul {
+    list-style-type: none;
+    font-size: 12px;
+    padding: 0px;
+    margin: 0px 0px 0px 2px;
+}
+main li > div {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+}
+main li > div:hover {
+    overflow: visible;
+    text-decoration: line-through;
+    cursor: pointer;
+}
+main p {
+    flex: 1 0 15%;
+    font-size: 40px;
+}
+#files-container {
+    flex: 1 0 auto;
+    width: 200px;
+    max-width: 300px;
+    height: 100px;
+    align-content: center;
+}
+#list-container {
+    display: inline-block;
+    width: 70%;
+    height: 100%;
+    text-align: center;
+}
+#files {
+    display: inline-block;
+    align-content: center;
+    width: 30%;
+    height: 100%;
+    background-color: #d12727;
+    float: left;
+    font-size: 15px;
+    font-weight: lighter;
+    box-shadow: 3px 3px 12px rgba(12, 12, 12, 0.5);
+    transition: ease 0.5s;
+    user-select: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+#files:hover {
+    box-shadow: 5px 5px 12px rgba(12, 12, 12, 0.5);
+}
+#files:active {
+    box-shadow: inset 2px 4px 17px 2px rgba(12, 12, 12, 0.5);
+}
+#files label {
+    text-align: center;
+    padding: 5px;
+}
+#files * {
+    cursor: inherit;
+}
+#output-container {
+    flex: 1;
+}
+#output-file {
+    flex: 0 1 auto;
+    width: 150px;
+    height: 35px;
+    font-size: 15px;
+}
+#header {
+    flex: 1;
+}

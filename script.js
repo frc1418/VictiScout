@@ -10,6 +10,7 @@ var pg = {
     submit: document.getElementById('submit'),
     reset: document.getElementById('reset'),
     view: document.getElementById('view'),
+    combine: document.getElementById('combine-data'),
     position: document.getElementById('start-position'),
     climbed: document.getElementById('climbed'),
     parked: document.getElementById('parked'),
@@ -159,6 +160,10 @@ pg.view.onclick = function() {
     localStorage.path = path;
     // Tell main.js to open rendered data window
     ipc.send('renderData');
+};
+
+pg.combine.onclick = function() {
+    ipc.send('combineData')
 };
 
 // When user clicks on the screen, check if they clicked on an increase/decrease button
