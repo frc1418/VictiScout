@@ -28,10 +28,8 @@ fileInput.onchange = function() {
     if (blocked) alert('Some files have been blocked due to improper type. (Only accepting .json files)');
 }
 
-outputButton.onclick = function() {
-    var data = makeCSV();
-    //console.log(data);
-    return;
+outputButton.onclick = async function() {
+    var content = await makeCSV();
     fs.appendFile((fileName.value ? fileName.value : 'data') + '.csv', content, function (err) {
       if (err) throw err;
       console.log('Saved file.');
@@ -52,27 +50,41 @@ document.onclick = function(e) {
 
 async function makeCSV() {
     var data = await combineFiles();
-    console.log(data.data);
+
+    const items = data;
+    const replacer = (key, value) => value === null ? '' : value;
+    const header = Object.keys(items[0]);
+    let csv = items.map(row => header.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(','));
+    csv.unshift(header.join(','));
+    csv = csv.join('\r\n');
+
+    return csv;
 }
 
 function combineFiles() {
-    var combinedData = [];
-    var reader = new FileReader();
-    return new Promise((resolve, reject) => {
-        for (file of fileBuffer) {
-            var readData;
+    var promises = [];
+    for (file of fileBuffer) {
+        promises.push(new Promise((resolve, reject) => {
+            var reader = new FileReader();
             try {
-                reader.onload = () => resolve({data: JSON.parse(reader.result)});
-                reader.onerror = () => reject(result.error);
+                reader.onload = () => resolve(JSON.parse(reader.result));
+                reader.onerror = () => reject(reader.error);
                 reader.readAsText(file);
             } catch (err) {
                 alert('File ' + file.name + ' has parsing errors. Resolve and run again.');
-                continue;
+                reject(err);
             }
-        }
-    }).then((resolvedData) => {
+        }));
+    }
+    return Promise.all(promises).then((resolvedData) => {
         return new Promise((resolve, reject) => {
-            resolve({data: combinedData.concat(resolvedData.data)});
+            var data = [];
+            for (file of resolvedData) {
+                for (object of file) {
+                    data.push(object);
+                }
+            }
+            resolve(data);
         });
     });
 }
