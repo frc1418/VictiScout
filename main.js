@@ -44,17 +44,3 @@ ipcMain.on('renderData', function(event, arg) {
 		dataWindow = null;
 	});
 });
-
-ipcMain.on('combineData', function(event, arg) {
-	var combineWindow = new BrowserWindow({
-		width: 1000,
-		height: 200
-	});
-	// Load options page
-	combineWindow.loadURL(`file://${__dirname}/combine_data.html`);
-
-	combineWindow.on('closed', function() {
-		// Dereference window object
-		combineWindow = null;
-	});
-});
