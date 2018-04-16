@@ -8,15 +8,41 @@
 </head>
 
 <body>
-    <div id="warning">
-        <p>No data found! Try submitting a completed form.</p>
-    </div>
-    <table>
-        <thead>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
+    <main>
+        <section>
+            <div id="warning">
+                <p>No data found! Try submitting a completed form.</p>
+            </div>
+            <table>
+                <thead>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </section>
+        <section>
+            <h3>Combine Files</h3>
+            <div id="combine-files">
+                <div id="files-container">
+                    <label for="file-input" class="file-label">Add Files</label>
+                    <input id="file-input" type="file" accept=".json,application/json" multiple></input>
+                    <div id="list-container">
+                        Files
+                        <!-- This list will be populated by javascript -->
+                        <ul id="file-list"></ul>
+                    </div>
+                </div>
+                <p>&rarr;</p>
+                <div id="input-container">
+                    <input type="text" id="output-file" placeholder="Ouput File Name">
+                </div>
+                <p>&rarr;</p>
+                <div id="output-container">
+                    <button id="csv-button">Make CSV File</button>
+                </div>
+            </div>
+        </section>
+    </main>
     <script src="data.js"></script>
 </body>
 

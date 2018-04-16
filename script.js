@@ -10,7 +10,6 @@ var pg = {
     submit: document.getElementById('submit'),
     reset: document.getElementById('reset'),
     view: document.getElementById('view'),
-    combine: document.getElementById('combine-data'),
     position: document.getElementById('start-position'),
     climbed: document.getElementById('climbed'),
     parked: document.getElementById('parked'),
@@ -22,7 +21,10 @@ var pg = {
 // Get date for file naming.
 var d = new Date();
 var home = process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'];
-var path = home + (fs.existsSync(home + '/Desktop') ? '/Desktop' : '') + '/scoutdata_' + user.username + '_' + ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'][d.getMonth()] + '_' + d.getDate() + '_' + d.getFullYear() + '.json';
+var desktopPath = home + (fs.existsSync(home + '/Desktop') ? '/Desktop' : '');
+var path = desktopPath + '/scoutdata_' + user.username + '_' + ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'][d.getMonth()] + '_' + d.getDate() + '_' + d.getFullYear() + '.json';
+
+localStorage.desktopPath = desktopPath;
 
 // Generate an array of all data inputs in document.
 // These will be used to generate an object.
@@ -160,10 +162,6 @@ pg.view.onclick = function() {
     localStorage.path = path;
     // Tell main.js to open rendered data window
     ipc.send('renderData');
-};
-
-pg.combine.onclick = function() {
-    ipc.send('combineData')
 };
 
 // When user clicks on the screen, check if they clicked on an increase/decrease button
