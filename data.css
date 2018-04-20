@@ -81,78 +81,14 @@ input[type="file"] {
 .file-label:active, button:active {
     color: #aaa;
 }
-section > h3 {
-    color: white;
-    margin-bottom: 5px;
-}
+
 #combine-files {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    text-align: center;
-    color: white;
+    margin-left: 10px;
+}
+#combine-files > * {
+    display: inline-block;
+    vertical-align: middle;
 }
 #combine-files ul {
     list-style-type: none;
-    font-size: 12px;
-    padding: 0px;
-    margin: 0px 0px 0px 2px;
-}
-#combine-files li > div {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow-x: hidden;
-}
-#combine-files li > div:hover {
-    overflow: visible;
-    text-decoration: line-through;
-    cursor: pointer;
-}
-#combine-files p {
-    flex: 1 0 15%;
-    font-size: 40px;
-}
-#files-container {
-    flex: 1 0 auto;
-    width: 200px;
-    max-width: 300px;
-    height: 100px;
-    margin-left: 10px;
-    align-content: center;
-}
-#list-container {
-    display: inline-block;
-    width: 70%;
-    height: 100%;
-    text-align: center;
-}
-.file-label {
-    display: inline-block;
-    align-content: center;
-    width: 30%;
-    height: 20px;
-    padding: 40px 0px 60px 0px;
-    float: left;
-    font-size: 15px;
-    font-weight: lighter;
-    user-select: none;
-    cursor: pointer;
-    border-radius: 5px;
-}
-.file-label * {
-    cursor: inherit;
-}
-#output-container {
-    flex: 1;
-    max-width: 72px;
-    margin-right: 10px;
-}
-#output-file {
-    flex: 0 1 auto;
-    width: 130px;
-    height: 35px;
-    font-size: 15px;
-}
-#header {
-    flex: 1;
 }
