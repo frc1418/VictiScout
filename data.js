@@ -4,9 +4,9 @@ const fs = require('fs');
 var thead = document.getElementsByTagName('thead')[0],
     tbody = document.getElementsByTagName('tbody')[0],
     warning = document.getElementById('warning'),
-    combineFilesSection = document.getElementById('combine-files'),
-    fileInputButton = document.getElementById('file-input'),
-    fileInputList = document.getElementById('file-list'),
+    processingSection = document.getElementById('processing'),
+    fileInputButton = document.getElementById('input-file'),
+    fileInputList = document.getElementById('input-list'),
     outputButton = document.getElementById('csv-button'),
     outputFileName = document.getElementById('output-file');
 

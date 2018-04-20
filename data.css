@@ -82,13 +82,13 @@ input[type="file"] {
     color: #aaa;
 }
 
-#combine-files {
+#processing {
     margin-left: 10px;
 }
-#combine-files > * {
+#processing > * {
     display: inline-block;
     vertical-align: middle;
 }
-#combine-files ul {
+#processing #input-list {
     list-style-type: none;
 }
