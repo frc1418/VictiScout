@@ -6,6 +6,7 @@
 body {
     background: #333;
     font: 14px sans-serif;
+    color: white;
 }
 section {
     margin-bottom: 20px;
@@ -64,6 +65,7 @@ button {
     padding: 5px;
     outline: none;
     color: white;
+    font-size: inherit;
 }
 input[type="file"] {
     display: none;
