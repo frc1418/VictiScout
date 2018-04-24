@@ -26,6 +26,10 @@ td {
     overflow: auto;
     max-width: 100px;
 }
+input {
+  background: #444;
+  margin: 10px;
+}
 #warning {
     display: none;
     box-sizing: content-box;
@@ -101,15 +105,19 @@ button {
     width: 150px;
     text-align: center;
     font-size: 16px;
-    font-family: 'Roboto';
     font-weight: lighter;
     box-shadow: 3px 3px 12px rgba(12, 12, 12, 0.5);
-    transition: ease 0.5s;
-    bottom: 14px;
+    transition: ease 0.2s;
     user-select: none;
+    transform: translateX(-50%);
+    left: 50%;
+}
+input[type="checkbox" i] {
+  background-color: #444;
 }
 #delete-button:hover {
     box-shadow: 5px 5px 12px rgba(12, 12, 12, 0.5);
+    cursor: pointer;
 }
 #delete-button p {
     color: white;

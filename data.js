@@ -47,6 +47,7 @@ function render(data) {
     for (pt in data) {
         // Make a new table row
         tr = document.createElement('tr');
+        var check = document.createElement('input');
         // Go through all properties
         for (prop in data[pt]) {
             // Make a table cell for each
@@ -58,6 +59,33 @@ function render(data) {
         }
         // Put this row into the document
         tbody.appendChild(tr);
+        check.className = 'generated'
+        tr.appendChild(check);
+    }
+}
+
+var inputs = document.querySelectorAll('input.generated');
+for (elem of inputs) {
+    elem.setAttribute('type', 'checkbox');
+}
+
+button.onclick = function() {
+    var mat = JSON.parse(fs.readFileSync(localStorage.path)),
+    indices = [];
+    for (nice of inputs) {
+        if (nice.checked) {
+            var indice = 0;
+            indice = (parseInt(nice.parentNode.childNodes[1].textContent));
+            for (index in mat) {
+              if (mat[index].match === indice) {
+                indices.push(index);
+              }
+            }
+      }
+    }
+    console.log(mat);
+    for (index of indices) {
+      mat.splice(index, 1);
     }
 }
 
@@ -161,27 +189,4 @@ function combineFiles() {
             resolve(data);
         });
     });
-
-button.onclick = function() {
-    var mat = JSON.parse(fs.readFileSync(localStorage.path)),
-    indices = [];
-    for (index in mat) {
-      if (mat[index].match == matchnum.value) {
-        indices.push(index)
-      }
-    }
-    if (indices.length === 0) {
-      window.alert('The match you entered cannot be found.');
-    } else {
-    for (index of indices) {
-      mat.splice(index, 1);
-    }
-    if (mat.length - indices.length === -1) {
-      fs.writeFileSync(localStorage.path, '');
-      remote.getCurrentWindow().reload();
-    } else {
-      fs.writeFileSync(localStorage.path, JSON.stringify(mat).replace(/[""]/, '"'));
-      remote.getCurrentWindow().reload();
-    }
-  }
 }
