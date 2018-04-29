@@ -1,35 +1,6 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font: 14px sans-serif;
-    color: white;
-}
 body {
-    background: #333;
     margin: 8px 3px 0;
     overflow: auto;
-}
-input[type="number"],
-input[type="text"],
-textarea,
-button {
-    border: none;
-    background: #444;
-    padding: 5px;
-    margin: 1px;
-    outline: none;
-}
-button {
-    color: #eee;
-    cursor: pointer;
-    width: auto;
-}
-button:hover {
-    color: #ccc;
-}
-button:active {
-    color: #aaa;
 }
 .row {
     padding: 5px 0;
@@ -47,34 +18,16 @@ button:active {
 .row:first-of-type * {
     display: inline-block;
 }
-.row input {
+.row input:not(.large) {
     width: 40px;
 }
 .row:nth-of-type(2) {
     margin-top: 10px;
     background: #555;
 }
-h1 {
-    font-weight: bold;
-    font-size: 30px;
-    margin: 0 10px;
-}
-h2 {
-    margin-bottom: 5px;
-}
-input {
-    width: 50px;
-}
-input.large {
-    width: auto;
-}
 .increase,
 .decrease {
     width: 25px;
-}
-select,
-option {
-    color: #333;
 }
 #path {
     width: 200px;
