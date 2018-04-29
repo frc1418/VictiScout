@@ -92,3 +92,7 @@ input[type="file"] {
 #processing #input-list {
     list-style-type: none;
 }
+#input-list li > div:hover {
+    text-decoration: line-through;
+    cursor: pointer;
+}
