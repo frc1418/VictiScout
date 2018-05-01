@@ -12,7 +12,6 @@ var thead = document.getElementsByTagName('thead')[0],
     outputButton = document.getElementById('csv-button'),
     deletion = document.getElementById('delete'),
     button = document.getElementById('delete-button'),
-    matchnum = document.getElementById('match'),
     outputFileName = document.getElementById('output-file');
 
 var fileBuffer = [];
@@ -73,23 +72,21 @@ for (elem of inputs) {
 }
 
 button.onclick = function() {
-    var mat = JSON.parse(fs.readFileSync(localStorage.path)),
-    indices = [];
-    for (nice of inputs) {
-        if (nice.checked) {
-            var indice = 0;
-            indice = (parseInt(nice.parentNode.childNodes[1].textContent));
-            for (index in mat) {
-              if (mat[index].match === indice) {
-                indices.push(index);
+    var array = JSON.parse(fs.readFileSync(localStorage.path));
+    for (box of inputs) {
+        if (box.checked) {
+            var matchnum = 0;
+            matchnum = (parseInt(box.parentNode.childNodes[1].textContent));
+            for (index in array) {
+                if (array[index].match === matchnum) {
+                    array.splice(index, 1);
+                    console.log(array);
+                  }
               }
-            }
+          }
       }
-    }
-    console.log(mat);
-    for (index of indices) {
-      mat.splice(index, 1);
-    }
+      fs.writeFileSync(localStorage.path, JSON.stringify(array).replace(/[""]/, '"'));
+      remote.getCurrentWindow().reload();
 }
 
 function pname(str) {

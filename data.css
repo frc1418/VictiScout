@@ -89,6 +89,8 @@ input[type="file"] {
 
 #processing {
     margin-left: 10px;
+    position: relative;
+    float: left;
 }
 #processing > * {
     display: inline-block;
@@ -97,51 +99,30 @@ input[type="file"] {
 #processing #input-list {
     list-style-type: none;
   }
-
 #delete {
-    display: inline-block;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 20px;
-}
-#delete * {
-    display: inline-block;
+  position: relative;
+  float: right;
+  height: 50px;
+  width: 50px;
+  margin: 10px;
 }
 #delete-button {
-    position: relative;
     background: #d12727;
     height: 50px;
-    width: 150px;
-    text-align: center;
-    font-size: 16px;
-    font-weight: lighter;
+    width: 50px;
     box-shadow: 3px 3px 12px rgba(12, 12, 12, 0.5);
     transition: ease 0.2s;
-    user-select: none;
-    transform: translateX(-50%);
-    left: 50%;
-}
-input[type="checkbox" i] {
-  background-color: #444;
+    border-radius: 100%;
 }
 #delete-button:hover {
-    box-shadow: 5px 5px 12px rgba(12, 12, 12, 0.5);
+    box-shadow: 4.5px 4.5px 12px rgba(12, 12, 12, 0.5);
     cursor: pointer;
 }
-#delete-button p {
-    color: white;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-}
-#match {
-    border: none;
-    background: #444;
-    padding: 5px;
-    margin: 1px;
-    outline: none;
-    font-size: 14px;
-    color: white;
-
+#garbage {
+  position: relative;
+  height: 30px;
+  width: 30px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
