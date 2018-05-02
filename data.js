@@ -10,7 +10,6 @@ var thead = document.getElementsByTagName('thead')[0],
     fileInputButton = document.getElementById('input-file'),
     fileInputList = document.getElementById('input-list'),
     outputButton = document.getElementById('csv-button'),
-    deletion = document.getElementById('delete'),
     button = document.getElementById('delete-button'),
     outputFileName = document.getElementById('output-file');
 
@@ -24,7 +23,7 @@ if (fs.existsSync(localStorage.path) && fs.statSync(localStorage.path).size > 0)
 
     combineFilesSection.parentElement.style.display = 'none';
 
-    deletion.style.display = 'none';
+    button.style.display = 'none';
 
 }
 
@@ -80,7 +79,6 @@ button.onclick = function() {
             for (index in array) {
                 if (array[index].match === matchnum) {
                     array.splice(index, 1);
-                    console.log(array);
                   }
               }
           }
