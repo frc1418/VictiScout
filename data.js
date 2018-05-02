@@ -17,7 +17,7 @@ if (fs.existsSync(localStorage.path) && fs.statSync(localStorage.path).size > 0)
 } else {
     // Display "no data" warning if no data is found
     warning.style.display = 'block';
-    combineFilesSection.parentElement.style.display = 'none';
+    processingSection.style.display = 'none';
 }
 
 
