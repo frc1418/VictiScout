@@ -1,13 +1,3 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-body {
-    background: #333;
-    font: 14px sans-serif;
-    color: white;
-}
 section {
     margin-bottom: 20px;
 }
@@ -58,47 +48,6 @@ input {
     transform: translate(-50%, -50%);
     animation: enlarge 1s;
 }
-@keyframes enlarge {
-    from { padding: 5px; }
-    to { padding: 125px; }
-}
-
-.file-label, input[type="text"],
-button {
-    border: none;
-    background: #444;
-    padding: 5px;
-    outline: none;
-    color: white;
-    font-size: inherit;
-}
-input[type="file"] {
-    display: none;
-}
-.file-label, button {
-    color: #eee;
-    cursor: pointer;
-    width: auto;
-}
-.file-label:hover, button:hover {
-    color: #ccc;
-}
-.file-label:active, button:active {
-    color: #aaa;
-}
-
-#processing {
-    margin-left: 10px;
-    position: relative;
-    float: left;
-}
-#processing > * {
-    display: inline-block;
-    vertical-align: middle;
-}
-#processing #input-list {
-    list-style-type: none;
-  }
 #delete {
   position: relative;
   float: right;
@@ -126,4 +75,43 @@ input[type="file"] {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+@keyframes enlarge {
+    from { padding: 5px; }
+    to { padding: 125px; }
+}
+.file-label, button {
+    border: none;
+    background: #444;
+    padding: 5px;
+    outline: none;
+    color: white;
+    font-size: inherit;
+}
+.file-label, button {
+    color: #eee;
+    cursor: pointer;
+    width: auto;
+}
+.file-label:hover, button:hover {
+    color: #ccc;
+}
+.file-label:active, button:active {
+    color: #aaa;
+}
+#processing {
+    margin-left: 10px;
+    position: relative;
+    float: left;
+}
+#processing > * {
+    display: inline-block;
+    vertical-align: middle;
+}
+#processing #input-list {
+    list-style-type: none;
+  }
+#input-list li > div:hover {
+    text-decoration: line-through;
+    cursor: pointer;
 }
