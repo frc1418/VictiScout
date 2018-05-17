@@ -52,13 +52,7 @@ input {
     from { padding: 5px; }
     to { padding: 125px; }
 }
-<<<<<<< HEAD
 .file-label, button {
-=======
-
-.file-label, input[type="text"],
-button {
->>>>>>> Add delete match button
     border: none;
     background: #444;
     padding: 5px;
@@ -100,18 +94,19 @@ button {
     background: #d12727;
     height: 50px;
     width: 50px;
-    box-shadow: 3px 3px 12px rgba(12, 12, 12, 0.5);
-    transition: ease 0.2s;
     border-radius: 100%;
 }
 #delete-button:hover {
-    box-shadow: 4.5px 4.5px 12px rgba(12, 12, 12, 0.5);
+    background: #d82f2f;
     cursor: pointer;
+}
+#delete-button:active {
+    background: #b52828;
 }
 #garbage {
   position: relative;
-  height: 30px;
-  width: 30px;
+  height: 20px;
+  width: 20px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
