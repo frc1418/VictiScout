@@ -4,8 +4,6 @@ Applicatio per exploratione FRC-ae. Scriptus [Electrone](http://electron.atom.io
 
 Prehende versionem novissimum compositus [hic](https://github.com/frc1418/VictiScout/releases)!
 
-Bassa `vs`-um, applicatio CLI conveniens per processum datum [hic](https://github.com/frc1418/vs).
-
 ![Screenshot](images/screenshot.png)
 
 ## Dependi augescae

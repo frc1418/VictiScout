@@ -4,8 +4,6 @@ Application pour le scouting de FRC. Écrit avec [Electron](http://electron.atom
 
 Prenez la version plus nouvelle [ici](https://github.com/frc1418/VictiScout/releases)!
 
-Téléchargez `vs`, une application practique pour le processing des donnés de VictiScout [ici](https://github.com/frc1418/vs).
-
 ![Screenshot](images/screenshot.png)
 
 ## Dépendencies de développement

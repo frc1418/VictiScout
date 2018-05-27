@@ -4,8 +4,6 @@ Aplicación por exploración en la Competencia de Robótica FIRST. Escrito con [
 
 ¡Descargue la versión mas nueva [aquí](https://github.com/frc1418/VictiScout/releases)!
 
-Se puede descargar `vs`, una app para controlar datos de VictiScout, [aquí](https://github.com/frc1418/vs).
-
 ![Captura de pantalla](images/screenshot.png)
 
 ## Dependencias por desarrollar

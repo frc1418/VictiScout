@@ -4,8 +4,6 @@ Aplikaĵo por la skoltanto de FRC. Skribita uzanta [Electron](http://electron.at
 
 Prenu la plej nova version [ĉi tie](https://github.com/frc1418/VictiScout/releases)!
 
-Prenu `vs`, oportuna komanda aplikado por procezi datumojn de VictiScout, [ĉi tie](https://github.com/frc1418/vs).
-
 ![Ekrankopio](images/screenshot.png)
 
 ## Disvolvada dependeco
