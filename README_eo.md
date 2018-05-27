@@ -6,7 +6,7 @@ Prenu la plej nova version [ĉi tie](https://github.com/frc1418/VictiScout/relea
 
 Prenu `vs`, oportuna komanda aplikado por procezi datumojn de VictiScout, [ĉi tie](https://github.com/frc1418/vs).
 
-![Ekrankopio](screenshot.png)
+![Ekrankopio](images/screenshot.png)
 
 ## Disvolvada dependeco
 * [Node.js](https://nodejs.org)
