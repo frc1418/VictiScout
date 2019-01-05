@@ -27,46 +27,41 @@
         <button id="view">View Data</button>
     </div>
     <div class="row">
-        <h1>AUTO</h1>
+        <h1>SANDSTORM</h1>
         <div>
-            <h2>AUTO Crossed Line</h2>
+            <h2>LEVEL STARTED</h2>
+            <input type="number" id="auto-scale" value="0" min="0" max="3">
+        </div>
+        <div>
+            <h2>OFF PLATFORM</h2>
             <input type="checkbox" id="auto-line">
         </div>
         <div>
-            <h2>AUTO Scale Cubes</h2>
+            <h2>HATCHES PLACED</h2>
             <input type="number" id="auto-scale" value="0" min="0">
         </div>
         <div>
-            <h2>AUTO Switch Cubes</h2>
+            <h2>CARGO PLACED</h2>
             <input type="number" id="auto-switch" value="0" min="0">
         </div>
     </div>
     <div class="row">
         <h1>TELEOP</h1>
         <div>
-            <h2>Scale Cubes</h2>
+            <h2>HATCHES PLACED</h2>
             <input type="number" id="scale" value="0" min="0">
         </div>
         <div>
-            <h2>Switch Cubes</h2>
+            <h2>CARGO PLACED</h2>
             <input type="number" id="switch" value="0" min="0">
         </div>
         <div>
-            <h2>Opposition Switch Cubes</h2>
-            <input type="number" id="opposition-switch" value="0" min="0">
+            <h2>ROCKET FILLED</h2>
+            <input type="checkbox" id="auto-line">
         </div>
         <div>
-            <h2>Vault Cubes</h2>
-            <input type="number" id="vault" value="0" min="0">
-        </div>
-        <div>
-            <h2>Climbed?</h2>
-            <input type="checkbox" id="climbed">
-        </div>
-        <div>
-            <h2>Climb Assists?</h2>
-            <input type="checkbox" id="climb-assist-first">
-            <input type="checkbox" id="climb-assist-second">
+            <h2>LEVEL REACHED</h2>
+            <input type="number" id="vault" value="0" min="0" max="3">
         </div>
     </div>
     <div class="row">
@@ -77,7 +72,7 @@ The most helpful information you can note is insights about the team which can't
 
 Please refrain from making sweeping declarations about whether a team should be avoided, and from adding any useless information. It's also not necessary to note every event in the whole game: the standard numerical inputs can be used for that; we don't need extraneous duplicate information.
 
-If a team knocks a cube off the scale or switch, subtract from their scores on that target."></textarea>
+"></textarea>
     </div>
 
     <script src="script.js"></script>
