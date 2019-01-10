@@ -10,7 +10,7 @@ var thead = document.getElementsByTagName('thead')[0],
     fileInputButton = document.getElementById('input-file'),
     fileInputList = document.getElementById('input-list'),
     outputButton = document.getElementById('csv-button'),
-    button = document.getElementById('delete-button'),
+    deleteButton = document.getElementById('delete-button'),
     outputFileName = document.getElementById('output-file');
 
 var fileBuffer = [];
@@ -21,8 +21,7 @@ if (fs.existsSync(localStorage.path) && fs.statSync(localStorage.path).size > 0)
     // Display "no data" warning if no data is found
     warning.style.display = 'block';
     processingSection.style.display = 'none';
-    deletion.style.display = 'none';
-    button.style.display = 'none';
+    deleteButton.style.display = 'none';
 }
 
 
@@ -68,7 +67,7 @@ for (elem of inputs) {
     elem.setAttribute('type', 'checkbox');
 }
 
-button.onclick = function() {
+deleteButton.onclick = function() {
     var array = JSON.parse(fs.readFileSync(localStorage.path));
     for (box of inputs) {
         if (box.checked) {
@@ -81,7 +80,11 @@ button.onclick = function() {
               }
           }
       }
-      fs.writeFileSync(localStorage.path, JSON.stringify(array).replace(/[""]/, '"'));
+      if(array.length == 0) {
+        fs.writeFileSync(localStorage.path, "");
+      }else {
+        fs.writeFileSync(localStorage.path, JSON.stringify(array).replace(/[""]/, '"'));
+      }
       remote.getCurrentWindow().reload();
 }
 
