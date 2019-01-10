@@ -11,7 +11,6 @@ var pg = {
     reset: document.getElementById('reset'),
     view: document.getElementById('view'),
     position: document.getElementById('start-position'),
-    climbed: document.getElementById('climbed'),
     parked: document.getElementById('parked'),
     red: document.getElementById('red'),
     blue: document.getElementById('blue'),
@@ -144,12 +143,6 @@ pg.blue.onclick = function() {
     pg.color.value = '';
   }
 }
-
-pg.climbed.onchange = function() {
-    if (pg.climbed.options[pg.climbed.selectedIndex].text === 'Yes') {
-        pg.parked.checked = true;
-    }
-};
 
 // When reset button is clicked, trigger reset
 pg.reset.onclick = function() {
