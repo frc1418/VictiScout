@@ -85,16 +85,15 @@ input {
   }
 #delete {
   position: relative;
-  float: right;
-  height: 50px;
-  width: 50px;
-  margin: 10px;
+  display: inline-block;
+  left: 20%;
 }
 #delete-button {
     background: #d12727;
-    height: 50px;
-    width: 50px;
-    border-radius: 100%;
+    padding: 8px;
+    width: 155px;
+    font-size: inherit;
+    text-align: center;
 }
 #delete-button:hover {
     background: #d82f2f;
@@ -102,14 +101,6 @@ input {
 }
 #delete-button:active {
     background: #b52828;
-}
-#garbage {
-  position: relative;
-  height: 20px;
-  width: 20px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 #input-list li > div:hover {
     text-decoration: line-through;
