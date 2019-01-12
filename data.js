@@ -71,21 +71,21 @@ deleteButton.onclick = function() {
     var array = JSON.parse(fs.readFileSync(localStorage.path));
     for (box of inputs) {
         if (box.checked) {
-            var matchnum = 0;
-            matchnum = (parseInt(box.parentNode.childNodes[1].textContent));
+            var matchNum = 0;
+            matchNum = (parseInt(box.parentNode.childNodes[1].textContent));
             for (index in array) {
-                if (array[index].match === matchnum) {
+                if (array[index].match === matchNum) {
                     array.splice(index, 1);
-                  }
-              }
-          }
-      }
-      if(array.length == 0) {
-        fs.writeFileSync(localStorage.path, "");
-      }else {
-        fs.writeFileSync(localStorage.path, JSON.stringify(array).replace(/[""]/, '"'));
-      }
-      remote.getCurrentWindow().reload();
+                }
+            }
+        }
+    }
+    if(array.length == 0) {
+      fs.writeFileSync(localStorage.path, "");
+    }else {
+      fs.writeFileSync(localStorage.path, JSON.stringify(array).replace(/[""]/, '"'));
+    }
+    remote.getCurrentWindow().reload();
 }
 
 function pname(str) {
