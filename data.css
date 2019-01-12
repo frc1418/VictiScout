@@ -83,12 +83,10 @@ input {
 #processing #input-list {
     list-style-type: none;
   }
-#delete {
-  position: relative;
-  display: inline-block;
-  left: 20%;
-}
 #delete-button {
+    position: relative;
+    display: inline-block;
+    left: 20%;
     background: #d12727;
     padding: 8px;
     width: 155px;
