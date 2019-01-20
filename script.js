@@ -11,10 +11,13 @@ var pg = {
     reset: document.getElementById('reset'),
     view: document.getElementById('view'),
     position: document.getElementById('start-position'),
-    parked: document.getElementById('parked'),
     red: document.getElementById('red'),
     blue: document.getElementById('blue'),
     color: document.getElementById('team-color')
+}
+
+var change = {
+    parked: document.getElementById('parked'),
 }
 
 // Get date for file naming.
