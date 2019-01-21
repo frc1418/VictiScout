@@ -15,11 +15,11 @@ function createWindow() {
 	mainWindow = new BrowserWindow({
 		width: 870,
 		height: 475,
-		icon: __dirname + '/logo.png'
+		icon: __dirname + '../logo.png'
 	});
 
 	// and load the index.html of the app.
-	mainWindow.loadURL(`file://${__dirname}/index.html`);
+	mainWindow.loadURL(`file://${__dirname}/../index.html`);
 
 	// Emitted when the window is closed.
 	mainWindow.on('closed', function() {
@@ -37,7 +37,7 @@ ipcMain.on('renderData', function(event, arg) {
 		height: 500
 	});
 	// Load options page
-	dataWindow.loadURL(`file://${__dirname}/data.html`);
+	dataWindow.loadURL(`file://${__dirname}/../data.html`);
 
 	dataWindow.on('closed', function() {
 		// Dereference window object
