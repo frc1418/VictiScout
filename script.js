@@ -16,7 +16,7 @@ var pg = {
     color: document.getElementById('team-color')
 }
 
-var change = {
+var game = {
     parked: document.getElementById('parked'),
 }
 
