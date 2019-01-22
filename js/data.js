@@ -19,7 +19,7 @@ if (fs.existsSync(localStorage.path) && fs.statSync(localStorage.path).size > 0)
     render(JSON.parse(fs.readFileSync(localStorage.path)));
 } else {
     // Display "no data" warning if no data is found
-    warning.style.display = 'block';
+    warning.style.display = 'flex';
     processingSection.style.display = 'none';
     deleteButton.style.display = 'none';
 }
