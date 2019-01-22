@@ -32,6 +32,9 @@ input {
 }
 #warning {
     display: none;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
     box-sizing: content-box;
     width: 110px;
     height: 110px;
