@@ -14,11 +14,11 @@ var pg = {
     red: document.getElementById('red'),
     blue: document.getElementById('blue'),
     color: document.getElementById('team-color')
-}
+};
 
 var game = {
     parked: document.getElementById('parked'),
-}
+};
 
 // Get date for file naming.
 var d = new Date();
