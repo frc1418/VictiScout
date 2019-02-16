@@ -18,7 +18,7 @@ body {
 .row:first-of-type * {
     display: inline-block;
 }
-.row input:not(.large) {
+.row input[type="text"]:not(.large) {
     width: 40px;
 }
 .row:nth-of-type(2) {
@@ -55,3 +55,27 @@ body {
     position: relative;
     transition: ease 0.3s;
 }
+/*input[type="checkbox"] {
+    border-radius: 50%;
+    width: 1.3em;
+    height: 1.3em;
+    background-color: white;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+    text-align: left;
+}
+input[type="checkbox"].hatches {
+    width: 30px;
+}
+input[type="checkbox"]:checked {
+    background-color: gray;
+}
+input[type="checkbox"]:checked.hatches {
+    background-color: yellow;
+}
+input[type="checkbox"]:checked.balls {
+    background-color: orange;
+}*/

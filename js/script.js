@@ -164,6 +164,12 @@ pg.view.onclick = function() {
 onclick = function(e) {
     // If click was on a decrease button, decrease the value of the adjacent input (but only if it's over 0)
     if (e.target.className === 'decrease' && e.target.nextElementSibling.value > 0) e.target.nextElementSibling.value = parseInt(e.target.nextElementSibling.value) - 1;
-    // If click was on an increase button, increase the value of the adjacent input
-    if (e.target.className === 'increase') e.target.previousElementSibling.value = parseInt(e.target.previousElementSibling.value) + 1;
+    // If click was on an increase button, increase the value of the adjacent input. If the button correlates to a rocket input, only increase if it is under the max
+    // if (e.target.className === 'increase') e.target.previousElementSibling.value = parseInt(e.target.previousElementSibling.value) + 1;
+    if (e.target.className === 'increase') {
+        if (e.target.previousElementSibling.hasAttribute('max')) {
+            if (e.target.previousElementSibling.value < e.target.previousElementSibling.attributes.max.value) e.target.previousElementSibling.value = parseInt(e.target.previousElementSibling.value) + 1;
+        }
+        else e.target.previousElementSibling.value = parseInt(e.target.previousElementSibling.value) + 1;
+    }
 };
