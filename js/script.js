@@ -57,7 +57,7 @@ pg.submit.onclick = function() {
         pg.team.value &&
         pg.match.value &&
         pg.color.value &&
-        pg.position.value
+        pg.position.value !== 'Position'
     ) {
         // Store current match, which will later be incremented by 1
         var currentMatch = parseInt(pg.match.value);
