@@ -57,7 +57,7 @@ pg.submit.onclick = function() {
         pg.team.value &&
         pg.match.value &&
         pg.color.value &&
-        pg.position.value
+        pg.position.value !== 'Position'
     ) {
         // Store current match, which will later be incremented by 1
         var currentMatch = parseInt(pg.match.value);
@@ -118,7 +118,7 @@ function resetInputs() {
         // Reset to different values depending on what type of input it is
         if (inputs[input].type === 'number' && !inputs[input].classList.contains('large')) inputs[input].value = 0; // If it's a small number box
         else if (inputs[input].type === 'checkbox') inputs[input].checked = false; // Checkbox
-        else if (inputs[input].tagName === 'SELECT') inputs[input].value = 'none'; // Selector
+        else if (inputs[input].tagName === 'SELECT') inputs[input].value = 'None'; // Selector
         else inputs[input].value = '';
     }
     pg.team.focus();

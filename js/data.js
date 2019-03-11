@@ -34,7 +34,7 @@ function render(data) {
         // Make a new table cell
         var th = document.createElement('th');
         // ...with the content of the prettified name of the property
-        th.innerHTML = pname(prop);
+        th.textContent = pname(prop);
         // Put it into the row
         tr.appendChild(th);
     }
@@ -51,7 +51,7 @@ function render(data) {
             // Make a table cell for each
             var td = document.createElement('td');
             // Fill table cell with that data property
-            td.innerHTML = data[pt][prop];
+            td.textContent = data[pt][prop];
             // Put the cell into the row
             tr.appendChild(td);
         }
@@ -128,7 +128,7 @@ outputButton.onclick = async function() {
             fs.closeSync(fd);
     }
     fileBuffer = [];
-    fileInputList.innerHTML = '';
+    fileInputList.textContent = '';
     outputFileName.value = '';
 }
 
