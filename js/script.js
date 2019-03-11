@@ -31,7 +31,7 @@ localStorage.desktopPath = desktopPath;
 // Generate an array of all data inputs in document.
 // These will be used to generate an object.
 // Inputs named .special are exempt. These can be used for things like path selection.
-var tags = document.querySelectorAll('input:not(.special), select:not(.special), textarea, div.keep');
+var tags = document.querySelectorAll('input:not(.special), select:not(.special), textarea');
 // Create empty object.
 var inputs = {};
 // Make each element be the value to a key named after its ID.
