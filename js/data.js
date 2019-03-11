@@ -62,7 +62,6 @@ function render(data) {
     }
 }
 
-const blockedFields = new Set(['team-color', 'start-position']);
 const ROCKET_LEVELS = ['bottom', 'middle', 'top'];
 var inputs = document.querySelectorAll('input.generated');
 for (elem of inputs) {
@@ -160,22 +159,17 @@ async function makeCSV() {
         let highestLevel = 0;
         let ballCount = 0;
         let hatchCount = 0;
-        let rowData = header.filter(fieldName => !blockedFields.has(fieldName)).map(fieldName => {
+        let rowData = header.map(fieldName => {
             if (fieldName.startsWith('rocket-ball-')) {
                 ballCount += row[fieldName];
-                let currentHighestLevel = ROCKET_LEVELS.indexOf(fieldName.split('-')[1]) + 1;
-                if (highestLevel < currentHighestLevel) {
-                    highestLevel = currentHighestLevel;
-                }
+                let currentHighestLevel = ROCKET_LEVELS.indexOf(fieldName.split('-')[2]) + 1;
+                highestLevel = highestLevel < currentHighestLevel ? currentHighestLevel : highestLevel;
             } else if (fieldName.startsWith('rocket-hatch-')) {
                 hatchCount += row[fieldName];
-                let currentHighestLevel = ROCKET_LEVELS.indexOf(fieldName.split('-')[1]) + 1;
-                if (highestLevel < currentHighestLevel) {
-                    highestLevel = currentHighestLevel;
-                }
+                let currentHighestLevel = ROCKET_LEVELS.indexOf(fieldName.split('-')[2]) + 1;
+                highestLevel = highestLevel < currentHighestLevel ? currentHighestLevel : highestLevel;
             }
-            var jsonString = JSON.stringify(row[fieldName], replacer);
-            return jsonString;
+            return JSON.stringify(row[fieldName], replacer);;
         }).join(',');
         rowData += ',' + hatchCount + ',' + ballCount + ',' + highestLevel;
         return rowData;
