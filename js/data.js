@@ -62,12 +62,14 @@ function render(data) {
     }
 }
 
+const blockedFields = new Set(['team-color', 'start-position']);
+const ROCKET_LEVELS = ['bottom', 'middle', 'top'];
 var inputs = document.querySelectorAll('input.generated');
 for (elem of inputs) {
     elem.setAttribute('type', 'checkbox');
 }
 
-deleteButton.onclick = function() {
+deleteButton.onclick = function () {
     var array = JSON.parse(fs.readFileSync(localStorage.path));
     for (box of inputs) {
         if (box.checked) {
@@ -80,10 +82,10 @@ deleteButton.onclick = function() {
             }
         }
     }
-    if(array.length == 0) {
-      fs.writeFileSync(localStorage.path, "");
-    }else {
-      fs.writeFileSync(localStorage.path, JSON.stringify(array).replace(/[""]/, '"'));
+    if (array.length == 0) {
+        fs.writeFileSync(localStorage.path, "");
+    } else {
+        fs.writeFileSync(localStorage.path, JSON.stringify(array).replace(/[""]/, '"'));
     }
     remote.getCurrentWindow().reload();
 }
@@ -94,7 +96,7 @@ function pname(str) {
     return words.join(' ');
 }
 
-fileInputButton.onchange = function() {
+fileInputButton.onchange = function () {
     var blocked = false;
     for (var i = 0; i < this.files.length; i++) {
         var file = this.files[i];
@@ -115,7 +117,7 @@ fileInputButton.onchange = function() {
     if (blocked) alert('Some files have been blocked due to improper type. (Only accepting .json files)');
 }
 
-outputButton.onclick = async function() {
+outputButton.onclick = async function () {
     var content = await makeCSV();
     var fd;
     try {
@@ -132,7 +134,7 @@ outputButton.onclick = async function() {
     outputFileName.value = '';
 }
 
-document.onclick = function(e) {
+document.onclick = function (e) {
     if (Array.from(fileInputList.children).includes(e.target.parentElement)) {
         for (var i = 0; i < fileBuffer.length; i++) {
             if (fileBuffer[i].name === e.target.textContent) {
@@ -149,8 +151,35 @@ async function makeCSV() {
 
     const items = data;
     const replacer = (key, value) => value === null ? '' : value;
+    // Add ball count, hatch count, and highest level to header
+    items[0]['hatches-rocket'] = 0;
+    items[0]['balls-rocket'] = 0;
+    items[0]['highest-level'] = 0;
     const header = Object.keys(items[0]);
-    let csv = items.map(row => header.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(','));
+    let csv = items.map(row => {
+        let highestLevel = 0;
+        let ballCount = 0;
+        let hatchCount = 0;
+        let rowData = header.filter(fieldName => !blockedFields.has(fieldName)).map(fieldName => {
+            if (fieldName.startsWith('rocket-ball-')) {
+                ballCount += row[fieldName];
+                let currentHighestLevel = ROCKET_LEVELS.indexOf(fieldName.split('-')[1]) + 1;
+                if (highestLevel < currentHighestLevel) {
+                    highestLevel = currentHighestLevel;
+                }
+            } else if (fieldName.startsWith('rocket-hatch-')) {
+                hatchCount += row[fieldName];
+                let currentHighestLevel = ROCKET_LEVELS.indexOf(fieldName.split('-')[1]) + 1;
+                if (highestLevel < currentHighestLevel) {
+                    highestLevel = currentHighestLevel;
+                }
+            }
+            var jsonString = JSON.stringify(row[fieldName], replacer);
+            return jsonString;
+        }).join(',');
+        rowData += ',' + hatchCount + ',' + ballCount + ',' + highestLevel;
+        return rowData;
+    });
     csv.unshift(header.join(','));
     csv = csv.join('\r\n');
 
