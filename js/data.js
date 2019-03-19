@@ -156,18 +156,21 @@ async function makeCSV() {
     items[0]['highest-level'] = 0;
     const header = Object.keys(items[0]);
     let csv = items.map(row => {
-        let highestLevel = 0;
-        let ballCount = 0;
-        let hatchCount = 0;
+        var highestLevel = 0;
+        var ballCount = 0;
+        var hatchCount = 0;
         let rowData = header.map(fieldName => {
+            if (fieldName.startsWith('rocket-')) {
+                if (row[fieldName] > 0) {
+                    var currentHighestLevel = ROCKET_LEVELS.indexOf(fieldName.split('-')[2]) + 1;
+                    highestLevel = highestLevel < currentHighestLevel ? currentHighestLevel : highestLevel;
+                }
+            }
+
             if (fieldName.startsWith('rocket-ball-')) {
                 ballCount += row[fieldName];
-                let currentHighestLevel = ROCKET_LEVELS.indexOf(fieldName.split('-')[2]) + 1;
-                highestLevel = highestLevel < currentHighestLevel ? currentHighestLevel : highestLevel;
             } else if (fieldName.startsWith('rocket-hatch-')) {
                 hatchCount += row[fieldName];
-                let currentHighestLevel = ROCKET_LEVELS.indexOf(fieldName.split('-')[2]) + 1;
-                highestLevel = highestLevel < currentHighestLevel ? currentHighestLevel : highestLevel;
             }
             return JSON.stringify(row[fieldName], replacer);;
         }).join(',');
