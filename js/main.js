@@ -14,8 +14,8 @@ function createWindow() {
 	// Create the browser window.
 	const { width, height } = electron.screen.getPrimaryDisplay().workAreaSize;
 	mainWindow = new BrowserWindow({
-		width,
-		height,
+		width: width,
+		height: height-235,
 		icon: __dirname + '../images/logo/logo.png'
 	});
 
