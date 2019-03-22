@@ -1,6 +1,6 @@
 {
   "name": "VictiScout",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "description": "Scouting application for FIRST Robotics Competition, designed originally for Team 1418.",
   "main": "js/main.js",
   "scripts": {
