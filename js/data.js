@@ -151,9 +151,6 @@ async function makeCSV() {
     const items = data;
     const replacer = (key, value) => value === null ? '' : value;
     // Add ball count, hatch count, and highest level to header
-    items[0]['hatches-rocket'] = 0;
-    items[0]['balls-rocket'] = 0;
-    items[0]['highest-level'] = 0;
     const header = Object.keys(items[0]);
     let csv = items.map(row => {
         var highestLevel = 0;
@@ -177,6 +174,9 @@ async function makeCSV() {
         rowData += ',' + hatchCount + ',' + ballCount + ',' + highestLevel;
         return rowData;
     });
+    header.push('hatches-rocket');
+    header.push('balls-rocket');
+    header.push('highest-level');
     csv.unshift(header.join(','));
     csv = csv.join('\r\n');
 
