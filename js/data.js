@@ -174,9 +174,7 @@ async function makeCSV() {
         rowData += ',' + hatchCount + ',' + ballCount + ',' + highestLevel;
         return rowData;
     });
-    header.push('hatches-rocket');
-    header.push('balls-rocket');
-    header.push('highest-level');
+    header.push('hatches-rocket', 'balls-rocket', 'highest-level');
     csv.unshift(header.join(','));
     csv = csv.join('\r\n');
 
