@@ -28,89 +28,69 @@
         <button id="view">View Data</button>
     </div>
     <div class="row">
-        <h1>HAB</h1>
+        <h1>SHIELD GENERATOR</h1>
+        <h2>Stage Reached</h2>
+        <select id="level-end">
+            <option>Level 1</option>
+            <option>Level 2</option>
+            <option>Level 3</option>
+        </select>
+    </div>
+    <div class="row">
+        <h1>CONTROL PANEL</h1>
         <div>
-            <h2>Started on level 2</h2>
-                <input type="checkbox" id="auto-level-start">
+            <h2>Rotation Control</h2>
+                <input type="checkbox" id="rotation-control">
         </div>
+        <div>
+            <h2>Position Control</h2>
+            <input type="checkbox" id="position-control">
+        </div>
+        <div>
+            <h2>Ranking Point</h2>
+            <input type="checkbox" id="control-panel-rp">
+        </div>
+    </div>
+    <div class="row">
+        <h1>POWER PORT</h1>
+        <div>
+            <h2>Autonomous</h2>
+            &nbsp<input type="number" class="balls" id="auto-inner-port" value="0" min="0">
+            <br>
+            &nbsp<input type="number" class="hatches" id="auto-outer-port" value="0" min="0">
+            <br>
+            <input type="number" class="hatches" id="auto-bottom-port" value="0" min="0">
+        </div>
+        <div>
+            <p>&#8592 Inner &#8594</p>
+            <br>
+            <p>&#8592 Outer &#8594</p>
+            <br>
+            <p>&#8592 Bottom &#8594</p>
+        </div>
+        <div>
+            <h2>Teleoperated</h2>
+            &nbsp<input type="number" class="balls" id="teleop-inner-port" value="0" min="0">
+            <br>
+            &nbsp<input type="number" class="hatches" id="teleop-inner-port" value="0" min="0">
+            <br>
+            <input type="number" class="hatches" id="teleop-inner-port" value="0" min="0">
+        </div>
+    </div>
+    <div class="row">
+        <h1>GENERATOR SWITCH</h1>
         <div>
             <h2>Level Reached</h2>
             <select id="level-end">
                 <option>None</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
+                <option>Parked</option>
+                <option>Hanging</option>
+                <option>Level</option>
             </select>
         </div>
         <div>
             <h2>Climb Assists</h2>
             <input type="number" id="climb-assist" value="0" min="0" max="2">
-        </div>
-    </div>
-    <div class="row">
-        <h1>CARGO</h1>
-        <div>
-            <h2>Hatches Placed</h2>
-            <input type="number" id="ship-hatches" value="0" min="0">
-        </div>
-        <div>
-            <h2>Balls Placed</h2>
-            <input type="number" id="ship-cargo" value="0" min="0">
-        </div>
-    </div>
-    <div class="row">
-        <h1>ROCKET</h1>
-        <!-- <div>
-            <h2>Hatches</h2>
-            &nbsp<input type="checkbox" class="hatches" id="top-left">
-            <input type="checkbox" class="hatches" id="top-right">
-            <br>
-            &nbsp<input type="checkbox" class="hatches" id="middle-left">
-            <input type="checkbox" class="hatches" id="middle-right">
-            <br>
-            <input type="checkbox" class="hatches" id="bottom-left">
-            <input type="checkbox" class="hatches" id="bottom-right">
-        </div>
-        <div>
-            &#8592 Top &#8594
-            <br>
-            &#8592 Middle &#8594
-            <br>
-            &#8592 Bottom &#8594
-        </div>
-        <div>
-            <h2>Balls</h2>
-            &nbsp<input type="checkbox" class="balls" id="top-left">
-            <input type="checkbox" class="balls" id="top-right">
-            <br>
-            &nbsp<input type="checkbox" class="balls" id="middle-left">
-            <input type="checkbox" class="balls" id="middle-right">
-            <br>
-            <input type="checkbox" class="balls" id="bottom-left">
-            <input type="checkbox" class="balls" id="bottom-right">
-        </div> -->
-        <div>
-            <h2>Hatches</h2>
-            &nbsp<input type="number" class="hatches" id="rocket-hatch-top" value="0" min="0" max="4">
-            <br>
-            &nbsp<input type="number" class="hatches" id="rocket-hatch-middle" value="0" min="0" max="4">
-            <br>
-            <input type="number" class="hatches" id="rocket-hatch-bottom" value="0" min="0" max="4">
-        </div>
-        <div>
-            <p>&#8592 Top &#8594</p>
-            <br>
-            <p>&#8592 Middle &#8594</p>
-            <br>
-            <p>&#8592 Bottom &#8594</p>
-        </div>
-        <div>
-            <h2>Balls</h2>
-            &nbsp<input type="number" class="balls" id="rocket-ball-top" value="0" min="0" max="4">
-            <br>
-            &nbsp<input type="number" class="hatches" id="rocket-ball-middle" value="0" min="0" max="4">
-            <br>
-            <input type="number" class="hatches" id="rocket-ball-bottom" value="0" min="0" max="4">
         </div>
     </div>
     <div class="row">
