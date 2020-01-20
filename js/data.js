@@ -157,11 +157,7 @@ async function makeCSV() {
         return rowData;
     });
     csv.unshift(header.join(','));
-
-    // Now that the csv is in array format, add the composite fields
-    createAbritrarySumField(csv, 'hatches-rocket', field => field.startsWith('rocket-hatch-'));
-    createAbritrarySumField(csv, 'balls-rocket', field => field.startsWith('rocket-ball-'));
-
+    
     createArbitraryField(csv, 'highest-level', (index, row) => {
         let highestLevel = 0;
         if (index === 0) return;
