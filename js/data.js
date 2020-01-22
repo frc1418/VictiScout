@@ -162,6 +162,58 @@ async function makeCSV() {
     return csv;
 }
 
+/**
+ * 
+ * @param {array} csv The csv
+ * @param {string} name The name of the new field
+ * @param {function} rowFunction A function which is applied on each row. It takes in the row's index and data
+ */
+function createArbitraryField(csv, name, rowFunction) {
+    // Append the name of this new field to the header of the csv
+    csv[0] += `,${name}`;
+
+    const headers = csv[0].split(',');
+
+    // Loop over all of the csv rows with data
+    for (let [index, row] of csv.entries()) {
+        let rowArray = row.split(',');
+
+        let newData = rowFunction(
+            index,
+            Object.assign(...headers.map((k, i) => ({ [k]: rowArray[i] })))
+        );
+
+        // Append the output to the end of the row
+        csv[index] += newData != undefined ? `,${newData}` : '';
+    }
+}
+
+/**
+ * Create a sum field using a function to test whether to use a field or not
+ * @param {array} csv The csv
+ * @param {string} name The name of the new field
+ * @param {function} nameFunction A function which returns a boolean if the field should be summed
+ */
+function createArbitrarySumField(csv, name, nameFunction) {
+    createSumField(csv, name, ...(csv[0].split(',').filter(field => nameFunction(field))));
+}
+
+function createSumField(csv, name, ...fields) {
+    createArbitraryField(csv, name, (index, row) => {
+        if (index === 0) return;
+
+        let total = 0;
+        // Loop over all of the fields that we will be adding, and find their data inside of the row
+        // Add that data to the total
+        for (let field of fields) {
+            total += parseInt(row[field]);
+        }
+
+        // Return the total to be appended to the end of the row
+        return total;
+    });
+}
+
 function combineFiles() {
     var promises = [];
     for (file of fileBuffer) {
