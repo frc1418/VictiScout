@@ -21,7 +21,7 @@
   "homepage": "https://github.com/frc1418/VictiScout#readme",
   "devDependencies": {
     "electron-packager": "^7.3.0",
-    "electron": "^1.2.0",
+    "electron": "^9.1.0",
     "os": "*"
   }
 }
