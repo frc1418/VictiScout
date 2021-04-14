@@ -107,3 +107,6 @@ input {
     text-decoration: line-through;
     cursor: pointer;
 }
+#transfer-button {
+    margin-left: 20px;
+}
