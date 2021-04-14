@@ -1,4 +1,5 @@
 const remote = require('electron').remote;
+const ipc = require('electron').ipcRenderer;
 const fs = require('fs');
 
 // Define <thead>, <tbody>, warning, and match deletion vars to be filled later on.
@@ -12,6 +13,7 @@ var thead = document.getElementsByTagName('thead')[0],
     outputButton = document.getElementById('csv-button'),
     deleteButton = document.getElementById('delete-button'),
     outputFileName = document.getElementById('output-file');
+    transferButton = document.getElementById('transfer-button');
 
 var fileBuffer = [];
 
@@ -65,6 +67,10 @@ function render(data) {
 var inputs = document.querySelectorAll('input.generated');
 for (elem of inputs) {
     elem.setAttribute('type', 'checkbox');
+}
+
+transferButton.onclick = function() {
+    ipc.send('transferData');
 }
 
 deleteButton.onclick = function () {
