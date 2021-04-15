@@ -81,7 +81,8 @@ class BluetoothFileExchangerCentral extends EventEmitter {
                 resolve(data);
             });
         });
-        await writeFile(path.join(this.outputDirectory, peripheral.advertisement.localName), data);
+
+        await writeFile(path.join(this.outputDirectory, peripheral.advertisement.localName + '-data.csv'), data);
         await peripheral.disconnectAsync();
         await noble.startScanningAsync();
     }
