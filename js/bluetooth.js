@@ -45,7 +45,7 @@ class BluetoothFileExchangerCentral extends EventEmitter {
 
     discoverHandler(peripheral) {
         this.emit('discover', peripheral);
-        peripheral.on('disconnect', () => this.emit('disconnect', peripheral));
+        peripheral.once('disconnect', () => this.emit('disconnect', peripheral));
     }
 
     /**
@@ -54,7 +54,6 @@ class BluetoothFileExchangerCentral extends EventEmitter {
      */
     async receive(peripheral) {
         await noble.stopScanningAsync();
-        noble.reset();
         await peripheral.connectAsync();
 
         const characteristics = await new Promise((resolve, reject) => {
@@ -84,6 +83,7 @@ class BluetoothFileExchangerCentral extends EventEmitter {
         });
         await writeFile(path.join(this.outputDirectory, peripheral.advertisement.localName), data);
         await peripheral.disconnectAsync();
+        await noble.startScanningAsync();
     }
 }
 
@@ -152,6 +152,7 @@ class FileExchangeCharacteristic extends BlenoCharacteristic {
         try {
             fileData = await readFile(this.filePathSupplier());
         } catch (err) {
+            console.log(err);
             callback(this.RESULT_UNLIKELY_ERROR, 'Error');
             return;
         }

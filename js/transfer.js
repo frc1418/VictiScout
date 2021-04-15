@@ -5,10 +5,11 @@ const SERVICE_UUID = 'ec00';
 const CHARACTERISTIC_UUID = 'ec0e';
 const PERIPHERAL_NAME = 'VictiScout-' + os.hostname();
 // Set both of these from UI
-let outputDirectory = '~/Desktop';
-let dataFile = '~/Desktop/data.csv';
+let outputDirectory = localStorage.desktopPath;
+let dataFile = localStorage.path;
 
 let fileExchanger;
+let devices = [];
 
 const mainCheckbox = document.getElementById('main-checkbox');
 mainCheckbox.onclick = () => {
@@ -28,6 +29,9 @@ async function setupBluetoothFileExchanger(central) {
         );
 
         fileExchanger.on('discover', async (device) => {
+            if (devices.indexOf(device) !== -1) return;
+
+            console.log('Discovered', device);
             addDevice(device);
             // TODO: move this to an onclick for each device
             await sleep(3000);
@@ -57,11 +61,11 @@ setupBluetoothFileExchanger(false);
 
 
 function addDevice(device) {
-
+    devices.push(device);
 }
 
 function removeDevice(device) {
-
+    devices.splice(devices.indexOf(device), 1);
 }
 
 function sleep(millis) {
