@@ -6,17 +6,6 @@ const ECHO_CHARACTERISTIC_UUID = 'ec0e';
 var BlenoPrimaryService = bleno.PrimaryService;
 var BlenoCharacteristic = bleno.Characteristic;
 
-console.log('bleno - echo');
-
-bleno.on('stateChange', function(state) {
-  console.log('on -> stateChange: ' + state);
-
-  if (state === 'poweredOn') {
-    bleno.startAdvertising('echo', [ECHO_SERVICE_UUID]);
-  } else {
-    bleno.stopAdvertising();
-  }
-});
 
 bleno.on('advertisingStart', function(error) {
   console.log('on -> advertisingStart: ' + (error ? 'error ' + error : 'success'));
@@ -41,7 +30,7 @@ class EchoCharacteristic extends BlenoCharacteristic {
             value: null
         });
 
-        this._value = new Buffer.alloc(0);
+        this._value = Buffer.alloc(0);
         this._updateValueCallback = null;
     }
 
