@@ -43,13 +43,14 @@ async function setupBluetoothFileExchanger() {
             () => dataFile
         );
     }
+
+    fileExchanger.on('stateChange', (state) => {
+        console.log('(transfer)', 'State: ' + state);
+    });
 }
 
 setupBluetoothFileExchanger();
 
-fileExchanger.on('stateChange', (state) => {
-    console.log('(transfer)', 'State: ' + state);
-});
 
 function addDevice(device) {
 
