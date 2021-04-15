@@ -18,6 +18,7 @@ mainCheckbox.onclick = () => {
 
 async function setupBluetoothFileExchanger(receive) {
     if (fileExchanger) {
+        fileExchanger.removeAllListeners();
         await fileExchanger.disable();
     }
 
