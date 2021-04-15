@@ -6,7 +6,7 @@ const CHARACTERISTIC_UUID = 'ec0e';
 const PERIPHERAL_NAME = 'VictiScout-' + os.hostname();
 // Set both of these from UI
 let outputDirectory = '~/Desktop';
-let dataFile = '~/Desktop/data.json';
+let dataFile = '~/Desktop/data.csv';
 
 let fileExchanger;
 
