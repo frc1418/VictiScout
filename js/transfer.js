@@ -10,6 +10,11 @@ let dataFile = '~/Desktop/data.csv';
 
 let fileExchanger;
 
+const mainCheckbox = document.getElementById('main-checkbox');
+mainCheckbox.onclick = () => {
+    setupBluetoothFileExchanger(mainCheckbox.checked);
+};
+
 async function setupBluetoothFileExchanger(central) {
     if (fileExchanger) {
         await fileExchanger.disable();
@@ -48,7 +53,7 @@ async function setupBluetoothFileExchanger(central) {
     });
 }
 
-setupBluetoothFileExchanger(true);
+setupBluetoothFileExchanger(false);
 
 
 function addDevice(device) {
