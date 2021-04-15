@@ -5,7 +5,7 @@
   "main": "js/main.js",
   "scripts": {
     "start": "electron .",
-    "package-mac": "electron-packager . --platform=darwin --icon=images/logo/logo.icns --arch=all --out dist/",
+    "package-mac": "electron-packager . --platform=darwin --icon=images/logo/logo.icns --arch=x64 --out dist/",
     "package-linux": "electron-packager . --platform=linux --icon=images/logo/logo.png --arch=all --out dist/",
     "package-win": "electron-packager . --platform=win32 --icon=images/logo/logo.ico --arch=all --out dist/"
   },

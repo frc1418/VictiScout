@@ -20,6 +20,10 @@ class BluetoothFileExchangerCentral extends EventEmitter {
 
         noble.on('stateChange', this.stateChangeHandler.bind(this));
         noble.on('discover', this.discoverHandler.bind(this));
+
+        if (noble.state == 'poweredOn') {
+            noble.startScanningAsync([this.serviceUUID], true);
+        }
     }
 
     async disable() {
@@ -93,6 +97,10 @@ class BluetoothFileExchangerPeripheral extends EventEmitter {
 
         bleno.on('stateChange', this.stateChangeHandler.bind(this));
         bleno.on('advertisingStart', this.advertisingStartHandler.bind(this));
+
+        if (bleno.state === 'poweredOn') {
+            bleno.startAdvertising(this.peripheralName, [this.serviceUUID]);
+        }
     }
 
     async disable() {
