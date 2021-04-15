@@ -16,12 +16,12 @@ mainCheckbox.onclick = () => {
     setupBluetoothFileExchanger(mainCheckbox.checked);
 };
 
-async function setupBluetoothFileExchanger(central) {
+async function setupBluetoothFileExchanger(receive) {
     if (fileExchanger) {
         await fileExchanger.disable();
     }
 
-    if (central) {
+    if (receive) {
         fileExchanger = new BluetoothFileExchangerCentral(
             SERVICE_UUID,
             CHARACTERISTIC_UUID,
@@ -54,6 +54,11 @@ async function setupBluetoothFileExchanger(central) {
 
     fileExchanger.on('stateChange', (state) => {
         console.log('(transfer)', 'State: ' + state);
+        if (state === 'poweredOn') {
+            // Run code for when bluetooth is turned on (from off)
+        } else if (state === 'poweredOff') {
+            // Run code for when bluetooth is turned off (from on)
+        }
     });
 }
 
