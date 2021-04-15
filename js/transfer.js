@@ -3,7 +3,7 @@ const os = require('os');
 
 const SERVICE_UUID = 'ec00';
 const CHARACTERISTIC_UUID = 'ec0e';
-const PERIPHERAL_NAME = 'VictiScout-' + os.hostname();
+const PERIPHERAL_NAME = 'VictiScout-' + os.userInfo().username;
 // Set both of these from UI
 let outputDirectory = localStorage.desktopPath;
 let dataFile = localStorage.path;
