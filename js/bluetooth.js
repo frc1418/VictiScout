@@ -104,7 +104,9 @@ class BluetoothFileExchangerPeripheral extends EventEmitter {
     }
 
     async disable() {
-        bleno.stopAdvertising()
+        await new Promise((resolve, _) => {
+            bleno.stopAdvertising(resolve);
+        });
         bleno.removeAllListeners();
     }
 
