@@ -7,11 +7,10 @@ const PERIPHERAL_NAME = 'VictiScout-' + os.hostname();
 // Set both of these from UI
 let outputDirectory = '~/Desktop';
 let dataFile = '~/Desktop/data.json';
-let central = true;
 
 let fileExchanger;
 
-async function setupBluetoothFileExchanger() {
+async function setupBluetoothFileExchanger(central) {
     if (fileExchanger) {
         await fileExchanger.disable();
     }
@@ -49,7 +48,7 @@ async function setupBluetoothFileExchanger() {
     });
 }
 
-setupBluetoothFileExchanger();
+setupBluetoothFileExchanger(true);
 
 
 function addDevice(device) {
