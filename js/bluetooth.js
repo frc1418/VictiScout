@@ -22,6 +22,7 @@ class BluetoothFileExchangerCentral extends EventEmitter {
         noble.on('discover', this.discoverHandler.bind(this));
 
         if (noble.state == 'poweredOn') {
+            console.log('Scanning');
             noble.startScanningAsync([this.serviceUUID], true);
         }
     }
@@ -100,14 +101,18 @@ class BluetoothFileExchangerPeripheral extends EventEmitter {
         bleno.on('advertisingStart', this.advertisingStartHandler.bind(this));
 
         if (bleno.state === 'poweredOn') {
+            console.log('(bleno) on -> advertisingStart');
             bleno.startAdvertising(this.peripheralName, [this.serviceUUID]);
         }
     }
 
     async disable() {
-        await new Promise((resolve, _) => {
-            bleno.stopAdvertising(resolve);
-        });
+        await Promise.race([
+            new Promise((resolve, _) => {
+                bleno.stopAdvertising(resolve);
+            }),
+            sleep(1000)
+        ]);
         bleno.removeAllListeners();
     }
 
@@ -162,6 +167,10 @@ class FileExchangeCharacteristic extends BlenoCharacteristic {
 
         callback(this.RESULT_SUCCESS, fileData);
     }
+}
+
+function sleep(millis) {
+    return new Promise((resolve, _) => setTimeout(resolve, millis));
 }
 
 module.exports = {
