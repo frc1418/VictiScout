@@ -13,7 +13,14 @@ let fileExchanger;
 let devices = [];
 
 const elements = {
+    main: document.getElementsByTagName('main')[0],
+    status: document.getElementById('status-indicator'),
     deviceList: document.getElementById('device-list')
+}
+
+const statusStates = {
+    'poweredOff': 'rgb(209, 39, 39)',
+    'poweredOn': 'rgb(51, 186, 34)'
 }
 
 const mainCheckbox = document.getElementById('main-checkbox');
@@ -45,7 +52,9 @@ async function setupBluetoothFileExchanger(receive) {
 
         fileExchanger.on('disconnect', (device) => {
             removeDevice(device);
-        })
+        });
+
+        elements.main.classList.replace('send', 'receive');
     } else {
         fileExchanger = new BluetoothFileExchangerPeripheral(
             SERVICE_UUID,
@@ -53,14 +62,17 @@ async function setupBluetoothFileExchanger(receive) {
             PERIPHERAL_NAME,
             () => dataFile
         );
+
+        elements.main.classList.replace('receive', 'send');
     }
 
     fileExchanger.on('stateChange', (state) => {
         console.log('(transfer)', 'State: ' + state);
+        elements.status.style.backgroundColor = statusStates[state];
         if (state === 'poweredOn') {
             // Run code for when bluetooth is turned on (from off)
         } else if (state === 'poweredOff') {
-            // Run code for when bluetooth is turned off (from on)
+            removeDevices();
         }
     });
 }

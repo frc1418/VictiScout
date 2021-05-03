@@ -23,7 +23,7 @@ class BluetoothFileExchangerCentral extends EventEmitter {
 
         if (noble.state == 'poweredOn') {
             console.log('Scanning');
-            noble.startScanningAsync([this.serviceUUID], true);
+            noble.startScanningAsync([], true);
         }
     }
 
@@ -39,7 +39,7 @@ class BluetoothFileExchangerCentral extends EventEmitter {
 
         if (state === 'poweredOn') {
             console.log('Scanning');
-            await noble.startScanningAsync([this.serviceUUID], true);
+            await noble.startScanningAsync([], true);
         } else {
             await noble.stopScanningAsync();
         }

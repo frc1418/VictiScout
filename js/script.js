@@ -126,23 +126,23 @@ function resetInputs() {
 }
 
 pg.red.onclick = function() {
-  if (this.style.background === '') {
-    this.style.background = 'rgb(209, 39, 39)';
-    pg.blue.style.background = '';
+  if (this.style.backgroundColor === '') {
+    this.style.backgroundColor = 'rgb(209, 39, 39)';
+    pg.blue.style.backgroundColor = '';
     pg.color.value = 'Red';
   } else {
-    this.style.background = '';
+    this.style.backgroundColor = '';
     pg.color.value = '';
   }
 }
 
 pg.blue.onclick = function() {
   if (this.style.background === '') {
-    this.style.background = '#1d7ac8';
-    pg.red.style.background = '';
+    this.style.backgroundColor = '#1d7ac8';
+    pg.red.style.backgroundColor = '';
     pg.color.value = 'Blue';
   } else {
-    this.style.background = '';
+    this.style.backgroundColor = '';
     pg.color.value = '';
   }
 }
