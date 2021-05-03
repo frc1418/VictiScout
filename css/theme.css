@@ -21,16 +21,19 @@ button {
 input[type="file"] {
     display: none;
 }
-button {
+button:not(:disabled) {
     color: #eee;
     cursor: pointer;
     width: auto;
 }
-button:hover {
+button:hover:not(:disabled) {
     color: #ccc;
 }
-button:active {
+button:active:not(:disabled) {
     color: #aaa;
+}
+button:disabled {
+    color: rgb(131, 131, 131);
 }
 select,
 option {

@@ -1,5 +1,97 @@
-main {
-    display: grid;
+:root {
+    --nav-height: 40px;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: var(--nav-height);
     width: 100vw;
-    height: 100vh;
+}
+
+main {
+    position: relative;
+    top: var(--nav-height);
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100vw;
+    height: calc(100vh - var(--nav-height));
+}
+
+main > section {
+    padding: 20px 10px;
+}
+
+#device-viewer {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 65%;
+    height: 100%;
+}
+
+#device-list {
+    display: flex;
+    flex-flow: column nowrap;
+    height: auto;
+    overflow-y: scroll;
+}
+
+#device-list > .device {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    flex: 1 0 auto;
+    height: 65px;
+    width: 100%;
+    padding: 10px 20px;
+}
+
+#device-list > .device:not(:last-child) {
+    border-bottom: solid 2px #444;
+}
+
+#device-list > .device:hover {
+    background: #555;
+}
+
+.device > button {
+    margin-left: auto;
+}
+
+.device.received > button {
+    color: rgb(115, 245, 115);
+}
+
+#settings {
+    width: 35%;
+    height: 100%;
+}
+
+input[type="file"] {
+    width: 150px;
+    border: none;
+}
+
+.file-label {
+    border: none;
+    background: #444;
+    padding: 5px;
+    outline: none;
+    color: white;
+    font-size: inherit;
+}
+.file-label:not(:disabled) {
+    color: #eee;
+    cursor: pointer;
+    width: auto;
+}
+.file-label:hover:not(:disabled) {
+    color: #ccc;
+}
+.file-label:active:not(:disabled) {
+    color: #aaa;
+}
+.file-label:disabled {
+    color: rgb(131, 131, 131);
 }
