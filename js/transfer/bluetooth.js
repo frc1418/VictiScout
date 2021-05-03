@@ -30,6 +30,7 @@ class BluetoothFileExchangerCentral extends EventEmitter {
     async disable() {
         await noble.stopScanningAsync();
         noble.removeAllListeners();
+        console.log('(noble) disabling');
     }
 
     async stateChangeHandler(state) {
@@ -83,7 +84,7 @@ class BluetoothFileExchangerCentral extends EventEmitter {
             });
         });
 
-        await writeFile(path.join(this.outputDirectory, peripheral.advertisement.localName + '-data.csv'), data);
+        await writeFile(path.join(this.outputDirectory(), peripheral.advertisement.localName + '-data.csv'), data);
         await peripheral.disconnectAsync();
         await noble.startScanningAsync();
     }

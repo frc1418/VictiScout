@@ -8,14 +8,28 @@
 </head>
 
 <body>
+    <nav>
+        <div id="status-indicator"></div>
+    </nav>
     <main>
-        <nav>
-            <div id="status-indicator"></div>
-        </nav>
-        <section id="device-viewer">
+        <section id="settings">
             <input id="main-checkbox" type="checkbox">
+            <div class="input-container">
+                <label for="input-file" class="file-label">Choose Files</label>
+                <input id="receive-directory" class="receive" type="file" webkitdirectory>
+            </div>
+            <div class="input-container">
+                <label for="input-file" class="file-label">Choose Files</label>
+                <input id="data-file" class="send" type="file" accept=".csv">
+            </div>
+        </section>
+        <section id="device-viewer">
+            <h1>Device Listing</h1>
+            <div id="device-list">
+                <!-- Devices populated by JS -->
+            </div>
         </section>
     </main>
-    <script src="./js/transfer.js"></script>
+    <script src="./js/transfer/transfer.js"></script>
 </body>
 </html>
