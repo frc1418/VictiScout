@@ -46,12 +46,8 @@ body {
     outline: none;
     color: white;
 }
-.color-selector {
-    background: #555;
-    border-radius: 100%;
+button.color-selector {
+    bottom: 4px;
     height: 13px;
     width: 13px;
-    bottom: 4px;
-    position: relative;
-    transition: ease 0.3s;
 }

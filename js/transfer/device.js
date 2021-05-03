@@ -35,7 +35,7 @@ class Device extends EventEmitter {
 
     removeElement() {
         if (this.elements.device) {
-            this.element.device.remove();
+            this.elements.device.remove();
             this.elements = {};
         }
     }

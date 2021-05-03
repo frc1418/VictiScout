@@ -9,25 +9,29 @@
 
 <body>
     <nav>
-        <div id="status-indicator"></div>
+        <div id="status-indicator" class="color-selector"></div>
+        <h1>Transfer Data</h1>
     </nav>
-    <main>
+    <main class="send">
         <section id="settings">
             <input id="main-checkbox" type="checkbox">
-            <div class="input-container">
-                <label for="input-file" class="file-label">Choose Files</label>
-                <input id="receive-directory" class="receive" type="file" webkitdirectory>
+            <div class="input-container receive">
+                <label for="receive-directory" class="file-label">Choose an output directory</label>
+                <input id="receive-directory" type="file" webkitdirectory>
             </div>
-            <div class="input-container">
-                <label for="input-file" class="file-label">Choose Files</label>
-                <input id="data-file" class="send" type="file" accept=".csv">
+            <div class="input-container send">
+                <label for="data-file" class="file-label">Select your data file</label>
+                <input id="data-file" type="file" accept=".csv">
             </div>
         </section>
-        <section id="device-viewer">
-            <h1>Device Listing</h1>
+        <section id="device-viewer" class="receive">
+            <h2>Device Listing</h2>
             <div id="device-list">
                 <!-- Devices populated by JS -->
             </div>
+        </section>
+        <section id="broadcast-data" class="send">
+            <h2>Broadcast Data</h2>
         </section>
     </main>
     <script src="./js/transfer/transfer.js"></script>

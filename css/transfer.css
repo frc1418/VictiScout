@@ -2,12 +2,20 @@
     --nav-height: 40px;
 }
 
+h2 {
+    font-size: 22px;
+}
+
 nav {
+    display: flex;
     position: fixed;
     top: 0;
     left: 0;
+    flex-flow: row nowrap;
+    align-items: center;
     height: var(--nav-height);
     width: 100vw;
+    padding: 0px 20px;
 }
 
 main {
@@ -21,6 +29,10 @@ main {
 
 main > section {
     padding: 20px 10px;
+}
+
+main.receive .send, main.send .receive {
+    display: none !important;
 }
 
 #device-viewer {
@@ -64,6 +76,9 @@ main > section {
 }
 
 #settings {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
     width: 35%;
     height: 100%;
 }
