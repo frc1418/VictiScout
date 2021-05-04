@@ -61,3 +61,10 @@ input.large {
     position: relative;
     transition: background-color 0.3s ease;
 }
+.input-list {
+    list-style-type: none;
+}
+.input-list li > div:hover {
+    text-decoration: line-through;
+    cursor: pointer;
+}

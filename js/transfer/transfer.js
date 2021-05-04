@@ -1,13 +1,16 @@
 const { BluetoothFileExchangerCentral, BluetoothFileExchangerPeripheral } = require('./js/transfer/bluetooth.js');
 const { Device } = require('./js/transfer/device.js');
+const { FileInput } = require('./js/fileInput.js');
 const os = require('os');
+const { shell } = require('electron');
+const { getBluetoothPreferencesURI } = require('./js/transfer/bluetoothPreferences.js');
 
 const SERVICE_UUID = 'ec00';
 const CHARACTERISTIC_UUID = 'ec0e';
 const PERIPHERAL_NAME = 'VictiScout-' + os.userInfo().username;
 // Set both of these from UI
 let receiveDirectory = localStorage.desktopPath;
-let dataFile = localStorage.path;
+let dataFile = undefined;
 
 let fileExchanger;
 let devices = [];
@@ -15,8 +18,29 @@ let devices = [];
 const elements = {
     main: document.getElementsByTagName('main')[0],
     status: document.getElementById('status-indicator'),
-    deviceList: document.getElementById('device-list')
+    deviceList: document.getElementById('device-list'),
+    receiveDirectoryContainer: document.getElementById('receive-directory-container'),
+    dataFileContainer: document.getElementById('data-file-container'),
+    enableBluetooth: document.getElementById('enable-bluetooth')
 }
+
+const dataFileInput = new FileInput(elements.dataFileContainer);
+dataFileInput.on('change', (files) => {
+    if (files.length > 0) {
+        dataFile = files[0].path;
+    } else {
+        dataFile = undefined;
+    }
+});
+const receiveDirectoryInput = new FileInput(elements.receiveDirectoryContainer);
+receiveDirectoryInput.on('change', (files) => {
+    console.log(files[0]);
+    if (files.length > 0) {
+        receiveDirectory = files[0].path;
+    } else {
+        receiveDirectory = localStorage.path;
+    }
+});
 
 const statusStates = {
     'poweredOff': 'rgb(209, 39, 39)',
@@ -71,8 +95,10 @@ async function setupBluetoothFileExchanger(receive) {
         elements.status.style.backgroundColor = statusStates[state];
         if (state === 'poweredOn') {
             // Run code for when bluetooth is turned on (from off)
+            elements.main.classList.add('connected');
         } else if (state === 'poweredOff') {
             removeDevices();
+            elements.main.classList.remove('connected');
         }
     });
 }
@@ -124,3 +150,7 @@ function removeDevices() {
         removeDevice(devices[i]);
     }
 }
+
+elements.enableBluetooth.addEventListener('click', () => {
+    shell.openExternal(getBluetoothPreferencesURI());
+});

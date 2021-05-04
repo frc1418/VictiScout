@@ -14,24 +14,34 @@
     </nav>
     <main class="send">
         <section id="settings">
-            <input id="main-checkbox" type="checkbox">
-            <div class="input-container receive">
+            <div class="input-container">
+                <label for="main-checkbox">Become central device:</label>
+                <input id="main-checkbox" type="checkbox">
+            </div>
+            <div id="receive-directory-container" class="input-container receive">
                 <label for="receive-directory" class="file-label">Choose an output directory</label>
                 <input id="receive-directory" type="file" webkitdirectory>
             </div>
-            <div class="input-container send">
+            <div id="data-file-container" class="input-container send">
                 <label for="data-file" class="file-label">Select your data file</label>
-                <input id="data-file" type="file" accept=".csv">
+                <input id="data-file" type="file" accept="text/csv,.csv">
+                <span class="input-list"></span>
             </div>
         </section>
-        <section id="device-viewer" class="receive">
+        <section id="device-viewer" class="receive connected">
             <h2>Device Listing</h2>
             <div id="device-list">
                 <!-- Devices populated by JS -->
             </div>
         </section>
-        <section id="broadcast-data" class="send">
+        <section id="broadcast-data" class="send connected">
             <h2>Broadcast Data</h2>
+        </section>
+        <section id="no-connection" class="disconnected">
+            <h2>No Bluetooth Connection</h2>
+            <img>
+            <p>Please turn on Bluetooth in system preferences</p>
+            <button id="enable-bluetooth">Open Bluetooth Settings</button>
         </section>
     </main>
     <script src="./js/transfer/transfer.js"></script>
