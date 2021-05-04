@@ -31,6 +31,10 @@ main > section {
     padding: 20px 10px;
 }
 
+main.connected .disconnected, main:not(.connected) .connected {
+    display: none !important;
+}
+
 main.receive .send, main.send .receive {
     display: none !important;
 }
