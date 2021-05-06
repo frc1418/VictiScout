@@ -1,10 +1,10 @@
-[<img src="images/header.png" align="center" alt="VictiScout">](https://github.com/frc1418/VictiScout)
+[<img src="images/readme/header.png" align="center" alt="VictiScout">](https://github.com/frc1418/VictiScout)
 
 Applicação por scouting de FRC. Escrito usando [Electron](http://electron.atom.io) por personalizaçã.
 
 Pega a versão mais nova [aqui](https://github.com/frc1418/VictiScout/releases)!
 
-![Screenshot](images/screenshot.png)
+![Screenshot](images/readme/screenshot.png)
 
 ## Dependencias de desinvolvemento
 * [Node.js](https://nodejs.org)

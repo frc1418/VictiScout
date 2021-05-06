@@ -1,10 +1,10 @@
-[<img src="images/header.png" align="center" alt="VictiScout">](https://github.com/frc1418/VictiScout)
+[<img src="images/readme/header.png" align="center" alt="VictiScout">](https://github.com/frc1418/VictiScout)
 
 Applicatio per exploratione FRC-ae. Scriptus [Electrone](http://electron.atom.io/) est per customizoe facili.
 
 Prehende versionem novissimum compositus [hic](https://github.com/frc1418/VictiScout/releases)!
 
-![Screenshot](images/screenshot.png)
+![Screenshot](images/readme/screenshot.png)
 
 ## Dependi augescae
 * [Node.js](https://nodejs.org)

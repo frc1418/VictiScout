@@ -15,7 +15,7 @@ class Device extends EventEmitter {
     createElement() {
         const deviceElem = document.createElement('div');
         deviceElem.classList.add('device');
-        deviceElem.textContent = this.device.id;
+        deviceElem.textContent = this.name;
 
         const receiveButton = document.createElement('button');
         receiveButton.textContent = "Receive";

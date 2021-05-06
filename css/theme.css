@@ -63,6 +63,7 @@ input.large {
 }
 .input-list {
     list-style-type: none;
+    margin-top: 5px;
 }
 .input-list li > div:hover {
     text-decoration: line-through;
