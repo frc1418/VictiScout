@@ -45,7 +45,7 @@ const receiveDirectoryInput = new FileInput(elements.receiveDirectoryContainer);
 receiveDirectoryInput.on('change', (files) => {
     console.log(files[0]);
     if (files.length > 0) {
-        receiveDirectory = files[0].path;
+        receiveDirectory = files[0].name;
     } else {
         receiveDirectory = localStorage.path;
     }
