@@ -21,7 +21,16 @@ const elements = {
     deviceList: document.getElementById('device-list'),
     receiveDirectoryContainer: document.getElementById('receive-directory-container'),
     dataFileContainer: document.getElementById('data-file-container'),
-    enableBluetooth: document.getElementById('enable-bluetooth')
+    enableBluetooth: document.getElementById('enable-bluetooth'),
+    broadcastSteps: {
+        element: document.getElementById('broadcast-steps'),
+        steps: [
+            document.getElementById('broadcast-steps').children[0],
+            document.getElementById('broadcast-steps').children[1],
+            document.getElementById('broadcast-steps').children[2],
+            document.getElementById('broadcast-steps').children[3]
+        ]
+    }
 }
 
 const dataFileInput = new FileInput(elements.dataFileContainer);
@@ -87,6 +96,20 @@ async function setupBluetoothFileExchanger(receive) {
             () => dataFile
         );
 
+        advanceToBroadcastStep(0);
+
+        fileExchanger.on('connect', (deviceAddress) => {
+            advanceToBroadcastStep(1);
+        });
+
+        fileExchanger.on('send', () => {
+            advanceToBroadcastStep(2);
+        });
+
+        fileExchanger.on('sent', () => {
+            advanceToBroadcastStep(3);
+        });
+
         elements.main.classList.replace('receive', 'send');
     }
 
@@ -148,6 +171,21 @@ function removeDevice(device) {
 function removeDevices() {
     for (let i = devices.length - 1; i >= 0; i--) {
         removeDevice(devices[i]);
+    }
+}
+
+function advanceToBroadcastStep(stepNumber) {
+    for (let i = 0; i < elements.broadcastSteps.steps.length; i++) {
+        const element = elements.broadcastSteps.steps[i];
+        
+        if (i < stepNumber) {
+            element.classList.remove('current');
+            element.classList.add('complete');
+        } else if (i > stepNumber) {
+            element.classList.remove('complete', 'current');
+        } else {
+            element.classList.add('current');
+        }
     }
 }
 

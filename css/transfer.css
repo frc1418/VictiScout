@@ -1,9 +1,19 @@
+@property --icon-color {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: black;
+}
+
 :root {
     --nav-height: 40px;
 }
 
 h2 {
     font-size: 22px;
+}
+
+h3 {
+    font-size: 18px;
 }
 
 nav {
@@ -82,9 +92,39 @@ main.receive .send, main.send .receive {
 #settings {
     display: flex;
     flex-flow: column nowrap;
-    justify-content: space-around;
+    gap: 20px;
     width: 35%;
     height: 100%;
+}
+
+#broadcast-steps {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.broadcast-step {
+    text-align: center;
+    flex: 1 1 auto;
+    width: 25%;
+}
+
+.broadcast-step > h3 {
+    min-height: 50px;
+}
+
+.broadcast-step > svg {
+    --icon-color: rgb(131, 131, 131);
+}
+
+.broadcast-step.complete > svg {
+    --icon-color: green;
+}
+
+.broadcast-step.current > svg {
+    animation: pulse 2s infinite ease-in-out;
 }
 
 input[type="file"] {
@@ -113,4 +153,16 @@ input[type="file"] {
 }
 .file-label:disabled {
     color: rgb(131, 131, 131);
+}
+
+@keyframes pulse {
+    from {
+        --icon-color: rgb(131, 131, 131);
+    }
+    50% {
+        --icon-color: #1d7ac8;
+    }
+    to {
+        --icon-color: rgb(131, 131, 131);
+    }
 }

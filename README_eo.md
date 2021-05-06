@@ -1,10 +1,10 @@
-[<img src="images/header.png" align="center" alt="VictiScout">](https://github.com/frc1418/VictiScout)
+[<img src="images/readme/header.png" align="center" alt="VictiScout">](https://github.com/frc1418/VictiScout)
 
 Aplikaĵo por la skoltanto de FRC. Skribita uzanta [Electron](http://electron.atom.io/) por facila agordo.
 
 Prenu la plej nova version [ĉi tie](https://github.com/frc1418/VictiScout/releases)!
 
-![Ekrankopio](images/screenshot.png)
+![Ekrankopio](images/readme/screenshot.png)
 
 ## Disvolvada dependeco
 * [Node.js](https://nodejs.org)

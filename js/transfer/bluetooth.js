@@ -23,7 +23,7 @@ class BluetoothFileExchangerCentral extends EventEmitter {
 
         if (noble.state == 'poweredOn') {
             console.log('Scanning');
-            noble.startScanningAsync([], true);
+            noble.startScanningAsync([this.serviceUUID], true);
         }
     }
 
@@ -39,7 +39,7 @@ class BluetoothFileExchangerCentral extends EventEmitter {
 
         if (state === 'poweredOn') {
             console.log('Scanning');
-            await noble.startScanningAsync([], true);
+            await noble.startScanningAsync([this.serviceUUID], true);
         } else {
             await noble.stopScanningAsync();
         }
@@ -100,6 +100,7 @@ class BluetoothFileExchangerPeripheral extends EventEmitter {
 
         bleno.on('stateChange', this.stateChangeHandler.bind(this));
         bleno.on('advertisingStart', this.advertisingStartHandler.bind(this));
+        bleno.on('accept', this.acceptHandler.bind(this));
 
         if (bleno.state === 'poweredOn') {
             console.log('(bleno) on -> advertisingStart');
@@ -136,26 +137,40 @@ class BluetoothFileExchangerPeripheral extends EventEmitter {
                 new BlenoPrimaryService({
                     uuid: this.serviceUUID,
                     characteristics: [
-                        new FileExchangeCharacteristic(this.characteristicUUID, this.filePathSupplier)
+                        new FileExchangeCharacteristic(
+                            this.characteristicUUID,
+                            this.filePathSupplier,
+                            {
+                                onSend: () => this.emit('send'),
+                                onSent: () => this.emit('sent')
+                            }
+                        )
                     ]
                 })
             ]);
         }
     }
+
+    acceptHandler(deviceAddress) {
+        this.emit('connect', deviceAddress);
+    }
 }
 
 class FileExchangeCharacteristic extends BlenoCharacteristic {
-    constructor(characteristicUUID, filePathSupplier) {
+    constructor(characteristicUUID, filePathSupplier, callbacks) {
         super({
             uuid: characteristicUUID,
             properties: ['read']
         });
 
+        this.onSend = callbacks.onSend;
+        this.onSent = callbacks.onSent;
         this.filePathSupplier = filePathSupplier;
     }
 
     async onReadRequest(offset, callback) {
         console.log('FileExchangeCharacteristic - onReadRequest');
+        this.onSend();
 
         let fileData;
         try {
@@ -163,10 +178,12 @@ class FileExchangeCharacteristic extends BlenoCharacteristic {
         } catch (err) {
             console.log(err);
             callback(this.RESULT_UNLIKELY_ERROR, 'Error');
+            this.onSent();
             return;
         }
 
         callback(this.RESULT_SUCCESS, fileData);
+        this.onSent();
     }
 }
 

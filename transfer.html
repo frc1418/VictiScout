@@ -21,11 +21,12 @@
             <div id="receive-directory-container" class="input-container receive">
                 <label for="receive-directory" class="file-label">Choose an output directory</label>
                 <input id="receive-directory" type="file" webkitdirectory>
+                <ul class="input-list"></ul>
             </div>
             <div id="data-file-container" class="input-container send">
                 <label for="data-file" class="file-label">Select your data file</label>
                 <input id="data-file" type="file" accept="text/csv,.csv">
-                <span class="input-list"></span>
+                <ul class="input-list"></ul>
             </div>
         </section>
         <section id="device-viewer" class="receive connected">
@@ -36,9 +37,35 @@
         </section>
         <section id="broadcast-data" class="send connected">
             <h2>Broadcast Data</h2>
+            <div id="broadcast-steps">
+                <div class="broadcast-step">
+                    <h3>Waiting for connection</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24" width="48px">
+                        <use href="images/transfer/bluetooth_searching.svg#icon"></use>
+                    </svg>
+                </div>
+                <div class="broadcast-step">
+                    <h3>Preparing to send</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24" width="48px">
+                        <use href="images/transfer/bluetooth_connected.svg#icon"></use>
+                    </svg>
+                </div>
+                <div class="broadcast-step">
+                    <h3>Sending data</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24" width="48px">
+                        <use href="images/transfer/upload.svg#icon"></use>
+                    </svg>
+                </div>
+                <div class="broadcast-step">
+                    <h3>Data sent successfully</h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24" width="48px">
+                        <use href="images/transfer/checkmark.svg#icon"></use>
+                    </svg>
+                </div>
+            </div>
         </section>
         <section id="no-connection" class="disconnected">
-            <h2>No Bluetooth Connection</h2>
+            <h2>Bluetooth Disabled</h2>
             <img>
             <p>Please turn on Bluetooth in system preferences</p>
             <button id="enable-bluetooth">Open Bluetooth Settings</button>
