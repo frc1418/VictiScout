@@ -49,6 +49,10 @@ main.receive .send, main.send .receive {
     display: none !important;
 }
 
+.icon {
+    --icon-color: rgb(131, 131, 131);
+}
+
 #device-viewer {
     display: flex;
     flex-flow: column nowrap;
@@ -92,8 +96,8 @@ main.receive .send, main.send .receive {
 #settings {
     display: flex;
     flex-flow: column nowrap;
+    flex: 0 0 auto;
     gap: 20px;
-    width: 35%;
     height: 100%;
 }
 
@@ -102,7 +106,9 @@ main.receive .send, main.send .receive {
     flex-flow: row nowrap;
     justify-content: space-between;
     gap: 20px;
+    flex: 1 1 auto;
     margin-top: 20px;
+    width: 100%;
 }
 
 .broadcast-step {
@@ -127,6 +133,15 @@ main.receive .send, main.send .receive {
     animation: pulse 2s infinite ease-in-out;
 }
 
+#broadcast-complete-step.current > svg {
+    animation: none;
+    --icon-color: green;
+}
+
+.broadcast-step.complete .instruction, .broadcast-step.current .instruction {
+    display: none
+}
+
 input[type="file"] {
     width: 150px;
     border: none;
@@ -140,17 +155,21 @@ input[type="file"] {
     color: white;
     font-size: inherit;
 }
+
 .file-label:not(:disabled) {
     color: #eee;
     cursor: pointer;
     width: auto;
 }
+
 .file-label:hover:not(:disabled) {
     color: #ccc;
 }
+
 .file-label:active:not(:disabled) {
     color: #aaa;
 }
+
 .file-label:disabled {
     color: rgb(131, 131, 131);
 }

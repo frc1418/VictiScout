@@ -1,6 +1,8 @@
 const { EventEmitter } = require('events');
 const { sleep } = require('./util.js');
 
+const dataReceiptTimeOut = 10000;
+
 class Device extends EventEmitter {
     received = false;
 
@@ -18,7 +20,7 @@ class Device extends EventEmitter {
         deviceElem.textContent = this.name;
 
         const receiveButton = document.createElement('button');
-        receiveButton.textContent = "Receive";
+        receiveButton.textContent = 'Receive';
         receiveButton.classList.add('receive-button');
         receiveButton.addEventListener('click', () => {
             // Make sure the data isn't already received and no other data is being received
@@ -43,7 +45,7 @@ class Device extends EventEmitter {
     setupElements(deviceElem) {
         this.elements = {
             device: deviceElem,
-            button: deviceElem.querySelector('.receive-button')
+            button: deviceElem.querySelector('.receive-button'),
         }
     }
 
@@ -52,8 +54,8 @@ class Device extends EventEmitter {
         try {
             await Promise.race([
                 this.fileExchanger.receive(this.device),
-                sleep(10000).then(() => {
-                    throw new Error('Data receival timed out');
+                sleep(dataReceiptTimeOut).then(() => {
+                    throw new Error('Data receipt timed out');
                 })
             ]);
         } catch (error) {
@@ -67,5 +69,5 @@ class Device extends EventEmitter {
 }
 
 module.exports = {
-    Device
+    Device,
 }
