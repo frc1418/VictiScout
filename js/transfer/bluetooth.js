@@ -21,7 +21,7 @@ class BluetoothFileExchangerCentral extends EventEmitter {
         noble.on('stateChange', this.stateChangeHandler.bind(this));
         noble.on('discover', this.discoverHandler.bind(this));
 
-        if (noble.state == 'poweredOn') {
+        if (noble.state === 'poweredOn') {
             console.log('Scanning');
             noble.startScanningAsync([this.serviceUUID], true);
         }
@@ -50,10 +50,6 @@ class BluetoothFileExchangerCentral extends EventEmitter {
         peripheral.once('disconnect', () => this.emit('disconnect', peripheral));
     }
 
-    /**
-     * 
-     * @param {*} peripheral The peripheral to receieve the file from
-     */
     async receive(peripheral) {
         await noble.stopScanningAsync();
         await peripheral.connectAsync();
@@ -91,7 +87,9 @@ class BluetoothFileExchangerCentral extends EventEmitter {
 }
 
 class BluetoothFileExchangerPeripheral extends EventEmitter {
-    constructor(serviceUUID, characteristicUUID, peripheralName, filePathSupplier) {
+    shouldStartAdvertising = false;
+
+    constructor(serviceUUID, characteristicUUID, peripheralName, filePathSupplier, startAdvertising) {
         super();
         this.serviceUUID = serviceUUID;
         this.characteristicUUID = characteristicUUID;
@@ -102,28 +100,35 @@ class BluetoothFileExchangerPeripheral extends EventEmitter {
         bleno.on('advertisingStart', this.advertisingStartHandler.bind(this));
         bleno.on('accept', this.acceptHandler.bind(this));
 
-        if (bleno.state === 'poweredOn') {
-            console.log('(bleno) on -> advertisingStart');
-            bleno.startAdvertising(this.peripheralName, [this.serviceUUID]);
+        if (bleno.state === 'poweredOn' && startAdvertising) {
+            this.startAdvertising();
         }
+        this.shouldStartAdvertising = startAdvertising;
     }
 
     async disable() {
-        await Promise.race([
-            new Promise((resolve, _) => {
-                bleno.stopAdvertising(resolve);
-            }),
-            sleep(1000)
-        ]);
+        await this.stopAdvertising();
         bleno.removeAllListeners();
+    }
+
+    async stopAdvertising() {
+        console.log('(bleno) on -> advertisingStop');
+        bleno.stopAdvertising();
+        this.shouldStartAdvertising = false;
+    }
+
+    startAdvertising() {
+        console.log('(bleno) on -> advertisingStart');
+        bleno.startAdvertising(this.peripheralName, [this.serviceUUID]);
+        this.shouldStartAdvertising = true;
     }
 
     stateChangeHandler(state) {
         this.emit('stateChange', state);
         console.log('(bleno) on -> stateChange: ' + state);
 
-        if (state === 'poweredOn') {
-            bleno.startAdvertising(this.peripheralName, [this.serviceUUID]);
+        if (state === 'poweredOn' && this.shouldStartAdvertising) {
+            this.startAdvertising();
         } else {
             bleno.stopAdvertising();
         }
@@ -193,5 +198,5 @@ function sleep(millis) {
 
 module.exports = {
     BluetoothFileExchangerCentral,
-    BluetoothFileExchangerPeripheral
+    BluetoothFileExchangerPeripheral,
 };

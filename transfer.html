@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <title>Transfer</title>
     <link rel="stylesheet" href="css/theme.css">
     <link rel="stylesheet" href="css/transfer.css">
@@ -15,7 +15,7 @@
     <main class="send">
         <section id="settings">
             <div class="input-container">
-                <label for="main-checkbox">Become central device:</label>
+                <label for="main-checkbox">Main device:</label>
                 <input id="main-checkbox" type="checkbox">
             </div>
             <div id="receive-directory-container" class="input-container receive">
@@ -43,6 +43,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24" width="48px">
                         <use href="images/transfer/bluetooth_searching.svg#icon"></use>
                     </svg>
+                    <p class="instruction">Select a data file to start broadcasting</p>
                 </div>
                 <div class="broadcast-step">
                     <h3>Preparing to send</h3>
@@ -56,7 +57,7 @@
                         <use href="images/transfer/upload.svg#icon"></use>
                     </svg>
                 </div>
-                <div class="broadcast-step">
+                <div id="broadcast-complete-step" class="broadcast-step">
                     <h3>Data sent successfully</h3>
                     <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24" width="48px">
                         <use href="images/transfer/checkmark.svg#icon"></use>
@@ -66,11 +67,13 @@
         </section>
         <section id="no-connection" class="disconnected">
             <h2>Bluetooth Disabled</h2>
-            <img>
+            <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24" width="48px">
+                <use href="images/transfer/bluetooth_disabled.svg#icon" class="icon"></use>
+            </svg>
             <p>Please turn on Bluetooth in system preferences</p>
             <button id="enable-bluetooth">Open Bluetooth Settings</button>
         </section>
     </main>
-    <script src="./js/transfer/transfer.js"></script>
+    <script src="js/transfer/transfer.js"></script>
 </body>
 </html>

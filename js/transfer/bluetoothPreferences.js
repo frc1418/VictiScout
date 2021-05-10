@@ -16,5 +16,5 @@ function getBluetoothPreferencesURI() {
 }
 
 module.exports = {
-    getBluetoothPreferencesURI
+    getBluetoothPreferencesURI,
 }

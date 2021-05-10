@@ -70,5 +70,5 @@ class FileInput extends EventEmitter {
 }
 
 module.exports = {
-    FileInput
+    FileInput,
 }

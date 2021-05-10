@@ -24,37 +24,41 @@ const elements = {
     enableBluetooth: document.getElementById('enable-bluetooth'),
     broadcastSteps: {
         element: document.getElementById('broadcast-steps'),
-        steps: [
-            document.getElementById('broadcast-steps').children[0],
-            document.getElementById('broadcast-steps').children[1],
-            document.getElementById('broadcast-steps').children[2],
-            document.getElementById('broadcast-steps').children[3]
-        ]
-    }
+        steps: {
+            searching: document.getElementById('broadcast-steps').children[0],
+            preparing: document.getElementById('broadcast-steps').children[1],
+            sending: document.getElementById('broadcast-steps').children[2],
+            sent: document.getElementById('broadcast-steps').children[3],
+        }
+    },
 }
 
 const dataFileInput = new FileInput(elements.dataFileContainer);
 dataFileInput.on('change', (files) => {
     if (files.length > 0) {
         dataFile = files[0].path;
+        // Start broadcasting once a file is selected
+        setBroadcastStep(elements.broadcastSteps.steps.searching);
+        if (fileExchanger.startAdvertising) {
+            fileExchanger.startAdvertising();
+        }
     } else {
         dataFile = undefined;
+        setBroadcastStep(null);
+        if (fileExchanger.stopAdvertising) {
+            fileExchanger.stopAdvertising();
+        }
     }
 });
 const receiveDirectoryInput = new FileInput(elements.receiveDirectoryContainer);
 receiveDirectoryInput.on('change', (files) => {
-    console.log(files[0]);
-    if (files.length > 0) {
-        receiveDirectory = files[0].name;
-    } else {
-        receiveDirectory = localStorage.path;
-    }
+    receiveDirectory = files.length > 0 ? files[0].name : localStorage.path;
 });
 
-const statusStates = {
+const statusColors = {
     'poweredOff': 'rgb(209, 39, 39)',
-    'poweredOn': 'rgb(51, 186, 34)'
-}
+    'poweredOn': 'rgb(51, 186, 34)',
+};
 
 const mainCheckbox = document.getElementById('main-checkbox');
 mainCheckbox.onclick = () => {
@@ -93,21 +97,24 @@ async function setupBluetoothFileExchanger(receive) {
             SERVICE_UUID,
             CHARACTERISTIC_UUID,
             PERIPHERAL_NAME,
-            () => dataFile
+            () => dataFile,
+            dataFile !== undefined
         );
 
-        advanceToBroadcastStep(0);
-
         fileExchanger.on('connect', (deviceAddress) => {
-            advanceToBroadcastStep(1);
+            setBroadcastStep(elements.broadcastSteps.steps.preparing);
         });
 
         fileExchanger.on('send', () => {
-            advanceToBroadcastStep(2);
+            setBroadcastStep(elements.broadcastSteps.steps.sending);
         });
 
-        fileExchanger.on('sent', () => {
-            advanceToBroadcastStep(3);
+        fileExchanger.on('sent', async () => {
+            setBroadcastStep(elements.broadcastSteps.steps.sent);
+            await sleep(5000);
+            if (fileExchanger.stopAdvertising) {
+                fileExchanger.stopAdvertising();
+            }
         });
 
         elements.main.classList.replace('receive', 'send');
@@ -115,7 +122,7 @@ async function setupBluetoothFileExchanger(receive) {
 
     fileExchanger.on('stateChange', (state) => {
         console.log('(transfer)', 'State: ' + state);
-        elements.status.style.backgroundColor = statusStates[state];
+        elements.status.style.backgroundColor = statusColors[state];
         if (state === 'poweredOn') {
             // Run code for when bluetooth is turned on (from off)
             elements.main.classList.add('connected');
@@ -127,7 +134,6 @@ async function setupBluetoothFileExchanger(receive) {
 }
 
 setupBluetoothFileExchanger(false);
-
 
 function addDevice(device) {
     devices.push(device);
@@ -169,14 +175,17 @@ function removeDevice(device) {
 }
 
 function removeDevices() {
-    for (let i = devices.length - 1; i >= 0; i--) {
-        removeDevice(devices[i]);
+    for (let i = 0; i < devices.length; i++) {
+        device.removeElement();
     }
+    devices = [];
 }
 
-function advanceToBroadcastStep(stepNumber) {
-    for (let i = 0; i < elements.broadcastSteps.steps.length; i++) {
-        const element = elements.broadcastSteps.steps[i];
+function setBroadcastStep(step) {
+    const steps = elements.broadcastSteps.element.children;
+    const stepNumber = Array.from(steps).indexOf(step);
+    for (let i = 0; i < steps.length; i++) {
+        const element = steps[i];
         
         if (i < stepNumber) {
             element.classList.remove('current');
