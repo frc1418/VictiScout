@@ -118,7 +118,7 @@ fileInputButton.onchange = function () {
 
         fileBuffer.push(file);
     }
-    if (blocked) alert('Some files have been blocked due to improper type. (Only accepting .json files)');
+    if (blocked) alert('Some files have been blocked due to improper type. (Only accepting .json or .csv files)');
 }
 
 outputButton.onclick = async function () {

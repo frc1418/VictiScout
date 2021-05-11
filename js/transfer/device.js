@@ -11,7 +11,7 @@ class Device extends EventEmitter {
         this.device = device;
         this.fileExchanger = fileExchanger;
         this.id = device.id;
-        this.name = device?.advertisment?.localname || device.id;
+        this.name = device?.advertisment?.localName || device.id;
     }
 
     createElement() {
@@ -52,13 +52,15 @@ class Device extends EventEmitter {
     async receiveData() {
         console.log('Receiving data from', this);
         try {
-            await Promise.race([
-                this.fileExchanger.receive(this.device),
-                sleep(dataReceiptTimeOut).then(() => {
-                    throw new Error('Data receipt timed out');
-                })
-            ]);
+            // await Promise.race([
+            //     this.fileExchanger.receive(this.device),
+            //     sleep(dataReceiptTimeOut).then(() => {
+            //         throw new Error('Data receipt timed out');
+            //     })
+            // ]);
+            await this.fileExchanger.receive(this.device);
         } catch (error) {
+            await this.device.disconnectAsync();
             this.emit('receive', error);
             return;
         }

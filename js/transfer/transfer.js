@@ -4,6 +4,7 @@ const { FileInput } = require('./js/fileInput.js');
 const os = require('os');
 const { shell } = require('electron');
 const { getBluetoothPreferencesURI } = require('./js/transfer/bluetoothPreferences.js');
+const { sleep } = require('./js/transfer/util.js');
 
 const SERVICE_UUID = 'ec00';
 const CHARACTERISTIC_UUID = 'ec0e';
@@ -85,10 +86,6 @@ async function setupBluetoothFileExchanger(receive) {
             newDevice = new Device(newDevice, fileExchanger);
             console.log('Discovered', newDevice);
             addDevice(newDevice);
-        });
-
-        fileExchanger.on('disconnect', (device) => {
-            removeDevice(device);
         });
 
         elements.main.classList.replace('send', 'receive');

@@ -11,6 +11,11 @@ const readFile = util.promisify(fs.readFile);
 var BlenoPrimaryService = bleno.PrimaryService;
 var BlenoCharacteristic = bleno.Characteristic;
 
+// Max bytes per read request
+const MTU = 103;
+// Max bytes per characteristic read
+const MTS = 512;
+
 class BluetoothFileExchangerCentral extends EventEmitter {
     constructor(serviceUUID, characteristicUUID, outputDirectory) {
         super();
@@ -70,19 +75,64 @@ class BluetoothFileExchangerCentral extends EventEmitter {
         });
         const characteristic = characteristics[0];
 
-        const data = await new Promise((resolve, reject) => {
-            characteristic.read((error, data) => {
-                if (error) {
-                    reject(error)
-                    return;
-                }
-                resolve(data);
-            });
-        });
+        const data = await this.readLongCharacteristic(characteristic);
 
         await writeFile(path.join(this.outputDirectory(), peripheral.advertisement.localName + '-data.csv'), data);
         await peripheral.disconnectAsync();
-        await noble.startScanningAsync();
+        await noble.startScanningAsync([this.serviceUUID], true);
+    }
+
+    async readLongCharacteristic(characteristic) {
+        let data = [];
+        let filledMTS = true;
+        while (filledMTS) {
+            const readData = await new Promise((resolve, reject) => {
+                characteristic.read((error, data) => {
+                    if (error) {
+                        reject(error)
+                        return;
+                    }
+                    resolve(data);
+                });
+            });
+
+            data.push(readData);
+
+            if (readData.length < MTS) {
+                filledMTS = false;
+            }
+        }
+
+        rawData = new Uint8Array(MTS * data.length);
+        for (let i = 0; i < data.length; i++) {
+            rawData.set(data[i], MTS * i);
+        }
+        return rawData;
+    }
+
+    async readLongCharacteristic(characteristic) {
+        let i = 1;
+        let data;
+        let filledMTS = false;
+        do {
+            const newData = new Uint8Array(MTS * i);
+            newData.set(data);
+            data = newData;
+            const readData = await new Promise((resolve, reject) => {
+                characteristic.read((error, data) => {
+                    if (error) {
+                        reject(error)
+                        return;
+                    }
+                    resolve(data);
+                });
+            });
+            if (readData.length >= 512) {
+                filledMTS = true;
+            }
+            data.set(readData, MTS * (i - 1));
+            i++;
+        } while (filledMTS);
     }
 }
 
@@ -171,24 +221,29 @@ class FileExchangeCharacteristic extends BlenoCharacteristic {
         this.onSend = callbacks.onSend;
         this.onSent = callbacks.onSent;
         this.filePathSupplier = filePathSupplier;
+
+        this.fileData = undefined;
+        this.offset = 0;
     }
 
     async onReadRequest(offset, callback) {
-        console.log('FileExchangeCharacteristic - onReadRequest');
-        this.onSend();
+        console.log('FileExchangeCharacteristic - onReadRequest - ');
 
-        let fileData;
-        try {
-            fileData = await readFile(this.filePathSupplier());
-        } catch (err) {
-            console.log(err);
-            callback(this.RESULT_UNLIKELY_ERROR, 'Error');
-            this.onSent();
-            return;
-        }
+        if (!this.fileData) {
+            this.onSend();
+            try {
+                this.fileData = await readFile(this.filePathSupplier());
+            } catch (err) {
+                console.log(err);
+                callback(this.RESULT_UNLIKELY_ERROR, 'Error');
+                this.onSent();
+                return;
+            }
+        }        
 
+        const fileData = this.fileData.subarray(this.offset, this.offset + MTU);
+        this.offset += MTU;
         callback(this.RESULT_SUCCESS, fileData);
-        this.onSent();
     }
 }
 

@@ -91,6 +91,7 @@ main.receive .send, main.send .receive {
 
 .device.received > button {
     color: rgb(115, 245, 115);
+    border: 1px solid rgb(115, 245, 115);
 }
 
 #settings {
