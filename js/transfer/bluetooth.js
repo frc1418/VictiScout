@@ -110,30 +110,30 @@ class BluetoothFileExchangerCentral extends EventEmitter {
         return rawData;
     }
 
-    async readLongCharacteristic(characteristic) {
-        let i = 1;
-        let data;
-        let filledMTS = false;
-        do {
-            const newData = new Uint8Array(MTS * i);
-            newData.set(data);
-            data = newData;
-            const readData = await new Promise((resolve, reject) => {
-                characteristic.read((error, data) => {
-                    if (error) {
-                        reject(error)
-                        return;
-                    }
-                    resolve(data);
-                });
-            });
-            if (readData.length >= 512) {
-                filledMTS = true;
-            }
-            data.set(readData, MTS * (i - 1));
-            i++;
-        } while (filledMTS);
-    }
+    // async readLongCharacteristic(characteristic) {
+    //     let i = 1;
+    //     let data;
+    //     let filledMTS = false;
+    //     do {
+    //         const newData = new Uint8Array(MTS * i);
+    //         newData.set(data);
+    //         data = newData;
+    //         const readData = await new Promise((resolve, reject) => {
+    //             characteristic.read((error, data) => {
+    //                 if (error) {
+    //                     reject(error)
+    //                     return;
+    //                 }
+    //                 resolve(data);
+    //             });
+    //         });
+    //         if (readData.length >= 512) {
+    //             filledMTS = true;
+    //         }
+    //         data.set(readData, MTS * (i - 1));
+    //         i++;
+    //     } while (filledMTS);
+    // }
 }
 
 class BluetoothFileExchangerPeripheral extends EventEmitter {
