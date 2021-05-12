@@ -14,7 +14,7 @@ var BlenoCharacteristic = bleno.Characteristic;
 // Max bytes per read request
 const MTU = 103;
 // Max bytes per characteristic read
-const MTS = 512;
+const MAX_ATTRIBUTE_LENGTH = 512;
 
 class BluetoothFileExchangerCentral extends EventEmitter {
     constructor(serviceUUID, characteristicUUID, outputDirectory) {
@@ -99,42 +99,17 @@ class BluetoothFileExchangerCentral extends EventEmitter {
             data.push(readData);
 
             console.log('Length of characteristic read: ' + readData.length);
-            if (readData.length < MTS) {
+            if (readData.length < MAX_ATTRIBUTE_LENGTH) {
                 break;
             }
         }
 
         const rawData = new Uint8Array(data.reduce((sum, cur) => sum += cur.length, 0));
         for (let i = 0; i < data.length; i++) {
-            rawData.set(data[i], MTS * i);
+            rawData.set(data[i], MAX_ATTRIBUTE_LENGTH * i);
         }
         return rawData;
     }
-
-    // async readLongCharacteristic(characteristic) {
-    //     let i = 1;
-    //     let data;
-    //     let filledMTS = false;
-    //     do {
-    //         const newData = new Uint8Array(MTS * i);
-    //         newData.set(data);
-    //         data = newData;
-    //         const readData = await new Promise((resolve, reject) => {
-    //             characteristic.read((error, data) => {
-    //                 if (error) {
-    //                     reject(error)
-    //                     return;
-    //                 }
-    //                 resolve(data);
-    //             });
-    //         });
-    //         if (readData.length >= 512) {
-    //             filledMTS = true;
-    //         }
-    //         data.set(readData, MTS * (i - 1));
-    //         i++;
-    //     } while (filledMTS);
-    // }
 }
 
 class BluetoothFileExchangerPeripheral extends EventEmitter {
@@ -242,9 +217,9 @@ class FileExchangeCharacteristic extends BlenoCharacteristic {
             }
         }        
         
-        // Calculates the next data range in the file, stopping at the MTS if necessary
-        const relativeOffset = this.offset % MTS;
-        const dataRange = Math.min(MTS, relativeOffset + MTU) - relativeOffset;
+        // Calculates the next data range in the file, stopping at the MAX_ATTRIBUTE_LENGTH if necessary
+        const relativeOffset = this.offset % MAX_ATTRIBUTE_LENGTH;
+        const dataRange = Math.min(MAX_ATTRIBUTE_LENGTH, relativeOffset + MTU) - relativeOffset;
         const fileData = this.fileData.subarray(this.offset, this.offset + dataRange);
         this.offset += dataRange;
 
@@ -254,10 +229,6 @@ class FileExchangeCharacteristic extends BlenoCharacteristic {
             this.onSent();
         }
     }
-}
-
-function sleep(millis) {
-    return new Promise((resolve, _) => setTimeout(resolve, millis));
 }
 
 module.exports = {
