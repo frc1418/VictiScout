@@ -11,7 +11,7 @@ class Device extends EventEmitter {
         this.device = device;
         this.fileExchanger = fileExchanger;
         this.id = device.id;
-        this.name = device?.advertisment?.localName || device.id;
+        this.name = device?.advertisement?.localName || device.id;
     }
 
     createElement() {

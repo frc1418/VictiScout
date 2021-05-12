@@ -84,8 +84,8 @@ class BluetoothFileExchangerCentral extends EventEmitter {
 
     async readLongCharacteristic(characteristic) {
         let data = [];
-        let filledMTS = true;
-        while (filledMTS) {
+        while (true) {
+            console.log('Sending characteristic read');
             const readData = await new Promise((resolve, reject) => {
                 characteristic.read((error, data) => {
                     if (error) {
@@ -95,15 +95,16 @@ class BluetoothFileExchangerCentral extends EventEmitter {
                     resolve(data);
                 });
             });
-
+            console.log(readData);
             data.push(readData);
 
+            console.log('Length of characteristic read: ' + readData.length);
             if (readData.length < MTS) {
-                filledMTS = false;
+                break;
             }
         }
 
-        rawData = new Uint8Array(MTS * data.length);
+        const rawData = new Uint8Array(data.reduce((sum, cur) => sum += cur.length, 0));
         for (let i = 0; i < data.length; i++) {
             rawData.set(data[i], MTS * i);
         }
@@ -227,7 +228,7 @@ class FileExchangeCharacteristic extends BlenoCharacteristic {
     }
 
     async onReadRequest(offset, callback) {
-        console.log('FileExchangeCharacteristic - onReadRequest - ');
+        console.log('FileExchangeCharacteristic - onReadRequest - ' + this.offset);
 
         if (!this.fileData) {
             this.onSend();
@@ -240,10 +241,18 @@ class FileExchangeCharacteristic extends BlenoCharacteristic {
                 return;
             }
         }        
+        
+        // Calculates the next data range in the file, stopping at the MTS if necessary
+        const relativeOffset = this.offset % MTS;
+        const dataRange = Math.min(MTS, relativeOffset + MTU) - relativeOffset;
+        const fileData = this.fileData.subarray(this.offset, this.offset + dataRange);
+        this.offset += dataRange;
 
-        const fileData = this.fileData.subarray(this.offset, this.offset + MTU);
-        this.offset += MTU;
         callback(this.RESULT_SUCCESS, fileData);
+
+        if (fileData.length < dataRange) {
+            this.onSent();
+        }
     }
 }
 
