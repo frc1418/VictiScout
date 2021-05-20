@@ -1,6 +1,7 @@
 const remote = require('electron').remote;
 const ipc = require('electron').ipcRenderer;
 const fs = require('fs');
+const { EOL } = require('os');
 
 // Define <thead>, <tbody>, warning, and match deletion vars to be filled later on.
 var thead = document.getElementsByTagName('thead')[0],
@@ -9,12 +10,13 @@ var thead = document.getElementsByTagName('thead')[0],
 
     processingSection = document.getElementById('processing'),
     fileInputButton = document.getElementById('input-file'),
-    fileInputList = document.getElementById('input-list'),
+    fileInputList = document.getElementsByClassName('input-list')[0],
     outputButton = document.getElementById('csv-button'),
     deleteButton = document.getElementById('delete-button'),
-    outputFileName = document.getElementById('output-file');
+    outputFileName = document.getElementById('output-file'),
     transferButton = document.getElementById('transfer-button');
 
+const acceptableFileTypes = ['application/json', '.json', 'text/csv', 'csv'];
 var fileBuffer = [];
 
 if (fs.existsSync(localStorage.path) && fs.statSync(localStorage.path).size > 0) {
@@ -69,7 +71,7 @@ for (elem of inputs) {
     elem.setAttribute('type', 'checkbox');
 }
 
-transferButton.onclick = function() {
+transferButton.onclick = function () {
     ipc.send('transferData');
 }
 
@@ -104,7 +106,7 @@ fileInputButton.onchange = function () {
     var blocked = false;
     for (var i = 0; i < this.files.length; i++) {
         var file = this.files[i];
-        if (file.type !== 'application/json') {
+        if (!acceptableFileTypes.includes(file.type)) {
             blocked = true;
             continue;
         }
@@ -122,7 +124,13 @@ fileInputButton.onchange = function () {
 }
 
 outputButton.onclick = async function () {
-    var content = await makeCSV();
+    if (fileBuffer.length < 1) {
+        return;
+    }
+
+    var content = await combineFiles();
+    console.log(content);
+    return;
     var fd;
     try {
         fd = fs.openSync(localStorage.desktopPath + '/' + (outputFileName.value ? outputFileName.value : 'data') + '.csv', 'a');
@@ -150,22 +158,32 @@ document.onclick = function (e) {
     }
 }
 
-async function makeCSV() {
-    var data = await combineFiles();
+async function combineCsv() {
+    const files = await parseFiles((fileText) => fileText.split(EOL));
+    const header = files[0][0];
+    // Reduces the list of files into a list of the data rows in all files
+    const data = files.reduce((array, file) => array = [...file.slice(1), ...array], []);
+    
+    // Creates a new array with the first element as the header
+    // then dumps the data array into the rest of it
+    const csv = [header, ...data].join(EOL);
+    return csv;
+}
 
-    const items = data;
+async function combineJsonToCsv() {
+    const files = await parseFiles(JSON.parse);
+    // Reduces the list of files into a list of the data objects in all files
+    const data = files.reduce((array, file) => array = [...file, ...array], []);
+
     const replacer = (key, value) => value === null ? '' : value;
-
-    const header = Object.keys(items[0]);
-    let csv = items.map(row => {
-        let rowData = header.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(',');
-        return rowData;
+    const header = Object.keys(data[0]);
+    let csv = data.map((dataObject) => {
+        // Create CSV row from data object
+        return header.map((fieldName) => JSON.stringify(dataObject[fieldName], replacer)).join(',');
     });
     csv.unshift(header.join(','));
 
-    console.log(csv);
-    csv = csv.join('\r\n');
-    return csv;
+    return csv.join(EOL);
 }
 
 /**
@@ -220,35 +238,45 @@ function createSumField(csv, name, ...fields) {
     });
 }
 
-function combineFiles() {
+async function combineFiles() {
+    switch (fileBuffer[0].type) {
+        case 'application/json':
+        case '.json':
+            return await combineJsonToCsv();
+        case 'text/csv':
+        case '.csv':
+            return await combineCsv();
+        default:
+            alert('Unknown file type in the file combiner.')
+            return;
+    }
+}
+
+function parseFiles(fileParser) {
     var promises = [];
-    for (file of fileBuffer) {
+    for (let file of fileBuffer) {
         promises.push(new Promise((resolve, reject) => {
             var reader = new FileReader();
             // Save the file name in each file reader for access later.
-            reader.file = file.name;
             reader.onload = () => {
-                var data = [];
+                let data;
                 try {
-                    data = JSON.parse(reader.result);
+                    data = fileParser(reader.result);
                 } catch (err) {
-                    alert('File ' + reader.file + ' has parsing errors. Resolve and run again.');
+                    alert('File ' + file.name + ' has parsing errors. Resolve and run again.');
+                    reject(err);
                 }
                 resolve(data);
             }
-            reader.onerror = () => resolve([]);
+            reader.onerror = (progress) => reject('File read error. Progress: ', progress);
             reader.readAsText(file);
         }));
     }
-    return Promise.all(promises).then((resolvedData) => {
-        return new Promise((resolve, reject) => {
-            var data = [];
-            for (file of resolvedData) {
-                for (object of file) {
-                    data.push(object);
-                }
-            }
-            resolve(data);
-        });
+
+    return Promise.allSettled(promises).then((settledPromises) => {
+        // Filter out any rejected promises then return a list of the promise values
+        return settledPromises
+            .filter((promise) => promise.status === 'fulfilled')
+            .map((promise) => promise.value);
     });
 }

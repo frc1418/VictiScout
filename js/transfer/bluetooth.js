@@ -215,8 +215,8 @@ class FileExchangeCharacteristic extends BlenoCharacteristic {
                 this.onSent();
                 return;
             }
-        }        
-        
+        }
+
         // Calculates the next data range in the file, stopping at the MAX_ATTRIBUTE_LENGTH if necessary
         const relativeOffset = this.offset % MAX_ATTRIBUTE_LENGTH;
         const dataRange = Math.min(MAX_ATTRIBUTE_LENGTH, relativeOffset + MTU) - relativeOffset;
