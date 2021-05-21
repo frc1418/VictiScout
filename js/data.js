@@ -129,8 +129,6 @@ outputButton.onclick = async function () {
     }
 
     var content = await combineFiles();
-    console.log(content);
-    return;
     var fd;
     try {
         fd = fs.openSync(localStorage.desktopPath + '/' + (outputFileName.value ? outputFileName.value : 'data') + '.csv', 'a');
