@@ -1,5 +1,5 @@
 @property --icon-color {
-    syntax: '<color>';
+    syntax: "<color>";
     inherits: true;
     initial-value: black;
 }
@@ -41,11 +41,13 @@ main > section {
     padding: 20px 10px;
 }
 
-main.connected .disconnected, main:not(.connected) .connected {
+main.connected .disconnected,
+main:not(.connected) .connected {
     display: none !important;
 }
 
-main.receive .send, main.send .receive {
+main.receive .send,
+main.send .receive {
     display: none !important;
 }
 
@@ -139,8 +141,9 @@ main.receive .send, main.send .receive {
     --icon-color: green;
 }
 
-.broadcast-step.complete .instruction, .broadcast-step.current .instruction {
-    display: none
+.broadcast-step.complete .instruction,
+.broadcast-step.current .instruction {
+    display: none;
 }
 
 input[type="file"] {
