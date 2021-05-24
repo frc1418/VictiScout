@@ -190,6 +190,7 @@ function setBroadcastStep(step) {
         } else if (i > stepNumber) {
             element.classList.remove('complete', 'current');
         } else {
+            element.classList.remove('complete');
             element.classList.add('current');
         }
     }
