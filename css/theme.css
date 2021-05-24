@@ -10,7 +10,10 @@ body {
     background: #333;
 }
 
-input[type="number"], input[type="text"], textarea, button {
+input[type="number"],
+input[type="text"],
+textarea,
+button {
     border: none;
     background: #444;
     padding: 5px;
@@ -40,7 +43,8 @@ button:disabled {
     color: rgb(131, 131, 131);
 }
 
-select, option {
+select,
+option {
     color: #333;
 }
 
