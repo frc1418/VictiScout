@@ -6,7 +6,8 @@ table {
     border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
     padding: 5px 7px;
     color: white;
     border: solid 1px grey;
@@ -69,7 +70,8 @@ input {
     }
 }
 
-.file-label, button {
+.file-label,
+button {
     border: none;
     background: #444;
     padding: 5px;
@@ -78,17 +80,20 @@ input {
     font-size: inherit;
 }
 
-.file-label, button {
+.file-label,
+button {
     color: #eee;
     cursor: pointer;
     width: auto;
 }
 
-.file-label:hover, button:hover {
+.file-label:hover,
+button:hover {
     color: #ccc;
 }
 
-.file-label:active, button:active {
+.file-label:active,
+button:active {
     color: #aaa;
 }
 
@@ -98,7 +103,7 @@ input {
     float: left;
 }
 
-#processing>* {
+#processing > * {
     display: inline-block;
     vertical-align: middle;
 }
