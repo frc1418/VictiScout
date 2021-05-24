@@ -159,8 +159,8 @@ document.onclick = function (e) {
 async function combineCsv() {
     const files = await parseFiles((fileText) => fileText.split(EOL));
     const header = files[0][0];
-    // Reduces the list of files into a list of the data rows in all files
-    const data = files.reduce((array, file) => array = [...file.slice(1), ...array], []);
+    // Reduces the list of files into a list of the data rows (exclude the header) in all files
+    const data = files.flatMap((file) => file.slice(1));
     
     // Creates a new array with the first element as the header
     // then dumps the data array into the rest of it
@@ -171,7 +171,7 @@ async function combineCsv() {
 async function combineJsonToCsv() {
     const files = await parseFiles(JSON.parse);
     // Reduces the list of files into a list of the data objects in all files
-    const data = files.reduce((array, file) => array = [...file, ...array], []);
+    const data = files.flat();
 
     const replacer = (key, value) => value === null ? '' : value;
     const header = Object.keys(data[0]);
