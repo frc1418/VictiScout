@@ -175,7 +175,7 @@ async function combineJsonToCsv() {
 
     const replacer = (key, value) => value === null ? '' : value;
     const header = Object.keys(data[0]);
-    let csv = data.map((dataObject) => {
+    const csv = data.map((dataObject) => {
         // Create CSV row from data object
         return header.map((fieldName) => JSON.stringify(dataObject[fieldName], replacer)).join(',');
     });
