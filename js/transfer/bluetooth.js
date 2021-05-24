@@ -8,8 +8,8 @@ const { EventEmitter } = require('events');
 const writeFile = util.promisify(fs.writeFile);
 const readFile = util.promisify(fs.readFile);
 
-var BlenoPrimaryService = bleno.PrimaryService;
-var BlenoCharacteristic = bleno.Characteristic;
+const BlenoPrimaryService = bleno.PrimaryService;
+const BlenoCharacteristic = bleno.Characteristic;
 
 // Max bytes per read request
 const MTU = 103;

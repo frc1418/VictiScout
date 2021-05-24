@@ -52,13 +52,12 @@ class Device extends EventEmitter {
     async receiveData() {
         console.log('Receiving data from', this);
         try {
-            // await Promise.race([
-            //     this.fileExchanger.receive(this.device),
-            //     sleep(dataReceiptTimeOut).then(() => {
-            //         throw new Error('Data receipt timed out');
-            //     })
-            // ]);
-            await this.fileExchanger.receive(this.device);
+            await Promise.race([
+                this.fileExchanger.receive(this.device),
+                sleep(dataReceiptTimeOut).then(() => {
+                    throw new Error('Data receipt timed out');
+                })
+            ]);
         } catch (error) {
             await this.device.disconnectAsync();
             this.emit('receive', error);
