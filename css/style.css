@@ -33,7 +33,8 @@ body {
     background: #555;
 }
 
-.increase, .decrease {
+.increase,
+.decrease {
     width: 25px;
 }
 
