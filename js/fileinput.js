@@ -1,4 +1,5 @@
 const { EventEmitter } = require('events');
+const path = require('path');
 const inputListClass = '.input-list';
 
 class FileInput extends EventEmitter {
@@ -27,10 +28,13 @@ class FileInput extends EventEmitter {
                     continue;
                 }
 
+                // Files only have this property in a directory input
                 if (file.webkitRelativePath) {
-                    const directoryPath = file.path.replace(file.webkitRelativePath, '');
+                    const directoryPath = file.path.replace(path.sep + file.name, '');
                     file = new File([new Blob(['folder'])], directoryPath);
                     folder = true;
+
+                    // Clear any existing files as folder inputs can only contain one file
                     this.inputList.innerHTML = '';
                     this.files = [];
                 }
@@ -42,9 +46,7 @@ class FileInput extends EventEmitter {
 
                 // If this input is being used to select a folder, only include one file in that folder
                 // By ignoring all other files
-                if (folder) {
-                    break;
-                }
+                if (folder) break;
             }
             this.emit('change', this.files);
             if (blocked) alert(`Some files have been blocked due to improper type. 
