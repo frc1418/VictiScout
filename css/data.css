@@ -1,11 +1,9 @@
 section {
     margin-bottom: 20px;
 }
-
 table {
     border-collapse: collapse;
 }
-
 th,
 td {
     padding: 5px 7px;
@@ -13,32 +11,26 @@ td {
     border: solid 1px grey;
     box-sizing: content-box;
 }
-
 td:first-child {
     border-left: none;
 }
-
 tr:first-child td {
     border-top: none;
 }
-
 th {
     vertical-align: bottom;
     border: none;
     background: #444;
 }
-
 td {
     white-space: nowrap;
     overflow: auto;
     max-width: 100px;
 }
-
 input {
     background: #444;
     margin: 10px;
 }
-
 #warning {
     display: none;
     justify-content: center;
@@ -60,16 +52,12 @@ input {
     transform: translate(-50%, -50%);
     animation: enlarge 1s;
 }
-
 @keyframes enlarge {
     from {
         padding: 5px;
-    }
-    to {
+    }    to {
         padding: 125px;
-    }
-}
-
+    }}
 .file-label,
 button {
     border: none;
@@ -79,35 +67,29 @@ button {
     color: white;
     font-size: inherit;
 }
-
 .file-label,
 button {
     color: #eee;
     cursor: pointer;
     width: auto;
 }
-
 .file-label:hover,
 button:hover {
     color: #ccc;
 }
-
 .file-label:active,
 button:active {
     color: #aaa;
 }
-
 #processing {
     margin-left: 10px;
     position: relative;
     float: left;
 }
-
 #processing > * {
     display: inline-block;
     vertical-align: middle;
 }
-
 #delete-button {
     position: relative;
     display: inline-block;
@@ -118,16 +100,13 @@ button:active {
     font-size: inherit;
     text-align: center;
 }
-
 #delete-button:hover {
     background: #d82f2f;
     cursor: pointer;
 }
-
 #delete-button:active {
     background: #b52828;
 }
-
 #transfer-button {
     margin-left: 20px;
 }

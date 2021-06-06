@@ -2,63 +2,50 @@ body {
     margin: 8px 3px 0;
     overflow: auto;
 }
-
 .row {
     padding: 5px 0;
 }
-
 .row > * {
     display: inline-block;
 }
-
 .row > div {
     text-align: center;
     margin: 5px;
 }
-
 .row:first-of-type {
     padding: 0;
 }
-
 .row:first-of-type * {
     display: inline-block;
 }
-
 .row input[type="text"]:not(.large) {
     width: 40px;
 }
-
 .row:nth-of-type(2n) {
     margin-top: 10px;
     background: #555;
 }
-
 .increase,
 .decrease {
     width: 25px;
 }
-
 #path {
     width: 200px;
 }
-
 #path-warning {
     color: red;
     display: none;
 }
-
 #notes {
     width: 100%;
     height: 250px;
 }
-
 #start-position {
     border: none;
     background: #555;
     outline: none;
     color: white;
 }
-
 button.color-selector {
     bottom: 4px;
     height: 13px;
