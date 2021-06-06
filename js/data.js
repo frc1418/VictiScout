@@ -16,7 +16,7 @@ var thead = document.getElementsByTagName('thead')[0],
     outputFileName = document.getElementById('output-file'),
     transferButton = document.getElementById('transfer-button');
 
-const acceptableFileTypes = ['application/json', '.json', 'text/csv', 'csv'];
+const acceptableFileTypes = ['application/json', '.json', 'text/csv', '.csv'];
 var fileBuffer = [];
 
 if (fs.existsSync(localStorage.path) && fs.statSync(localStorage.path).size > 0) {
@@ -120,7 +120,7 @@ fileInputButton.onchange = function () {
 
         fileBuffer.push(file);
     }
-    if (blocked) alert('Some files have been blocked due to improper type. (Only accepting .json or .csv files)');
+    if (blocked) alert('Some files have been blocked due to improper type. (Only .json and .csv files accepted)');
 }
 
 outputButton.onclick = async function () {
