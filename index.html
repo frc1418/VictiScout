@@ -28,86 +28,68 @@
         <button id="view">View Data</button>
     </div>
     <div class="row">
-        <h1>PRE-TELEOP</h1>
+        <h1>PRE-GAME/AUTO</h1>
         <div>
-            <h2>Moved from initiation line</h2>
+            <h2>Move out of tarmac</h2>
             <input type="checkbox" id="init-line-movement">
         </div>
         <div>
             <h2>Balls started with</h2>
-            <input type="number" id="starting-balls" value="0" min="0" max="3">
+            <input type="number" id="starting-balls" value="0" min="0" max="1">
         </div>
         <div>
             <h2>Balls picked up (auto)</h2>
             <input type="number" id="auto-balls" value="0" min="0">
         </div>
+
     </div>
     <div class="row">
-        <h1>CONTROL PANEL</h1>
+        <h1>HUMAN PLAYER</h1>
         <div>
-            <h2>Rotation Control</h2>
-                <input type="checkbox" id="rotation-control">
+            <h2>Number of Shots</h2>
+                <input type="number" id="human-player-shots-number" value="0" min="0">
         </div>
         <div>
-            <h2>Position Control</h2>
-            <input type="checkbox" id="position-control">
+            <h2>Shots in Lower Hub</h2>
+                <input type="number" id="human-player-lower" value="0" min="0">
+        </div>
+        <div>
+            <h2>Shots in Upper Hub</h2>
+                <input type="number" id="human-player-upper" value="0" min="0">
         </div>
     </div>
     <div class="row">
-        <h1>POWER PORT</h1>
+        <h1>HUB</h1>
         <div>
             <h2>Autonomous</h2>
-            <input type="number" class="balls" id="auto-inner-port" value="0" min="0">
+            <input type="number" class="balls" id="auto-upper-hub" value="0" min="0">
             <br>
-            <input type="number" class="balls" id="auto-outer-port" value="0" min="0">
-            <br>
-            <input type="number" class="balls" id="auto-bottom-port" value="0" min="0">
+            <input type="number" class="balls" id="auto-lower-hub" value="0" min="0">
         </div>
         <div>
-            <p>&#8592 Inner &#8594</p>
+            <p>&#8592 Upper &#8594</p>
             <br>
-            <p>&#8592 Outer &#8594</p>
-            <br>
-            <p>&#8592 Bottom &#8594</p>
+            <p>&#8592 Lower &#8594</p>
+    
         </div>
         <div>
             <h2>Teleoperated</h2>
-            <input type="number" class="balls" id="teleop-bottom-port" value="0" min="0">
+            <input type="number" class="balls" id="teleop-upper-hub" value="0" min="0">
             <br>
-            <input type="number" class="balls" id="teleop-outer-port" value="0" min="0">
-            <br>
-            <input type="number" class="balls" id="teleop-inner-port" value="0" min="0">
+            <input type="number" class="balls" id="teleop-lower-hub" value="0" min="0">
         </div>
     </div>
     <div class="row">
-        <h1>GENERATOR SWITCH</h1>
+        <h1>HANGAR</h1>
         <div>
-            <h2>Level Reached</h2>
-            <select id="level-end">
+            <h2>Rung Reached</h2>
+            <select id="rung-reached">
                 <option>None</option>
-                <option>Parked</option>
-                <option>Hanging</option>
-                <option>Level</option>
+                <option>Low</option>
+                <option>Mid</option>
+                <option>High</option>
+                <option>Traversal</option>
             </select>
-        </div>
-        <div>
-            <h2>Climb Assists</h2>
-            <input type="number" id="climb-assist" value="0" min="0" max="2">
-        </div>
-        <div>
-            <h2>Adjustable climb</h2>
-            <input type="checkbox" id="adjustable-climb">
-        </div>
-    </div>
-    <div class="row">
-        <h1>DEFENSE</h1>
-        <div>
-            <h2>Was defended against</h2>
-            <input type="checkbox" id="defended-against">
-        </div>
-        <div>
-            <h2>Played defense</h2>
-            <input type="checkbox" id="played-defense">
         </div>
     </div>
     <div class="row">
