@@ -28,54 +28,44 @@
         <button id="view">View Data</button>
     </div>
     <div class="row">
-        <h1>PRE-GAME/AUTO</h1>
+        <h1>AUTO</h1>
         <div>
             <h2>Move out of tarmac</h2>
             <input type="checkbox" id="init-line-movement">
         </div>
         <div>
-            <h2>Balls started with</h2>
-            <input type="number" id="starting-balls" value="0" min="0" max="1">
-        </div>
-        <div>
-            <h2>Balls picked up (auto)</h2>
+            <h2>Balls picked up</h2>
             <input type="number" id="auto-balls" value="0" min="0">
-        </div>
-
-    </div>
-    <div class="row">
-        <h1>HUMAN PLAYER</h1>
+        </div> 
         <div>
-            <h2>Number of Shots</h2>
-                <input type="number" id="human-player-shots-number" value="0" min="0">
-        </div>
-        <div>
-            <h2>Shots in Lower Hub</h2>
-                <input type="number" id="human-player-lower" value="0" min="0">
-        </div>
-        <div>
-            <h2>Shots in Upper Hub</h2>
-                <input type="number" id="human-player-upper" value="0" min="0">
-        </div>
-    </div>
-    <div class="row">
-        <h1>HUB</h1>
-        <div>
-            <h2>Autonomous</h2>
-            <input type="number" class="balls" id="auto-upper-hub" value="0" min="0">
+            <h2>Human Player</h2>
+            <input type="number" class="balls" id="auto-human-upper" value="0" min="0">
             <br>
-            <input type="number" class="balls" id="auto-lower-hub" value="0" min="0">
-        </div>
-        <div>
+            <input type="number" class="balls" id="auto-human-lower" value="0" min="0">
+         </div>
+         <div>
+            <p>Hub</p>
+            <br>
             <p>&#8592 Upper &#8594</p>
             <br>
             <p>&#8592 Lower &#8594</p>
-    
         </div>
         <div>
-            <h2>Teleoperated</h2>
-            <input type="number" class="balls" id="teleop-upper-hub" value="0" min="0">
+            <h2>Robot</h2>
+            <input type="number" class="balls" id="auto-robot-upper" value="0" min="0">
             <br>
+            <input type="number" class="balls" id="auto-robot-lower" value="0" min="0">
+        </div>
+    </div>
+    <div class="row">
+        <h1>TELEOP</h1>
+       
+        <div> 
+            <h2>Upper Hub Shots</h2>
+            <input type="number" class="balls" id="teleop-upper-hub" value="0" min="0">
+        </div> 
+        <div> 
+            <h2>Lower Hub Shots</h2>
             <input type="number" class="balls" id="teleop-lower-hub" value="0" min="0">
         </div>
     </div>
