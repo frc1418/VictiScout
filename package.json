@@ -20,12 +20,11 @@
   },
   "homepage": "https://github.com/frc1418/VictiScout#readme",
   "devDependencies": {
-    "electron": "^12.0.2",
-    "electron-packager": "^15.2.0",
+    "electron": "^22.1.0",
+    "electron-packager": "^17.1.1",
     "os": "*"
   },
   "dependencies": {
-    "@abandonware/bleno": "git+https://github.com/AndrewLester/bleno.git",
-    "@abandonware/noble": "^1.9.2-13"
+    "@abandonware/bleno": "git+https://github.com/BrandonWerbel/bleno.git"
   }
 }
