@@ -17,12 +17,6 @@
             <button id="red" class="color-selector"></button>
             <button id="blue" class="color-selector"></button>
         </div>
-        <select id="start-position" class="special">
-            <option></option>
-            <option>Left</option>
-            <option>Center</option>
-            <option>Right</option>
-        </select>
         <button id="submit">Submit</button>
         <button id="reset">Reset</button>
         <button id="view">View Data</button>
@@ -30,53 +24,57 @@
     <div class="row">
         <h1>AUTO</h1>
         <div>
-            <h2>Move out of tarmac</h2>
-            <input type="checkbox" id="init-line-movement">
+            <h2>Moved out of community</h2>
+            <input type="checkbox" id="init-movement">
         </div>
         <div>
-            <h2>Balls picked up</h2>
-            <input type="number" id="auto-balls" value="0" min="0">
-        </div> 
-        <div>
-            <h2>Human Player</h2>
-            <input type="number" class="balls" id="auto-human-upper" value="0" min="0">
+            <h2>Game Pieces</h2>
+            <input type="number" class="balls" id="auto-top" value="0" min="0">
             <br>
-            <input type="number" class="balls" id="auto-human-lower" value="0" min="0">
+            <input type="number" class="balls" id="auto-middle" value="0" min="0">
+            <br>
+            <input type="number" class="balls" id="auto-bottom" value="0" min="0">
          </div>
          <div>
-            <p>Hub</p>
-            <p>&#8592 Upper &#8594</p>
+            <p>&#8592 Top</p>
             <br>
-            <p>&#8592 Lower &#8594</p>
+            <p>&#8592 Middle</p>
+            <br>
+            <p>&#8592 Bottom</p>
         </div>
         <div>
-            <h2>Robot</h2>
-            <input type="number" class="balls" id="auto-robot-upper" value="0" min="0">
-            <br>
-            <input type="number" class="balls" id="auto-robot-lower" value="0" min="0">
+            <h2>Dock</h2>
+            <select id="auto-dock-points">
+                <option>none</option>
+                <option>docked and not engaged</option>
+                <option>docked and engaged</option>
+            </select>
         </div>
     </div>
     <div class="row">
         <h1>TELEOP</h1>
-        <div> 
-            <h2>Upper Hub Shots Made</h2>
-            <input type="number" class="balls" id="teleop-upper-hub" value="0" min="0">
-        </div> 
-        <div> 
-            <h2>Lower Hub Shots Made</h2>
-            <input type="number" class="balls" id="teleop-lower-hub" value="0" min="0">
-        </div>
-    </div>
-    <div class="row">
-        <h1>HANGAR</h1>
         <div>
-            <h2>Rung Reached</h2>
-            <select id="rung-reached">
-                <option>None</option>
-                <option>Low</option>
-                <option>Mid</option>
-                <option>High</option>
-                <option>Traversal</option>
+            <h2>Game Pieces</h2>
+            <input type="number" class="balls" id="teleop-top" value="0" min="0">
+            <br>
+            <input type="number" class="balls" id="teleop-middle" value="0" min="0">
+            <br>
+            <input type="number" class="balls" id="teleop-bottom" value="0" min="0">
+         </div>
+         <div>
+            <p>&#8592 Top</p>
+            <br>
+            <p>&#8592 Middle</p>
+            <br>
+            <p>&#8592 Bottom</p>
+        </div>
+        <div>
+            <h2>Dock</h2>
+            <select id="teleop-dock-points">
+                <option>none</option>
+                <option>parked</option>
+                <option>docked and not engaged</option>
+                <option>docked and engaged</option>
             </select>
         </div>
     </div>
