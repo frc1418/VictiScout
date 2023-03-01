@@ -24,57 +24,77 @@
     <div class="row">
         <h1>AUTO</h1>
         <div>
-            <h2>Moved out of community</h2>
-            <input type="checkbox" id="init-movement">
+            <h2>Cones</h2>
+            <input type="number" class="balls" id="auto-top-cone" value="0" min="0">
+            <br>
+            <input type="number" class="balls" id="auto-middle-cone" value="0" min="0">
+            <br>
+            <input type="number" class="balls" id="auto-bottom-cone" value="0" min="0">
         </div>
         <div>
-            <h2>Game Pieces</h2>
-            <input type="number" class="balls" id="auto-top" value="0" min="0">
+            <p>&#8592 Top &#8594</p>
             <br>
-            <input type="number" class="balls" id="auto-middle" value="0" min="0">
+            <p>&#8592 Middle &#8594</p>
             <br>
-            <input type="number" class="balls" id="auto-bottom" value="0" min="0">
+            <p>&#8592 Bottom &#8594</p>
+        </div>
+        <div>
+            <h2>Cubes</h2>
+            <input type="number" class="balls" id="auto-top-cubes" value="0" min="0">
+            <br>
+            <input type="number" class="balls" id="auto-middle-cubes" value="0" min="0">
+            <br>
+            <input type="number" class="balls" id="auto-bottom-cubes" value="0" min="0">
          </div>
          <div>
-            <p>&#8592 Top</p>
-            <br>
-            <p>&#8592 Middle</p>
-            <br>
-            <p>&#8592 Bottom</p>
+            <h2>Moved out of community</h2>
+            <input type="checkbox" id="init-movement">
         </div>
         <div>
             <h2>Dock</h2>
             <select id="auto-dock-points">
                 <option>none</option>
-                <option>docked and not engaged</option>
-                <option>docked and engaged</option>
+                <option>D & not E</option>
+                <option>D & E</option>
             </select>
         </div>
     </div>
     <div class="row">
         <h1>TELEOP</h1>
         <div>
-            <h2>Game Pieces</h2>
-            <input type="number" class="balls" id="teleop-top" value="0" min="0">
+            <h2>Cones</h2>
+            <input type="number" class="balls" id="teleop-top-cone" value="0" min="0">
             <br>
-            <input type="number" class="balls" id="teleop-middle" value="0" min="0">
+            <input type="number" class="balls" id="teleop-middle-cone" value="0" min="0">
             <br>
-            <input type="number" class="balls" id="teleop-bottom" value="0" min="0">
+            <input type="number" class="balls" id="teleop-bottom-cone" value="0" min="0">
+        </div>
+        <div>
+            <p>&#8592 Top &#8594</p>
+            <br>
+            <p>&#8592 Middle &#8594</p>
+            <br>
+            <p>&#8592 Bottom &#8594</p>
+        </div>
+        <div>
+            <h2>Cubes</h2>
+            <input type="number" class="balls" id="teleop-top-cubes" value="0" min="0">
+            <br>
+            <input type="number" class="balls" id="teleop-middle-cubes" value="0" min="0">
+            <br>
+            <input type="number" class="balls" id="teleop-bottom-cubes" value="0" min="0">
          </div>
          <div>
-            <p>&#8592 Top</p>
-            <br>
-            <p>&#8592 Middle</p>
-            <br>
-            <p>&#8592 Bottom</p>
+            <h2>Number of Cycles</h2>
+            <input type="number" id="starting-balls" value="0" min="0">
         </div>
         <div>
             <h2>Dock</h2>
             <select id="teleop-dock-points">
                 <option>none</option>
                 <option>parked</option>
-                <option>docked and not engaged</option>
-                <option>docked and engaged</option>
+                <option>D & not E</option>
+                <option>D & E</option>
             </select>
         </div>
     </div>
@@ -85,6 +105,12 @@
 The most helpful information you can note is insights about the team which can't be communicated through quantitative inputs.
 
 Please refrain from making sweeping declarations about whether a team should be avoided, and from adding any useless information. It's also not necessary to note every event in the whole game: the standard numerical inputs can be used for that; we don't need extraneous duplicate information.
+
+KEY TERMINOLOGY:
+Parked: Robots whose bumper are compeltly contained within the community but does not meet the criteria for docked.
+Docked and Not Engaged (D & not E): Contacting only the charge station 
+Docked and Engaged (D & E): Charge station is level
+
 
 "></textarea>
     </div>
