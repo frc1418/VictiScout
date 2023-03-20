@@ -37,7 +37,7 @@ app.on('ready', createWindow);
 
 ipcMain.on('renderData', function(event, arg) {
 	var dataWindow = new BrowserWindow({
-		width: 1000,
+		width: 1200,
 		height: 500,
 		webPreferences: {
 			nodeIntegration: true,
