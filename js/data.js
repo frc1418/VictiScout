@@ -93,7 +93,7 @@ deleteButton.onclick = function () {
     } else {
         fs.writeFileSync(localStorage.path, JSON.stringify(array).replace(/[""]/, '"'));
     }
-    remote.getCurrentWindow().reload();
+    location.reload();
 }
 
 function pname(str) {
