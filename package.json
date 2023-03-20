@@ -25,6 +25,7 @@
     "os": "*"
   },
   "dependencies": {
-    "@abandonware/bleno": "git+https://github.com/BrandonWerbel/bleno.git"
+    "@abandonware/bleno": "git+https://github.com/BrandonWerbel/bleno.git",
+    "@abandonware/noble": "git+https://github.com/abandonware/noble.git"
   }
 }

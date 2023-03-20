@@ -197,5 +197,6 @@ function setBroadcastStep(step) {
 }
 
 elements.enableBluetooth.addEventListener('click', () => {
+    console.log("ENABLING BLUETOOH")
     shell.openExternal(getBluetoothPreferencesURI());
 });
