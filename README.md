@@ -4,7 +4,7 @@ Application for FRC scouting. Written using [Electron](http://electron.atom.io/)
 
 Get the newest compiled version [here](https://github.com/frc1418/VictiScout/releases)!
 
-Get the newest data-compiler version [here](https://github.com/Git-HorizonZz/VictiScout-Compiler/releases)
+Get the newest data-compiler version [here](https://github.com/Git-HorizonZz/VictiScout-Compiler/releases)!
 
 ![Screenshot](images/readme/screenshot.png)
 
