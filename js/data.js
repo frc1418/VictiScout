@@ -407,8 +407,6 @@ async function exportCsv() {
 
 // Calculate averages for each team for numeric fields and accuracy
 const averages = Object.keys(teamData).map(team => {
-const autoAccuracy = (autoMade / autoShot) * 100;
-const teleopAccuracy = (teleopMade / teleopShot) * 100;
     const teamAverages = teamData[team].totals.map((total, index) => {
         if (teamData[team].numericFields[index] && teamData[team].counts[index] > 0) {
             // Calculate average for numeric fields
