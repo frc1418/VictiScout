@@ -10,6 +10,7 @@ td {
     color: white;
     border: solid 1px grey;
     box-sizing: content-box;
+
 }
 td:first-child {
     border-left: none;
@@ -68,6 +69,7 @@ button {
     outline: none;
     color: white;
     font-size: inherit;
+    border-radius: 10px;
 }
 .file-label,
 button {
@@ -78,13 +80,14 @@ button {
 .file-label:hover,
 button:hover {
     color: #ccc;
+    border-radius: 8px;
 }
 .file-label:active,
 button:active {
     color: #aaa;
 }
 #processing {
-    margin-left: 10px;
+    margin-left: 15px;
     position: relative;
     float: left;
 }
@@ -95,19 +98,23 @@ button:active {
 #delete-button {
     position: relative;
     display: inline-block;
-    left: 20%;
-    background: #d12727;
-    padding: 8px;
+    left: 2%;
+    background: #a90c0c;
+    padding: 7px;
     width: 155px;
     font-size: inherit;
     text-align: center;
+    border-radius: 10px;
 }
 #delete-button:hover {
     background: #d82f2f;
     cursor: pointer;
+    border-radius: 7px;
+    border-radius: 8px;
 }
 #delete-button:active {
     background: #b52828;
+    border-radius: 8px;
 }
 #transfer-button {
     margin-left: 20px;

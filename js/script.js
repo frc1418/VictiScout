@@ -117,6 +117,7 @@ function resetInputs() {
         // Reset to different values depending on what type of input it is
         if (inputs[input].type === 'number' && !inputs[input].classList.contains('large')) inputs[input].value = 0; // If it's a small number box
         else if (inputs[input].type === 'checkbox') inputs[input].checked = false; // Checkbox
+        else if (inputs[input].type === 'text') inputs[input].checked = false; // text
         else if (inputs[input].tagName === 'SELECT') inputs[input].value = 'None'; // Selector
         else inputs[input].value = '';
     }
@@ -172,3 +173,44 @@ onclick = function(e) {
         else e.target.previousElementSibling.value = parseInt(e.target.previousElementSibling.value) + 1;
     }
 };
+function colorRows() {
+    // Get the selected color button
+    const selectedColor = document.querySelector('.color-selector.selected');
+
+    // Check if a color is selected
+    if (selectedColor) {
+        const colorClass = selectedColor.id;
+
+        // Get all rows in the tbody
+        const rows = Array.from(document.getElementsByTagName('tr'));
+
+        // Remove existing color classes from all rows
+        rows.forEach(row => {
+            row.classList.remove('red', 'blue');
+        });
+
+        // Add the selected color class to each row
+        rows.forEach(row => {
+            row.classList.add(colorClass);
+        });
+    }
+}
+
+// Add a click event listener to the color buttons
+document.querySelectorAll('.color-selector').forEach(button => {
+    button.addEventListener('click', function () {
+        // Remove the 'selected' class from all color buttons
+        document.querySelectorAll('.color-selector').forEach(button => {
+            button.classList.remove('selected');
+        });
+
+        // Add the 'selected' class to the clicked color button
+        this.classList.add('selected');
+
+        // Color the rows based on the selected color
+        colorRows();
+    });
+});
+
+// Call the colorRows function initially to color rows based on the default selected color
+colorRows();
