@@ -60,6 +60,7 @@ input {
     to {
         padding: 125px;
     }
+    
 }
 .file-label,
 button {
@@ -118,4 +119,8 @@ button:active {
 }
 #transfer-button {
     margin-left: 20px;
+}
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
 }
