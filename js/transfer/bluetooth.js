@@ -13,7 +13,7 @@ const BlenoCharacteristic = bleno.Characteristic;
 
 // Max bytes per read request
 const MTU = 103;
-// Max bytes per characteristic read
+// Max bytes per characteristic read test
 const MAX_ATTRIBUTE_LENGTH = 512;
 
 class BluetoothFileExchangerCentral extends EventEmitter {
