@@ -85,7 +85,7 @@ pg.submit.onclick = function() {
         // Save the current match and position. The match will later be increased by one.
         write(match);
         resetInputs();
-        pg.match.value = currentMatch + 1;
+        pg.match.value = null;
     } else {
         window.alert('You must enter a team number, color, position, and match!');
     }
@@ -112,11 +112,10 @@ function write(match) {
 function resetInputs() {
     // For each input, reset to default value.
     for (input in inputs) {
-        // Check if the element's class contains keep
-        if (inputs[input].classList && inputs[input].classList.contains('keep')) continue;
         // Reset to different values depending on what type of input it is
         if (inputs[input].type === 'number' && !inputs[input].classList.contains('large')) inputs[input].value = 0; // If it's a small number box
         else if (inputs[input].type === 'checkbox') inputs[input].checked = false; // Checkbox
+        else if (inputs[input].type === 'text') inputs[input].checked = false; // text
         else if (inputs[input].tagName === 'SELECT') inputs[input].value = 'None'; // Selector
         else inputs[input].value = '';
     }

@@ -51,3 +51,10 @@ button.color-selector {
     height: 13px;
     width: 13px;
 }
+/*figure out how to use these colors to change row backgrounds*/
+.red {
+    background-color: #ff0000; 
+}
+.blue {
+    background-color: #0000ff;
+}
