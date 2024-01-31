@@ -1,13 +1,16 @@
-html, body {
+html,
+body {
     overflow-x: hidden;
 }
 
 section {
     margin-bottom: 20px;
 }
+
 table {
     border-collapse: collapse;
 }
+
 th,
 td {
     padding: 5px 7px;
@@ -15,26 +18,32 @@ td {
     border: solid 1px grey;
     box-sizing: content-box;
 }
+
 td:first-child {
     border-left: none;
 }
+
 tr:first-child td {
     border-top: none;
 }
+
 th {
     vertical-align: bottom;
     border: none;
     background: #444;
 }
+
 td {
     white-space: nowrap;
     overflow: auto;
     max-width: 100px;
 }
+
 input {
     background: #444;
     margin: 10px;
 }
+
 #warning {
     display: none;
     justify-content: center;
@@ -56,14 +65,17 @@ input {
     transform: translate(-50%, -50%);
     animation: enlarge 1s;
 }
+
 @keyframes enlarge {
     from {
         padding: 5px;
     }
+
     to {
         padding: 125px;
     }
 }
+
 .file-label,
 button {
     border: none;
@@ -74,30 +86,36 @@ button {
     font-size: inherit;
     border-radius: 10px;
 }
+
 .file-label,
 button {
     color: #eee;
     cursor: pointer;
     width: auto;
 }
+
 .file-label:hover,
 button:hover {
     color: #ccc;
     border-radius: 8px;
 }
+
 .file-label:active,
 button:active {
     color: #aaa;
 }
+
 #processing {
     margin-left: 15px;
     position: relative;
     float: left;
 }
-#processing > * {
+
+#processing>* {
     display: inline-block;
     vertical-align: middle;
 }
+
 #delete-button {
     position: relative;
     display: inline-block;
@@ -109,28 +127,33 @@ button:active {
     text-align: center;
     border-radius: 10px;
 }
+
 #delete-button:hover {
     background: #d82f2f;
     cursor: pointer;
     border-radius: 7px;
     border-radius: 8px;
 }
+
 #delete-button:active {
     background: #b52828;
     border-radius: 8px;
 }
+
 #transfer-button {
     margin-left: 20px;
 }
-#hidden-fields{
+
+#hidden-fields {
     position: absolute;
     left: 10000px;
 }
+
 #checker {
     position: relative;
     cursor: pointer;
     left: 10px;
-    top:-7px;
+    top: -7px;
 }
 
 #checker:before {
@@ -139,17 +162,18 @@ button:active {
     position: absolute;
     width: 35px;
     height: 35px;
-    background-color:#585858;
+    background-color: #585858;
     border-radius: 9px;
     animation: round2 0.2s;
 }
+
 #checker:checked:before {
     content: "";
     display: block;
     position: absolute;
     width: 35px;
     height: 35px;
-    background-color:#d12727;
+    background-color: #d12727;
     animation: round1 0.5s;
     border-radius: 4px;
 }
@@ -172,17 +196,20 @@ button:active {
     from {
         border-radius: 4px;
     }
+
     to {
         border-radius: 9px;
     }
-    
+
 }
+
 @keyframes round1 {
     from {
         border-radius: 9px;
     }
+
     to {
         border-radius: 4px;
     }
-    
+
 }

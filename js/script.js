@@ -85,7 +85,7 @@ pg.submit.onclick = function () {
         // Save the current match and position. The match will later be increased by one.
         write(match);
         resetInputs();
-        pg.match.value = null;
+        pg.match.value = currentMatch + 1;
     } else {
         window.alert('You must enter a team number, color, position, and match!');
     }
