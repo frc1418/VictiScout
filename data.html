@@ -21,19 +21,27 @@
             </table>
         </section>
         <section id="processing">
-            <div id="input-container">
-                <label for="input-file" class="file-label">Choose Files</label>
-                <input id="input-file" type="file" accept="application/json,.json,text/csv,.csv" multiple></input>
-            </div>
             <!-- This list will be populated by JS -->
             <ul class="input-list"></ul>
+            <button id="export-csv-button">Export As CSV</button>
+            <button id="teleop-sort-button">Sort by Teleop Accuracy</button>
+            <button id="auto-sort-button">Sort by Auto Accuracy</button>
+
+        </section>
+        <div id="delete-button">DELETE SELECTED</div>
+        <div id="hidden-fields">
             <p>&rarr;</p>
             <input type="text" id="output-file" placeholder="data" class="large">
             <p>&rarr;</p>
-            <button id="csv-button">Make CSV</button>
             <button id="transfer-button">Transfer Data</button>
-        </section>
-        <div id="delete-button">DELETE SELECTED</div>
+            <button id="csv-button">Make CSV</button>
+
+            <div id="input-container">
+                <label for="input-file" class="file-label">Choose Files</label>
+                <input id="input-file" type="file" accept="application/json,.json,text/csv,.csv" multiple></input>
+
+            </div>
+        </div>
     </main>
 
     <script src="js/data.js"></script>

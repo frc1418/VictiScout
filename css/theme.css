@@ -5,9 +5,11 @@
     color: white;
     font: 14px sans-serif;
 }
+
 body {
     background: #333;
 }
+
 input[type="number"],
 input[type="text"],
 textarea,
@@ -17,42 +19,85 @@ button {
     padding: 5px;
     margin: 1px;
     outline: none;
+    color: white;
+    border-radius: 10px;
 }
+
+input[type="number"]:hover,
+input[type="text"]:hover,
+textarea:hover,
+button:hover {
+    border-radius: 5px;
+}
+
+#chassis-size {
+    border: none;
+    background: #444;
+    padding: 5px;
+    margin: 1px;
+    width: 50%;
+    height: 20px;
+    border-radius: 10px;
+}
+
+select {
+    border: none;
+    background: #444;
+    padding: 5px;
+    margin: 1px;
+    outline: none;
+    color: white;
+    border-radius: 10px;
+}
+
+select:hover {
+    border-radius: 5px;
+}
+
 input[type="file"] {
     display: none;
 }
+
 button:not(:disabled) {
     color: #eee;
     cursor: pointer;
     width: auto;
 }
+
 button:hover:not(:disabled) {
     color: #ccc;
 }
+
 button:active:not(:disabled) {
     color: #aaa;
 }
+
 button:disabled {
     color: rgb(131, 131, 131);
 }
-select,
+
 option {
     color: #333;
 }
+
 h1 {
     font-weight: bold;
     font-size: 30px;
     margin: 0 10px;
 }
+
 h2 {
     margin-bottom: 5px;
 }
+
 input {
     width: 50px;
 }
+
 input.large {
     width: auto;
 }
+
 .color-selector {
     background-color: #555;
     border-radius: 100%;
@@ -61,11 +106,13 @@ input.large {
     position: relative;
     transition: background-color 0.3s ease;
 }
+
 .input-list {
     list-style-type: none;
     margin-top: 5px;
 }
-.input-list li > div:hover {
+
+.input-list li>div:hover {
     text-decoration: line-through;
     cursor: pointer;
 }
