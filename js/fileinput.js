@@ -12,7 +12,7 @@ class FileInput extends EventEmitter {
         this.acceptedTypes = this.fileInput.accept ? this.fileInput.accept.split(',') : null;
         this.inputList = inputContainer.querySelector(inputListClass)
             || inputContainer.parentElement.querySelector(`#${inputContainer.id} + ${inputListClass}`);
-        
+
         this.setupListeners();
     }
 
@@ -41,7 +41,7 @@ class FileInput extends EventEmitter {
 
                 const fileElement = this.createFileElement(file);
                 this.inputList.appendChild(fileElement);
-        
+
                 this.files.push(file);
 
                 // If this input is being used to select a folder, only include one file in that folder

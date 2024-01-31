@@ -26,7 +26,7 @@ function createWindow() {
 	mainWindow.loadURL(`file://${__dirname}/../index.html`);
 
 	// Emitted when the window is closed.
-	mainWindow.on('closed', function() {
+	mainWindow.on('closed', function () {
 		// Dereference window object
 		mainWindow = null;
 	});
@@ -35,7 +35,7 @@ function createWindow() {
 // Called when Electron has finished initialization.
 app.on('ready', createWindow);
 
-ipcMain.on('renderData', function(event, arg) {
+ipcMain.on('renderData', function (event, arg) {
 	var dataWindow = new BrowserWindow({
 		width: 1200,
 		height: 500,
@@ -47,13 +47,13 @@ ipcMain.on('renderData', function(event, arg) {
 	// Load options page
 	dataWindow.loadURL(`file://${__dirname}/../data.html`);
 
-	dataWindow.on('closed', function() {
+	dataWindow.on('closed', function () {
 		// Dereference window object
 		dataWindow = null;
 	});
 });
 
-ipcMain.on('transferData', function(event, arg) {
+ipcMain.on('transferData', function (event, arg) {
 	var transferWindow = new BrowserWindow({
 		width: 1000,
 		height: 500,
@@ -65,7 +65,7 @@ ipcMain.on('transferData', function(event, arg) {
 	// Load options page
 	transferWindow.loadURL(`file://${__dirname}/../transfer.html`);
 
-	transferWindow.on('closed', function() {
+	transferWindow.on('closed', function () {
 		// Dereference window object
 		transferWindow = null;
 	});

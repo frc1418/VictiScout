@@ -51,7 +51,7 @@ for (input in inputs) {
 }
 
 // Submit match data.
-pg.submit.onclick = function() {
+pg.submit.onclick = function () {
     if (
         // If the user has entered a team number and match number
         pg.team.value &&
@@ -123,35 +123,35 @@ function resetInputs() {
     console.log('Reset inputs.');
 }
 
-pg.red.onclick = function() {
-  if (this.style.backgroundColor === '') {
-    this.style.backgroundColor = 'rgb(209, 39, 39)';
-    pg.blue.style.backgroundColor = '';
-    pg.color.value = 'Red';
-  } else {
-    this.style.backgroundColor = '';
-    pg.color.value = '';
-  }
+pg.red.onclick = function () {
+    if (this.style.backgroundColor === '') {
+        this.style.backgroundColor = 'rgb(209, 39, 39)';
+        pg.blue.style.backgroundColor = '';
+        pg.color.value = 'Red';
+    } else {
+        this.style.backgroundColor = '';
+        pg.color.value = '';
+    }
 }
 
-pg.blue.onclick = function() {
-  if (this.style.background === '') {
-    this.style.backgroundColor = '#1d7ac8';
-    pg.red.style.backgroundColor = '';
-    pg.color.value = 'Blue';
-  } else {
-    this.style.backgroundColor = '';
-    pg.color.value = '';
-  }
+pg.blue.onclick = function () {
+    if (this.style.background === '') {
+        this.style.backgroundColor = '#1d7ac8';
+        pg.red.style.backgroundColor = '';
+        pg.color.value = 'Blue';
+    } else {
+        this.style.backgroundColor = '';
+        pg.color.value = '';
+    }
 }
 
 // When reset button is clicked, trigger reset
-pg.reset.onclick = function() {
+pg.reset.onclick = function () {
     if (window.confirm('Really reset inputs?')) resetInputs();
 };
 
 // When 'View Data' button is clicked
-pg.view.onclick = function() {
+pg.view.onclick = function () {
     // Store the path to the data document
     localStorage.path = path;
     // Tell main.js to open rendered data window
@@ -159,7 +159,7 @@ pg.view.onclick = function() {
 };
 
 // When user clicks on the screen, check if they clicked on an increase/decrease button
-onclick = function(e) {
+onclick = function (e) {
     // If click was on a decrease button, decrease the value of the adjacent input (but only if it's over 0)
     if (e.target.className === 'decrease' && e.target.nextElementSibling.value > 0) e.target.nextElementSibling.value = parseInt(e.target.nextElementSibling.value) - 1;
     // If click was on an increase button, increase the value of the adjacent input. If the button correlates to a rocket input, only increase if it is under the max

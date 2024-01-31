@@ -3,15 +3,19 @@
     inherits: true;
     initial-value: black;
 }
+
 :root {
     --nav-height: 40px;
 }
+
 h2 {
     font-size: 22px;
 }
+
 h3 {
     font-size: 18px;
 }
+
 nav {
     display: flex;
     position: fixed;
@@ -23,6 +27,7 @@ nav {
     width: 100vw;
     padding: 0px 20px;
 }
+
 main {
     position: relative;
     top: var(--nav-height);
@@ -31,33 +36,40 @@ main {
     width: 100vw;
     height: calc(100vh - var(--nav-height));
 }
-main > section {
+
+main>section {
     padding: 20px 10px;
 }
+
 main.connected .disconnected,
 main:not(.connected) .connected {
     display: none !important;
 }
+
 main.receive .send,
 main.send .receive {
     display: none !important;
 }
+
 .icon {
     --icon-color: rgb(131, 131, 131);
 }
+
 #device-viewer {
     display: flex;
     flex-flow: column nowrap;
     width: 65%;
     height: 100%;
 }
+
 #device-list {
     display: flex;
     flex-flow: column nowrap;
     height: auto;
     overflow-y: scroll;
 }
-#device-list > .device {
+
+#device-list>.device {
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
@@ -66,19 +78,24 @@ main.send .receive {
     width: 100%;
     padding: 10px 20px;
 }
-#device-list > .device:not(:last-child) {
+
+#device-list>.device:not(:last-child) {
     border-bottom: solid 2px #444;
 }
-#device-list > .device:hover {
+
+#device-list>.device:hover {
     background: #555;
 }
-.device > button {
+
+.device>button {
     margin-left: auto;
 }
-.device.received > button {
+
+.device.received>button {
     color: rgb(115, 245, 115);
     border: 1px solid rgb(115, 245, 115);
 }
+
 #settings {
     display: flex;
     flex-flow: column nowrap;
@@ -86,6 +103,7 @@ main.send .receive {
     gap: 20px;
     height: 100%;
 }
+
 #broadcast-steps {
     display: flex;
     flex-flow: row nowrap;
@@ -95,35 +113,44 @@ main.send .receive {
     margin-top: 20px;
     width: 100%;
 }
+
 .broadcast-step {
     text-align: center;
     flex: 1 1 auto;
     width: 25%;
 }
-.broadcast-step > h3 {
+
+.broadcast-step>h3 {
     min-height: 50px;
 }
-.broadcast-step > svg {
+
+.broadcast-step>svg {
     --icon-color: rgb(131, 131, 131);
 }
-.broadcast-step.complete > svg {
+
+.broadcast-step.complete>svg {
     --icon-color: green;
 }
-.broadcast-step.current > svg {
+
+.broadcast-step.current>svg {
     animation: pulse 2s infinite ease-in-out;
 }
-#broadcast-complete-step.current > svg {
+
+#broadcast-complete-step.current>svg {
     animation: none;
     --icon-color: green;
 }
+
 .broadcast-step.complete .instruction,
 .broadcast-step.current .instruction {
     display: none;
 }
+
 input[type="file"] {
     width: 150px;
     border: none;
 }
+
 .file-label {
     border: none;
     background: #444;
@@ -132,27 +159,34 @@ input[type="file"] {
     color: white;
     font-size: inherit;
 }
+
 .file-label:not(:disabled) {
     color: #eee;
     cursor: pointer;
     width: auto;
 }
+
 .file-label:hover:not(:disabled) {
     color: #ccc;
 }
+
 .file-label:active:not(:disabled) {
     color: #aaa;
 }
+
 .file-label:disabled {
     color: rgb(131, 131, 131);
 }
+
 @keyframes pulse {
     from {
         --icon-color: rgb(131, 131, 131);
     }
+
     50% {
         --icon-color: #1d7ac8;
     }
+
     to {
         --icon-color: rgb(131, 131, 131);
     }

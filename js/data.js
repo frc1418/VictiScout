@@ -14,7 +14,7 @@ var thead = document.getElementsByTagName('thead')[0],
     deleteButton = document.getElementById('delete-button'),
     outputFileName = document.getElementById('output-file'),
     transferButton = document.getElementById('transfer-button');
-    
+
 
 const acceptableFileTypes = ['application/json', '.json', 'text/csv', '.csv'];
 var fileBuffer = [];
@@ -57,7 +57,7 @@ function sortDataByAutoAccuracy() {
 
     // Get the index of the Auto Accuracy column
     const accuracyIndex = Array.from(thead.getElementsByTagName('th')).findIndex(th => th.textContent.toLowerCase() === 'auto accuracy');
-    
+
     // Sort rows based on Auto Accuracy values
     rows.sort((a, b) => {
         const accuracyA = parseFloat(a.cells[accuracyIndex].textContent) || 0;
@@ -165,9 +165,9 @@ function render(data) {
 }
 var inputs = document.querySelectorAll('input.generated');
 for (elem of inputs) {
-    elem.setAttribute( 'type', 'checkbox')
-    elem.setAttribute('id','checker');
-    
+    elem.setAttribute('type', 'checkbox')
+    elem.setAttribute('id', 'checker');
+
 }
 transferButton.onclick = function () {
     ipc.send('transferData');
@@ -241,7 +241,7 @@ async function combineCsv() {
     const header = files[0][0];
     // Reduces the list of files into a list of the data rows (exclude the header) in all files
     const data = files.flatMap((file) => file.slice(1));
-    
+
     // Creates a new array with the first element as the header
     // then dumps the data array into the rest of it
     const csv = [header, ...data].join(EOL);
@@ -407,31 +407,31 @@ async function exportCsv() {
             return;
         }
 
-// Calculate averages for each team for numeric fields and accuracy
-const averages = Object.keys(teamData).map(team => {
-    const teamAverages = teamData[team].totals.map((total, index) => {
-        if (teamData[team].numericFields[index] && teamData[team].counts[index] > 0) {
-            // Calculate average for numeric fields
-            return (total / teamData[team].counts[index]).toFixed(2);
-        } else if (headers[index + 1].toLowerCase().includes('accuracy')) {
-            // Calculate accuracy if the header contains 'accuracy'
-            const shots = teamData[team].totals[index - 1];
-            const made = total;
-            const accuracy = shots > 0 ? (made / shots) * 100 : 0; // Convert to a percentage
-            return accuracy.toFixed(2); // Do not append '%' here
-        } else {
-            return ''; // Empty string for non-numeric fields
-        }
-    });
-    return `${team},${teamAverages.join(',')}`;
-});
+        // Calculate averages for each team for numeric fields and accuracy
+        const averages = Object.keys(teamData).map(team => {
+            const teamAverages = teamData[team].totals.map((total, index) => {
+                if (teamData[team].numericFields[index] && teamData[team].counts[index] > 0) {
+                    // Calculate average for numeric fields
+                    return (total / teamData[team].counts[index]).toFixed(2);
+                } else if (headers[index + 1].toLowerCase().includes('accuracy')) {
+                    // Calculate accuracy if the header contains 'accuracy'
+                    const shots = teamData[team].totals[index - 1];
+                    const made = total;
+                    const accuracy = shots > 0 ? (made / shots) * 100 : 0; // Convert to a percentage
+                    return accuracy.toFixed(2); // Do not append '%' here
+                } else {
+                    return ''; // Empty string for non-numeric fields
+                }
+            });
+            return `${team},${teamAverages.join(',')}`;
+        });
 
-// Join all average lines into one string
-const averageString = averages.join('\n');
+        // Join all average lines into one string
+        const averageString = averages.join('\n');
 
-// Append the average table to the content
-content += '\n\nAverages\n';
-content += averageString;
+        // Append the average table to the content
+        content += '\n\nAverages\n';
+        content += averageString;
 
         // Create a Blob from the CSV content
         const blob = new Blob([content], { type: 'text/csv' });

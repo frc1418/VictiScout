@@ -15,88 +15,87 @@
         <p>Color:</p>
         <div class="selector keep" id="team-color">
             <button id="red" class="color-selector"></button>
-            <button id="blue" class="color-selector"></button>        
+            <button id="blue" class="color-selector"></button>
         </div>
         <button id="submit">Submit</button>
         <button id="reset">Reset</button>
         <button id="view">View Data</button>
     </div>
-<div class="row">
-    <h1>ROBOT DETAILS</h1>
-    <div> 
-        <h2>Drive Type</h2>
-        <select name="Drive Type" id="drive-type">
-            <option value="Tank">Tank</option>
-            <option value="Swerve">Swerve</option>
-        </select>
+    <div class="row">
+        <h1>ROBOT DETAILS</h1>
+        <div>
+            <h2>Drive Type</h2>
+            <select name="Drive Type" id="drive-type">
+                <option value="Tank">Tank</option>
+                <option value="Swerve">Swerve</option>
+            </select>
+        </div>
+        <div>
+            <h2>Climbing Method</h2>
+            <!-- You can use a dropdown or buttons based on your preference -->
+            <select name="Climbing Method" id="climbing-method">
+                <option value="Standard">Standard</option>
+                <option value="Articulated">Articulated</option>
+                <option value="Other">Other(Describe in Notes)</option>
+            </select>
+        </div>
+        <div>
+            <h2>Starting Position for Auto</h2>
+            <!-- You can use a dropdown or buttons based on your preference -->
+            <select name="Auto Start Position" id="auto-start-position">
+                <option value="Left">Left</option>
+                <option value="Center">Center</option>
+                <option value="Right">Right</option>
+            </select>
+        </div>
     </div>
-    <div>
-        <h2>Climbing Method</h2>
-        <!-- You can use a dropdown or buttons based on your preference -->
-        <select name="Climbing Method" id="climbing-method">
-            <option value="Standard">Standard</option>
-            <option value="Articulated">Articulated</option>
-            <option value="Other">Other(Describe in Notes)</option>
-        </select>
+    <div class="row">
+        <h1>AUTO</h1>
+        <div>
+            <h2>Notes</h2>
+            <input type="number" class="notes" id="auto-notes-shot" value="0" min="0">
+            <br>
+            <input type="number" class="notes" id="auto-notes-made" value="0" min="0">
+        </div>
+        <div>
+            <p>&#8592 Notes Shot</p>
+            <br>
+            <p>&#8592 Notes Made</p>
+        </div>
+        <div>
+            <h2>Amplifier</h2>
+            <input type="number" class="notes" id="auto-notes-in-amp" value="0" min="0">
+        </div>
+        <div>
+            <p>&#8592 Notes in Amplifier</p>
+        </div>
     </div>
-    <div>
-        <h2>Starting Position for Auto</h2>
-        <!-- You can use a dropdown or buttons based on your preference -->
-        <select name="Auto Start Position" id="auto-start-position">
-            <option value="Left">Left</option>
-            <option value="Center">Center</option>
-            <option value="Right">Right</option>
-        </select>
-    </div>
-</div>
-<div class="row">
-    <h1>AUTO</h1>
-    <div>
-        <h2>Notes</h2>
-        <input type="number" class="notes" id="auto-notes-shot" value="0" min="0">
-        <br>
-        <input type="number" class="notes" id="auto-notes-made" value="0" min="0">
-    </div>
-    <div>
-        <p>&#8592 Notes Shot</p>
-        <br>
-        <p>&#8592 Notes Made</p>
-    </div>
-    <div>
-        <h2>Amplifier</h2>
-        <input type="number" class="notes" id="auto-notes-in-amp" value="0" min="0">
-    </div>
-    <div>
-        <p>&#8592 Notes in Amplifier</p>
-    </div>
-</div>
-<div class="row">
-    <h1>TELEOP</h1>
-    <div>
-        <h2>Notes</h2>
-        <input type="number" class="notes" id="teleop-notes-shot" value="0" min="0">
-        <br>
-        <input type="number" class="notes" id="teleop-notes-made" value="0" min="0">
-    </div>
-    <div>
-        <p>&#8592 Notes Shot</p>
-        <br>
-        <p>&#8592 Notes Made</p>
-    </div>
-    <div>
-        <h2>Amplifier</h2>
-        <input type="number" class="notes" id="teleop-notes-in-amp" value="0" min="0">
-    </div>
-    <div>
-        <p>&#8592 Notes in Amplifier</p>
-    </div>
-       <!-- <input type="number" id="Cycles" value="0" min="0">
+    <div class="row">
+        <h1>TELEOP</h1>
+        <div>
+            <h2>Notes</h2>
+            <input type="number" class="notes" id="teleop-notes-shot" value="0" min="0">
+            <br>
+            <input type="number" class="notes" id="teleop-notes-made" value="0" min="0">
+        </div>
+        <div>
+            <p>&#8592 Notes Shot</p>
+            <br>
+            <p>&#8592 Notes Made</p>
+        </div>
+        <div>
+            <h2>Amplifier</h2>
+            <input type="number" class="notes" id="teleop-notes-in-amp" value="0" min="0">
+        </div>
+        <div>
+            <p>&#8592 Notes in Amplifier</p>
+        </div>
+        <!-- <input type="number" id="Cycles" value="0" min="0">
         <h2>Number of Cycles</h2>-->
     </div>
-</div>
+    </div>
     <div class="row">
-        <textarea id="notes" placeholder=
-"Write notes here!
+        <textarea id="notes" placeholder="Write notes here!
 
 The most helpful information you can note is insights about the team which can't be communicated through quantitative inputs.
 
@@ -104,12 +103,11 @@ Please refrain from making sweeping declarations about whether a team should be 
 
 
 "></textarea>
-<p>KEY TERMINOLOGY: <br>
-    NOTES SHOT: The number of times the robot attempted to score a note. <br>
-    NOTES MADE: The number of times the robot scored a note.<br>
-    NOTES IN AMP: The number of times the robot scored a note into the amp.<br>
-    </p>
+        <p>KEY TERMINOLOGY: <br>
+            NOTES SHOT: The number of times the robot attempted to score a note. <br>
+            NOTES MADE: The number of times the robot scored a note.<br>
+            NOTES IN AMP: The number of times the robot scored a note into the amp.<br>
+        </p>
     </div>
 
     <script src="js/script.js"></script>
-    
