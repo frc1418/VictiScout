@@ -160,14 +160,13 @@ function render(data) {
         tbody.appendChild(tr);
         check.className = 'generated';
         tr.appendChild(check);
-        //test
     }
     console.log('Entire Data Array:', data);
 }
 var inputs = document.querySelectorAll('input.generated');
 for (elem of inputs) {
     elem.setAttribute( 'type', 'checkbox')
-    elem.setAttribute('id','CheckerMCchecker');
+    elem.setAttribute('id','checker');
     
 }
 transferButton.onclick = function () {

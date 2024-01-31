@@ -1,3 +1,7 @@
+html, body {
+    overflow-x: hidden;
+}
+
 section {
     margin-bottom: 20px;
 }
@@ -10,7 +14,6 @@ td {
     color: white;
     border: solid 1px grey;
     box-sizing: content-box;
-
 }
 td:first-child {
     border-left: none;
@@ -119,19 +122,18 @@ button:active {
 #transfer-button {
     margin-left: 20px;
 }
-#HideTheseButtonsCuzItBreakIfIDelete{
+#hidden-fields{
     position: absolute;
     left: 10000px;
 }
-#CheckerMCchecker {
+#checker {
     position: relative;
     cursor: pointer;
     left: 10px;
     top:-7px;
-
 }
 
-#CheckerMCchecker:before {
+#checker:before {
     content: "";
     display: block;
     position: absolute;
@@ -141,7 +143,7 @@ button:active {
     border-radius: 9px;
     animation: round2 0.2s;
 }
-#CheckerMCchecker:checked:before {
+#checker:checked:before {
     content: "";
     display: block;
     position: absolute;
@@ -152,7 +154,7 @@ button:active {
     border-radius: 4px;
 }
 
-#CheckerMCchecker:checked:after {
+#checker:checked:after {
     display: block;
     width: 15px;
     height: 20px;
@@ -171,7 +173,7 @@ button:active {
         border-radius: 4px;
     }
     to {
-        border-radius: 9spx;
+        border-radius: 9px;
     }
     
 }
@@ -183,9 +185,4 @@ button:active {
         border-radius: 4px;
     }
     
-}
-
-
-html, body {
-    overflow-x: hidden;
 }
